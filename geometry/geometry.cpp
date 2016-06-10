@@ -1,3 +1,4 @@
+// 大小比較用
 int sgn(double a){
     return a < -eps ? -1: a > eps ? 1: 0;
 }
@@ -20,12 +21,15 @@ struct Circle{
     Circle() { }
     Circle(const P &o, double r) : o(o), r(r) { }
     Circle(double x, double y, double r) : o(x,y), r(r) { }
+	// 点の包含（境界を含む）
     bool contains(const P &p) const{
         return sgn(abs(p-o), r) <= 0;
     }
+	// 内部（境界を含まず）
     bool inside(const P &p) const{
         return sgn(abs(p-o), r) < 0;
     }
+	// 点pを通る接線．pからoへ向かうベクトルの左側がfirstに入る
     pair<Line,Line> tangent(const P &p) const{
         vector<Line> res;
         double d = abs(p - o), s = r*r / d, t = sqrt(r*r-s*s);
@@ -37,6 +41,7 @@ struct Circle{
 bool near(const P &a, const P &b){
     return !sgn(abs(a-b));
 }
+// sort用．ClosestPair用にX,Yに分けている
 bool lessX(const P &a, const P &b){
     if(sgn(real(a), real(b))) return real(a) < real(b);
     if(sgn(imag(a), imag(b))) return imag(a) < imag(b);
@@ -68,10 +73,12 @@ bool parallel(const Line &s, const Line &t){
 bool orthogonal(const Line &s, const Line &t){
     return !sgn(abs(dot(s[1]-s[0], t[1]-t[0])));
 }
+// 点aの直線s上への射影
 P projection(const Line &s, const P &a){
     P v = s[1] - s[0];
     return s[0] + dot(v, a - s[0]) / abs(v) / abs(v) * v;
 }
+// 直線sに対する点aの鏡映
 P reflection(const Line &s, const P &a){
     P p = projection(s, a);
     return 2.0 * p - a;
