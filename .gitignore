@@ -1,2 +1,5 @@
 *~
 *.swp
+*.exe
+
+verify/*.cpp

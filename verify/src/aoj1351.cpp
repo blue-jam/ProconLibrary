@@ -1,3 +1,7 @@
+/*
+ * 必要であれば，自動生成に対応
+ * 中身を書き換えていたからできない気もする
+ */
 #include <bits/stdc++.h>
 using namespace std; 
 
@@ -5,13 +9,7 @@ using namespace std;
 
 typedef long long ll;
 const double eps = 1e-10;
-	vector<int> v;
 
-// RMQを解くSegmentTree
-// SegmentTree(n_, z)	: zは無視するデータ
-// init(v)				: vで初期化
-// update(k,d)			: k番目をdに更新
-// query(a,b)			: [a,b)内での最小値
 template<typename T> 
 struct LasySegmentTree{
 	struct node_t{
@@ -102,26 +100,51 @@ struct LasySegmentTree{
 };
 
 int N, Q;
+string s;
 int main(){
-	ios::sync_with_stdio(false);
-	cin >> N >> Q;
-	v.resize(N);
+	cin >> N >> Q >> s;
+	vector<int> v(N), q(Q);
+	set<int> cl;
+	for(int i = 0; i < Q; ++i){
+		cin >> q[i];
+	}
 	for(int i = 0; i < N; ++i){
-		cin >> v[i];
+		v[i] = s[i] == '(' ? 1: -1;
+		if(v[i] < 0) cl.insert(i);
+		if(i > 0) v[i] += v[i-1];
 	}
 	LasySegmentTree<int> st(N);
 	st.init(v);
-	for(int i = 0; i < Q; ++i){
-		int q, l, r, x;
-		cin >> q >> l >> r;
-		--l;
-		if(q == 1){
-			cout << st.get(l, r) << endl;
+	for(int I = 0; I < Q; ++I){
+		int l = q[I]-1;
+		if(s[l] == '('){
+			s[l] = ')';
+			cl.insert(l);
+			st.add(l, N, -2);
+			l = *(cl.begin());
+			cl.erase(l);
+			s[l] = '(';
+			st.add(l, N, +2);
 		}
 		else{
-			cin >> x;
-			st.add(l, r, x);
+			s[l] = '(';
+			cl.erase(l);
+			st.add(l, N, +2);
+			l = -1;
+			int r = N-1;
+			while(r - l > 1){
+				int c =  (l + r) / 2;
+				if(st.get(c, r) >= 2)
+					r = c;
+				else
+					l = c;
+			}
+			l = r;
+			cl.insert(l);
+			s[l] = ')';
+			st.add(l, N, -2);
 		}
+		cout << l+1 << endl;
 	}
 	return 0;
 }
