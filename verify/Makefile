@@ -4,7 +4,7 @@ aojcgls = \
 	  aojcgl2a.cpp aojcgl2b.cpp aojcgl2c.cpp aojcgl2d.cpp \
 	  aojcgl3a.cpp aojcgl3b.cpp aojcgl3c.cpp \
 	  aojcgl5a.cpp \
-	  aojcgl7d.cpp aojcgl7e.cpp
+	  aojcgl7a.cpp aojcgl7d.cpp aojcgl7e.cpp aojcgl7g.cpp
 dsts = $(aojcgls)
 
 .PHONY: all
