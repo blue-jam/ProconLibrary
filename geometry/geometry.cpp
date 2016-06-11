@@ -1,3 +1,4 @@
+const double PI = atan(1) * 4;
 // 大小比較用
 int sgn(double a){
     return a < -eps ? -1: a > eps ? 1: 0;
