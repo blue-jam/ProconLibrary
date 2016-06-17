@@ -8,7 +8,9 @@ aojcgls = \
 	  aoj2402.cpp
 strings = \
 	  disco2016qualc.cpp
-dsts = $(aojcgls) $(strings)
+math = \
+	   atc001c.cpp
+dsts = $(aojcgls) $(strings) $(math)
 
 .PHONY: all
 all:	$(dsts)
