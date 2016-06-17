@@ -6,7 +6,9 @@ aojcgls = \
 	  aojcgl5a.cpp \
 	  aojcgl7a.cpp aojcgl7d.cpp aojcgl7e.cpp aojcgl7g.cpp \
 	  aoj2402.cpp
-dsts = $(aojcgls)
+strings = \
+	  disco2016qualc.cpp
+dsts = $(aojcgls) $(strings)
 
 .PHONY: all
 all:	$(dsts)
