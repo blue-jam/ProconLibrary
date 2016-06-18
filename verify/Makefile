@@ -9,7 +9,9 @@ aojcgls = \
 	  aojcgl7a.cpp aojcgl7d.cpp aojcgl7e.cpp aojcgl7g.cpp \
 	  aoj2402.cpp
 aojgrl = \
-		 aojgrl2a_k.cpp
+		 aojgrl1a.cpp aojgrl1b.cpp \
+		 aojgrl2a_k.cpp \
+		 aojgrl3a.cpp aojgrl3b.cpp aojgrl3c.cpp
 strings = \
 	  disco2016qualc.cpp
 math = \
