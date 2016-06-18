@@ -8,11 +8,13 @@ aojcgls = \
 	  aojcgl5a.cpp \
 	  aojcgl7a.cpp aojcgl7d.cpp aojcgl7e.cpp aojcgl7g.cpp \
 	  aoj2402.cpp
+aojgrl = \
+		 aojgrl2a_k.cpp
 strings = \
 	  disco2016qualc.cpp
 math = \
 	   atc001c.cpp
-dsts = $(aojcgls) $(datastructures) $(strings) $(math)
+dsts = $(aojcgls) $(datastructures) $(strings) $(math) $(aojgrl)
 
 .PHONY: all
 all:	$(dsts)
