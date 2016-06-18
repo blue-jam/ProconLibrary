@@ -1,6 +1,7 @@
 template = ../misc/template.cpp
 datastructures = \
-		 aoj1351.cpp koj0093.cpp
+		 aoj1351.cpp koj0093.cpp \
+		 aojdsl2a.cpp aojdsl2b.cpp
 aojcgls = \
 	  aojcgl1a.cpp aojcgl1b.cpp aojcgl1c.cpp \
 	  aojcgl2a.cpp aojcgl2b.cpp aojcgl2c.cpp aojcgl2d.cpp \

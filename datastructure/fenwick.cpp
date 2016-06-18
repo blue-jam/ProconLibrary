@@ -11,7 +11,7 @@ struct Fenwick{
 		bit = vector<T>(n + 1);
 		mod = 0;
 	}
-	void update(int i, T v){
+	void add(int i, T v){
 		int n = bit.size();
 		++i;
 		while(i <= n){
@@ -21,7 +21,6 @@ struct Fenwick{
 		}
 	}
 	T get(int i){
-		if(!i) return 0;
 		T res = 0;
 		while(i > 0){
 			res += bit[i];
