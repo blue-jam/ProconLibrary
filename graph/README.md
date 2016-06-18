@@ -19,3 +19,11 @@
 ## kruskal.cpp
 
 * AOJ GRL 2 A
+
+## lca.cpp
+
+* AOJ GRL 5 B
+
+# topologicalsort.cpp
+
+* AOJ GRL 4 B

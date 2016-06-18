@@ -11,7 +11,9 @@ aojcgls = \
 aojgrl = \
 		 aojgrl1a.cpp aojgrl1b.cpp \
 		 aojgrl2a_k.cpp \
-		 aojgrl3a.cpp aojgrl3b.cpp aojgrl3c.cpp
+		 aojgrl3a.cpp aojgrl3b.cpp aojgrl3c.cpp \
+		 aojgrl4b.cpp \
+		 aojgrl5b.cpp
 strings = \
 	  disco2016qualc.cpp
 math = \
