@@ -10,3 +10,12 @@ Polygon convex_cut(const Polygon &p, const Line &l){
     }
     return res;
 }
+// 凸多角形の共通部分．O(nm)．
+// TODO:O(n+m)にする
+Polygon convex_intersect(const Polygon &a, const Polygon &b){
+	Polygon res = a;
+	for(int i = 0; i < b.size(); ++i){
+		res = convex_cut(res, Line(curr(b,i), next(b,i)));
+	}
+	return res;
+}
