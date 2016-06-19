@@ -9,6 +9,10 @@
  * 2 A (parallel)
  * 2 A (orthogonal)
 
+## convexhull.cpp
+
+* AOJ CGL 4 A(not strict)
+
 ## crosspoint.cpp
 
 * AOJ CGL
