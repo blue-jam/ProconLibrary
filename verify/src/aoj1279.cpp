@@ -56,6 +56,7 @@ vector<int> buildPath(const vector<int> &prev, int t){
 }
 #include "../../geometry/geometry.cpp"
 #include "../../geometry/crosspoint.cpp"
+#include "../../geometry/polygon.cpp"
 #include "../../geometry/arrangement.cpp"
 
 int main(){

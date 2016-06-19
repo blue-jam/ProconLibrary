@@ -10,7 +10,7 @@ aojcgls = \
 	  aojcgl5a.cpp \
 	  aojcgl7a.cpp aojcgl7d.cpp aojcgl7e.cpp aojcgl7g.cpp \
 	  aoj1279.cpp \
-	  aoj2402.cpp
+	  aoj2402.cpp aoj2448.cpp
 aojgrl = \
 		 aojgrl1a.cpp aojgrl1b.cpp \
 		 aojgrl2a_k.cpp \
