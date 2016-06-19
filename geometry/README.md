@@ -2,7 +2,8 @@
 
 ## arrangement.cpp
 
-* AOJ 1279
+* AOJ 1279(グラフだけ)
+* AOJ 2448(閉領域取得．eps=1e-4)
 
 ## geometry.cpp
 
@@ -12,6 +13,10 @@
  * 1 C (ccw)
  * 2 A (parallel)
  * 2 A (orthogonal)
+
+## convexcut.cpp
+
+* AOJ CGL 4 C
 
 ## convexhull.cpp
 
