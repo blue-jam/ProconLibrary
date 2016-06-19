@@ -3,7 +3,7 @@ bool intersectSS(const Segment &s, const Segment &t){
     return  ccw(s[0],s[1],t[0]) * ccw(s[0],s[1],t[1]) <= 0 &&
             ccw(t[0],t[1],s[0]) * ccw(t[0],t[1],s[1]) <= 0;
 }
-// TODO:ここにあったTODOが文字化けで読めない
+// TODO:端点の扱いが雑なのを何とかする
 P crosspointSS(const Segment &s, const Segment &t){
     double a = cross(s[1] - s[0], t[1] - t[0]);
     double b = cross(s[1] - s[0], s[1] - t[0]);
@@ -47,7 +47,7 @@ pair<P,P> crosspointCC(const Circle &a, const Circle &b){
                      a.o + v * x - n * h);
 }
 // 直線と円の交点の個数
-// TODO:ここにあったコメントが文字化けで読めない
+// 交点の個数を返す
 int intersectLC(const Line &l, const Circle &c){
     double d = distanceLP(l, c.o);
     return sgn(d, c.r) + 1;

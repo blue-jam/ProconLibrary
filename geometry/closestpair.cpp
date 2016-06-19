@@ -5,7 +5,7 @@ double closestPairRecur(vector<P> &v, int l, int r, P &a, P &b){
     P a2, b2;
     double x = real(v[m]);
     double d  = abs(v[l+1]-v[l]); a = v[l]; b = v[l+1];
-    double d1 = closestPairRecur(v, l, m, a, b);        // TODO:ここにあったコメントが文字化けで読めない
+    double d1 = closestPairRecur(v, l, m, a, b);        // 再帰実行
     double d2 = closestPairRecur(v, m, r, a2, b2);
     d = min(d, d1);
     if(sgn(d, d2) < 0){
@@ -13,7 +13,7 @@ double closestPairRecur(vector<P> &v, int l, int r, P &a, P &b){
     }
     auto vb = v.begin();
     inplace_merge(vb+l, vb+m, vb+r, lessY);
-	// TODO:ここにあったコメントが文字化けで読めない
+	// [x-d,x+d]の範囲の点をwに保持
     vector<P> w;
     for(int i = l; i < r; ++i){
         if(sgn(x-d, real(v[i])) < 0 || sgn(real(v[i]), x+d) < 0)
