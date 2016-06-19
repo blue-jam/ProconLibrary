@@ -8,6 +8,8 @@ int sgn(double a, double b){
 }
 typedef complex<double> P;
 typedef vector<P> Polygon;
+#define curr(p,i) p[i]
+#define next(p,i) p[(i+1)%p.size()]
 struct Line : public vector<P> {
     Line(P a, P b) {
         push_back(a); push_back(b);

@@ -1,6 +1,4 @@
 // 依存: geometry
-#define curr(p,i) p[i]
-#define next(p,i) p[(i+1)%p.size()]
 double area(Polygon &p){
     double a = 0;
     for(int i = 0; i < p.size(); ++i)
