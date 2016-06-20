@@ -1,5 +1,6 @@
-#include "../../geometry/geometry.cpp"
-#include "../../geometry/crosspoint.cpp"
+#include "misc/template.cpp"
+#include "geometry/geometry.cpp"
+#include "geometry/crosspoint.cpp"
 
 typedef double Weight;
 const Weight INF = 1e+10;

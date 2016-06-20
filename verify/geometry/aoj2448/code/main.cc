@@ -1,4 +1,11 @@
-// epsを1e-4にしないとWAになる
+#include <bits/stdc++.h>
+using namespace std; 
+
+#define ALL(x) (x).begin(),(x).end() 
+#define EACH(i,c) for(auto i=(c).begin();i!=(c).end();++i)
+
+typedef long long ll;
+const double eps = 1e-4;
 
 typedef double Weight;
 struct Edge{
@@ -30,10 +37,10 @@ void addUndirectedEdge(Graph &g, int a, int b, Weight c){
     g[b].push_back(Edge(b, a, c, g[a].size() - 1));
 }
 
-#include "../../geometry/geometry.cpp"
-#include "../../geometry/crosspoint.cpp"
-#include "../../geometry/polygon.cpp"
-#include "../../geometry/arrangement.cpp"
+#include "geometry/geometry.cpp"
+#include "geometry/crosspoint.cpp"
+#include "geometry/polygon.cpp"
+#include "geometry/arrangement.cpp"
 
 int main(){
     int N;

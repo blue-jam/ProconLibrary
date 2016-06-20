@@ -1,0 +1,6 @@
+# -*- coding: utf-8; mode: python -*-
+
+## You can load plugins here.
+use_plugin('rime_plus')
+use_plugin('judge_system.atcoder')
+project(library_dir='../common', required_rime_plus_version='0.9.0')

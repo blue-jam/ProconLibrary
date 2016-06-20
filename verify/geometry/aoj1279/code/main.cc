@@ -1,3 +1,5 @@
+#include "misc/template.cpp"
+
 const double INF = 1e+10;
 typedef double Weight;
 struct Edge{
@@ -54,10 +56,10 @@ vector<int> buildPath(const vector<int> &prev, int t){
     reverse(path.begin(), path.end());
     return path;
 }
-#include "../../geometry/geometry.cpp"
-#include "../../geometry/crosspoint.cpp"
-#include "../../geometry/polygon.cpp"
-#include "../../geometry/arrangement.cpp"
+#include "geometry/geometry.cpp"
+#include "geometry/crosspoint.cpp"
+#include "geometry/polygon.cpp"
+#include "geometry/arrangement.cpp"
 
 int main(){
     for(;;){
