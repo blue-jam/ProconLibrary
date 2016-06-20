@@ -1,4 +1,5 @@
-#include "../../datastructure/fenwick.cpp"
+#include "misc/template.cpp"
+#include "datastructure/fenwick.cpp"
 
 int main(){
 	int n,q;

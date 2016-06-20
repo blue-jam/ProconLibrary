@@ -1,9 +1,5 @@
-/*
- * 必要であれば，自動生成に対応
- * 中身を書き換えていたからできない気もする
- */
-
-#include "../../datastructure/lazysegtree.cpp"
+#include "misc/template.cpp"
+#include "datastructure/lazysegtree.cpp"
 
 int N, Q;
 string s;

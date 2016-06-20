@@ -1,11 +1,7 @@
 template = ../misc/template.cpp
-datastructures = \
-		 aoj1351.cpp koj0093.cpp \
-		 aojdsl2a.cpp aojdsl2b.cpp
-strings = \
-	  disco2016qualc.cpp
-math = \
-	   atc001c.cpp
+datastructure = koj0093.cpp
+strings = disco2016qualc.cpp
+math = atc001c.cpp
 dsts = $(datastructures) $(strings) $(math)
 
 .PHONY: all

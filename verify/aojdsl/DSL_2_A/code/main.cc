@@ -1,4 +1,5 @@
-#include "../../datastructure/segmenttree.cpp"
+#include "misc/template.cpp"
+#include "datastructure/segmenttree.cpp"
 
 int main(){
 	int n, q;
