@@ -1,0 +1,34 @@
+# -*- coding: utf-8; mode: python -*-
+
+## Input generators.
+#c_generator(src='generator.c')
+#cxx_generator(src='generator.cc', dependency=['testlib.h'])
+#java_generator(src='Generator.java', encoding='UTF-8', mainclass='Generator')
+#script_generator(src='generator.pl')
+
+## Input validators.
+#c_validator(src='validator.c')
+#cxx_validator(src='validator.cc', dependency=['testlib.h'])
+#java_validator(src='Validator.java', encoding='UTF-8', mainclass='tmp/validator/Validator')
+#script_validator(src='validator.pl')
+
+## Output judges.
+#c_judge(src='judge.c')
+cxx_judge(src='judge.cc', dependency=['testlib.h'], variant=testlib_judge_runner)
+#java_judge(src='Judge.java', encoding='UTF-8', mainclass='Judge')
+#script_judge(src='judge.py')
+
+## Reactives.
+#c_reactive(src='reactive.c')
+#cxx_reactive(src='reactive.cc', dependency=['testlib.h', 'reactive.hpp'], variant=kupc_reactive_runner)
+#java_reactive(src='Reactive.java', encoding='UTF-8', mainclass='Judge')
+#script_reactive(src='reactive.py')
+
+## Extra Testsets.
+#icpc_merger(input_terminator='0 0\n') # icpc type
+#icpc_merger(input_terminator='0 0\n', output_replace=casenum_replace('Case 1', 'Case {0}')) # icpc wf ~2011
+#gcj_merger(output_replace=casenum_replace('Case 1', 'Case {0}'))
+id='1A'
+#merged_testset(name=id + '_Merged', input_pattern='*.in')
+#subtask_testset(name='All', score=100, input_patterns=['*'])
+#scoring_judge() # precisely scored by judge program like Jiyukenkyu (KUPC 2013)

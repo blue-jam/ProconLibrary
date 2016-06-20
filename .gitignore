@@ -1,5 +1,15 @@
 *~
 *.swp
 *.exe
+*.stackdump
 
-verify/*.cpp
+*.in
+*.diff
+*.out
+
+rime-out
+*.pyc
+Icon*
+.DS_Store
+Thumbs.db
+target
