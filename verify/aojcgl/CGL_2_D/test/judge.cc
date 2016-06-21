@@ -1,4 +1,3 @@
-#include <io.h>
 #include "testlib.h"
 
 const double EPS = 1e-8;

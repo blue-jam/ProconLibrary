@@ -1,2 +1,1 @@
-# -*- coding: utf-8; mode: python -*-
-cxx_solution(src='main.cc', flags=['-I', '../../../../../', '-Wl,--stack,10485760'])
+../../../SOLUTION

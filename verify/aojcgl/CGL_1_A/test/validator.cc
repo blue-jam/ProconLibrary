@@ -1,4 +1,3 @@
-#include <io.h>
 #include "testlib.h"
 
 const int INF = 10000;
