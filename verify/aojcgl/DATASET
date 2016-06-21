@@ -1,0 +1,22 @@
+aojdataset("CGL_1_A")
+aojdataset("CGL_1_B")
+aojdataset("CGL_1_C")
+
+aojdataset("CGL_2_A")
+aojdataset("CGL_2_B")
+aojdataset("CGL_2_C")
+aojdataset("CGL_2_D")
+
+aojdataset("CGL_3_A")
+aojdataset("CGL_3_B")
+aojdataset("CGL_3_C")
+
+aojdataset("CGL_4_A")
+# aojdataset("CGL_4_C")
+
+aojdataset("CGL_5_A")
+
+# aojdataset("CGL_7_A")
+# aojdataset("CGL_7_D")
+# aojdataset("CGL_7_E")
+# aojdataset("CGL_7_G")
