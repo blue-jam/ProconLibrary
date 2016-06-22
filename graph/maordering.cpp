@@ -1,3 +1,4 @@
+// O(V^2 + VE log V)
 Weight maordering(const Graph &g1, vector<int> &w){
     int n = g1.size();
     int cut = INF;
