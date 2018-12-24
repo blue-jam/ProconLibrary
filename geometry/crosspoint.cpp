@@ -1,3 +1,29 @@
+/**
+ * @file
+ * ## 直線，線分の交差判定，交点計算
+ *
+ * 直線の交差判定については簡単である．ベクトルa，bで表される直線とベクトルc，dで表される直線が与えられたとき，cross(b - a, d -
+ * c)が0であれば，2つの直線は平行であるから，重なっていない限り交差はしない．
+ *
+ * ### 使用方法
+ *
+ * #### intersection
+ *
+ * 直線，線分の交点計算．2直線が平行でないことが前提．
+ *
+ * ### ソースコード
+ *
+ * @include crosspoint.cpp
+ *
+ * ### 確認済み問題
+ *
+ *   * AOJ 1283(intersection)
+ *
+ * ### 参考
+ *
+ *   * [deq notes](http://www.deqnotes.net/)
+
+ */
 // 依存：geometry
 bool intersectSS(const Segment &s, const Segment &t){
     return  ccw(s[0],s[1],t[0]) * ccw(s[0],s[1],t[1]) <= 0 &&
@@ -28,7 +54,6 @@ double distanceSP(const Segment &s, const P &p){
         return min(abs(p-s[0]), abs(p-s[1]));
     else
         return distanceLP(s, p);
- 
 }
 // 線分と線分の距離
 double distanceSS(const Segment &s, const Segment &t){
