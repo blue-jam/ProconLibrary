@@ -1,5 +1,7 @@
 # プロコンのライブラリ
 
+[![Build Status](https://travis-ci.org/blue-jam/ProconLibrary.svg?branch=master)](https://travis-ci.org/blue-jam/ProconLibrary)
+
 動作は保証しない．
 いろいろな人のライブラリを参考にしてできています．
 
