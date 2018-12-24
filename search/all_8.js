@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['template_2ecpp',['template.cpp',['../md_misc_README.html',1,'']]]
+  ['parent',['parent',['../structUnionFind.html#a916e09e220667fb55fbf332c8852c948',1,'UnionFind']]],
+  ['pma',['PMA',['../structPMA.html',1,'']]]
 ];

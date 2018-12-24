@@ -92,14 +92,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afb08cc940912b2020a54275544c7379a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb08cc940912b2020a54275544c7379a"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Fenwick</b> (int n)</td></tr>
+<tr class="memitem:afb08cc940912b2020a54275544c7379a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFenwick.html#afb08cc940912b2020a54275544c7379a">Fenwick</a> (int n)</td></tr>
 <tr class="separator:afb08cc940912b2020a54275544c7379a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a005dfcbd30da54488e4acfca48b539ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a005dfcbd30da54488e4acfca48b539ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (int i, T v)</td></tr>
+<tr class="memitem:a005dfcbd30da54488e4acfca48b539ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFenwick.html#a005dfcbd30da54488e4acfca48b539ea">add</a> (int i, T v)</td></tr>
 <tr class="separator:a005dfcbd30da54488e4acfca48b539ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20ef6d8e144cc5003300ab10522b2721"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a20ef6d8e144cc5003300ab10522b2721"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (int i)</td></tr>
+<tr class="memitem:a20ef6d8e144cc5003300ab10522b2721"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFenwick.html#a20ef6d8e144cc5003300ab10522b2721">get</a> (int i)</td></tr>
 <tr class="separator:a20ef6d8e144cc5003300ab10522b2721"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -111,13 +108,159 @@ vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit</b><
 T&#160;</td><td class="memItemRight" valign="bottom"><b>mod</b></td></tr>
 <tr class="separator:aa2e9dddc2457a6b485d36b73324838a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br/>
+struct Fenwick&lt; T &gt;</h3>
+
+<p>Binary Indexed Tree(Fenwick Tree). <a class="el" href="structSegment.html">Segment</a> Treeが任意の範囲に対する操作ができるのに対して，BITは始点からある点までの範囲に対する操作しか行えない． 反面，Segment Treeよりはるかに実装コストが低い．</p>
+<p>0-indexedで管理されている． modを0より大きくすると，modをとるようになる</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>管理するデータ型</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>単純に実装した場合は始点が1になるが，工夫をして始点を0にずらしている．始点を1にしたい場合はupdate，getにある先頭の++iを消す．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><span class="keyword">struct </span><a class="code" href="structFenwick.html">Fenwick</a>{</div>
+<div class="line">    vector&lt;T&gt; bit;</div>
+<div class="line">    T mod;</div>
+<div class="line">    <a class="code" href="structFenwick.html#afb08cc940912b2020a54275544c7379a">Fenwick</a>(<span class="keywordtype">int</span> n){</div>
+<div class="line">        bit = vector&lt;T&gt;(n + 1);</div>
+<div class="line">        mod = 0;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="structFenwick.html#a005dfcbd30da54488e4acfca48b539ea">add</a>(<span class="keywordtype">int</span> i, T v){</div>
+<div class="line">        <span class="keywordtype">int</span> n = bit.size();</div>
+<div class="line">        ++i;</div>
+<div class="line">        <span class="keywordflow">while</span>(i &lt; n){</div>
+<div class="line">            bit[i] += v;</div>
+<div class="line">            <span class="keywordflow">if</span>(mod &gt; eps) bit[i] %= mod;</div>
+<div class="line">            i += i &amp; -i;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    T <span class="keyword">get</span>(<span class="keywordtype">int</span> i){</div>
+<div class="line">        T res = 0;</div>
+<div class="line">        ++i;</div>
+<div class="line">        <span class="keywordflow">while</span>(i &gt; 0){</div>
+<div class="line">            res += bit[i];</div>
+<div class="line">            <span class="keywordflow">if</span>(mod &gt; eps) bit[i] %= mod;</div>
+<div class="line">            i -= i &amp; -i;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">return</span> res;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 2326(Number Sorting)</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>プログラミングコンテストチャレンジブック </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="afb08cc940912b2020a54275544c7379a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structFenwick.html">Fenwick</a>&lt; T &gt;::<a class="el" href="structFenwick.html">Fenwick</a> </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>要素数 <em>n</em> で初期化する． </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a005dfcbd30da54488e4acfca48b539ea"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="structFenwick.html">Fenwick</a>&lt; T &gt;::add </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p><em>i</em> 番目の要素に <em>v</em> 加える 計算量は <img class="formulaInl" alt="$O(\log n)$" src="form_0.png"/> . </p>
+
+</div>
+</div>
+<a class="anchor" id="a20ef6d8e144cc5003300ab10522b2721"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="structFenwick.html">Fenwick</a>&lt; T &gt;::get </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>区間 <img class="formulaInl" alt="$[0,i)$" src="form_1.png"/> の総和を返す． 計算量は <img class="formulaInl" alt="$O(\log n)$" src="form_0.png"/> . </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>datastructure/fenwick.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 00:24:44 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

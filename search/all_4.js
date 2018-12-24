@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['node',['node',['../structLinkCutTree_1_1node.html',1,'LinkCutTree']]],
-  ['node_5ft',['node_t',['../structLasySegmentTree_1_1node__t.html',1,'LasySegmentTree']]]
+  ['get',['get',['../structFenwick.html#a20ef6d8e144cc5003300ab10522b2721',1,'Fenwick']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['same',['same',['../structUnionFind.html#aa1580fa407277914913231a7d752c7d8',1,'UnionFind']]]
+  ['fenwick',['Fenwick',['../structFenwick.html#afb08cc940912b2020a54275544c7379a',1,'Fenwick']]],
+  ['find',['find',['../structUnionFind.html#aa3fe04bfd2e9ce2e33c3edf8c91c3aea',1,'UnionFind']]]
 ];

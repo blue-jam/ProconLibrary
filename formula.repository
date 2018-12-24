@@ -1,1 +1,5 @@
-\form#0:$O(\alpha(n))$
+\form#0:$O(\log n)$
+\form#1:$[0,i)$
+\form#2:$O(n)$
+\form#3:$[a, b)$
+\form#4:$O(\alpha(n))$
