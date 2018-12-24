@@ -1,3 +1,24 @@
+/**
+ * @file
+ *
+ * ## 強連結成分分解(Tarjan's algorithm)
+ *
+ * 有向グラフ @f$G=(V,E)\f$ において，任意の点から任意の点への有向道が存在するとき @f$G@f$ は強連結であるという．
+ * 必ずしも強連結でないグラフにおける極大な強連結部分グラフを強連結成分と呼ぶ．
+ *
+ * （あくまでも僕の周辺で）強連結成分分解としてポピュラーなのはトポロジカルソートを行った後，トポロジカル順序の逆順に頂点vを選び，
+ * 逆グラフに対してDFSを行うKosaraju's algorithmだが，このアルゴリズムは逆グラフを作ったうえでDFSを2回を行う必要がある．
+ * 対してTarjan's algorithmは逆グラフを作成する必要もなく，DFSも一回で済む．
+ *
+ * ### 確認済み問題
+ *
+ * - AOJ 2222(Alien's Counting)
+ *
+ * ### 参考
+ *
+ * - アルゴリズムとデータ構造-基礎のツールボックス-
+ */
+
 void sccRecur(const Graph &g, int v, vector<vector<int> > &comp,
                    vector<int> &num, vector<bool> &open,
                    stack<int> &oNodes, stack<int> &oReps, int &cnt){
@@ -20,6 +41,12 @@ void sccRecur(const Graph &g, int v, vector<vector<int> > &comp,
         }while(v != w);
     }
 }
+
+/**
+ * グラフ @a g の強連結成分を @f$O(|V|+|E|)@f$ 時間で計算する
+ *
+ * @param comp 強連結成分を格納するベクタ（空推奨）
+ */
 void getSCC(const Graph &g, vector<vector<int> > &comp){
     int n = g.size();
     vector<int> num(n);
