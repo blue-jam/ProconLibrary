@@ -1,7 +1,7 @@
 language: cpp
 
 before_install:
-  - apt-get install -y doxygen doxygen-latex graphviz
+  - sudo apt-get install -y doxygen doxygen-latex graphviz
 script:
   - doxygen
 deploy:
