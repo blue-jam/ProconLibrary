@@ -1,4 +1,32 @@
-// O(V^2 + VE log V)
+/**
+ * @file
+ *
+ * ## 無向グラフの最小カット(永持-茨木のアルゴリズム)
+ *
+ * 無効グラフの最少カットを求めるアルゴリズム．
+ *
+ * ### 計算量
+ *
+ *   * O(V^2 + VE log V)
+ *
+ * ### ソースコード
+ *
+ * @include maordering.cpp
+ *
+ * ### 確認済み問題
+ *
+ *   * UVa 10989
+ *
+ * ### 参考
+ *
+ *   * グラフ・ネットワーク・組合せ論（藤重　悟）
+ */
+/**
+ * グラフは無向グラフとして作っておく．無効グラフと，最小カット集合を格納するvectorを渡す．Union-Find木を使用している．
+ *
+ * @param g1 無向グラフ
+ * @param v 最小カット集合
+ */
 Weight maordering(const Graph &g1, vector<int> &w){
     int n = g1.size();
     int cut = INF;
