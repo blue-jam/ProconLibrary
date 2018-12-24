@@ -1,3 +1,22 @@
+/**
+ * Link-Cut Tree.
+ *
+ * Link-Cut Treeは木を管理する木構造である．管理対象の木をパスに分解し，パスはSplay木で表す．
+ * いろいろな操作が \f$O(\log N)\f$ で行える
+ *
+ * ### ソースコード
+ *
+ * @include linkcut.cpp
+ *
+ * ### 確認済み問題
+ *
+ * - JOI2013年春合宿4日目 SpaceShips(link,cut,findrootのみ)
+ *
+ * ### 参考
+ *
+ * - iwiwi先生のスライド
+ * - Data Structures and Network Algorithms
+ */
 struct LinkCutTree{
     static const int L = 0, R = 1;
     struct node{
@@ -41,7 +60,7 @@ struct LinkCutTree{
             if(cp[e]) cp[e]->dmin += dmin;
             dcost += dmin;
             dmin = qd;
-            
+
             if(pp=r){
                 if(r->cp[L] == q) r->cp[L] = this;
                 if(r->cp[R] == q) r->cp[R] = this;
@@ -94,6 +113,10 @@ struct LinkCutTree{
         x->splay();
         return x;
     }
+
+    /**
+     * 頂点 @a v を根とする木を頂点 @a w に接続する
+     */
     void link(int v, int w){
         node *c = &nodes[v], *p = &nodes[w];
         expose(c);
@@ -106,6 +129,10 @@ struct LinkCutTree{
         p->dmin = min(p->dmin, c->dmin);
         c->dmin = c->dmin - p->dmin;
     }
+
+    /**
+     * 木を頂点 @a v から親に向かう辺を削除することで2つの木に分ける
+     */
     void cut(int v){
         node *c = &nodes[v];
         expose(c);
@@ -117,12 +144,22 @@ struct LinkCutTree{
         c->dmin += c->dcost;
         c->dcost = 0;
     }
+
+    /**
+     * 頂点 @a n が属する木の根を見つける
+     * @return 木の根の番号
+     */
     int findroot(int n){
         node *v = expose(&nodes[n]);
         while(v->cp[L]) v->push(), v = v->cp[L];
         v->splay();
         return v->id;
     }
+
+    /**
+     * 頂点 @a n から根に向かうパスの中で最小の重みと，その重みをもつ頂点のうち最も根に近い頂点の組を返す
+     * @return (重み最小の頂点，重み最大の頂点）
+     */
     pair<int, int> findcost(int n){
         node *v = expose(&nodes[n]);
         for(;;){
@@ -134,10 +171,18 @@ struct LinkCutTree{
         v->splay();
         return make_pair(v->dmin, v->id);
     }
+
+    /**
+     * 頂点 @a n から根に向かうパスの中にある頂点の重みに値 @a x を加える
+     */
     void addcost(int n, int x){
         node *v = expose(&nodes[n]);
         v->dmin += x;
     }
+
+    /**
+     * 頂点 @a v を根にする
+     */
     void evert(int v){
         node *r = expose(&nodes[v]);
         r->rev ^= true;
