@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,53 +100,482 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6c2ef237c6ad6ae28823661cd3358911"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c2ef237c6ad6ae28823661cd3358911"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>LinkCutTree</b> (int n)</td></tr>
+<tr class="memitem:a6c2ef237c6ad6ae28823661cd3358911"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a6c2ef237c6ad6ae28823661cd3358911">LinkCutTree</a> (int n)</td></tr>
 <tr class="separator:a6c2ef237c6ad6ae28823661cd3358911"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dee85c9eee97c55086fec941ebf3686"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dee85c9eee97c55086fec941ebf3686"></a>
-<a class="el" href="structLinkCutTree_1_1node.html">node</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>expose</b> (<a class="el" href="structLinkCutTree_1_1node.html">node</a> *x)</td></tr>
+<tr class="memitem:a7dee85c9eee97c55086fec941ebf3686"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structLinkCutTree_1_1node.html">node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a> (<a class="el" href="structLinkCutTree_1_1node.html">node</a> *x)</td></tr>
 <tr class="separator:a7dee85c9eee97c55086fec941ebf3686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affd1dd542a49aa740dbd0f300c5b7c3e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affd1dd542a49aa740dbd0f300c5b7c3e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>link</b> (int v, int w)</td></tr>
+<tr class="memitem:affd1dd542a49aa740dbd0f300c5b7c3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#affd1dd542a49aa740dbd0f300c5b7c3e">link</a> (int v, int w)</td></tr>
 <tr class="separator:affd1dd542a49aa740dbd0f300c5b7c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1ad892ca90d7aa17b19d14a7d742f58"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1ad892ca90d7aa17b19d14a7d742f58"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>cut</b> (int v)</td></tr>
+<tr class="memitem:ac1ad892ca90d7aa17b19d14a7d742f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#ac1ad892ca90d7aa17b19d14a7d742f58">cut</a> (int v)</td></tr>
 <tr class="separator:ac1ad892ca90d7aa17b19d14a7d742f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42cedafc6d62f0ad67383ed2003aee90"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42cedafc6d62f0ad67383ed2003aee90"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>findroot</b> (int n)</td></tr>
+<tr class="memitem:a42cedafc6d62f0ad67383ed2003aee90"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a42cedafc6d62f0ad67383ed2003aee90">findroot</a> (int n)</td></tr>
 <tr class="separator:a42cedafc6d62f0ad67383ed2003aee90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e6dd457999a60c83c7b744fbdb8d2c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e6dd457999a60c83c7b744fbdb8d2c7"></a>
-pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>findcost</b> (int n)</td></tr>
+<tr class="memitem:a8e6dd457999a60c83c7b744fbdb8d2c7"><td class="memItemLeft" align="right" valign="top">pair&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a8e6dd457999a60c83c7b744fbdb8d2c7">findcost</a> (int n)</td></tr>
 <tr class="separator:a8e6dd457999a60c83c7b744fbdb8d2c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a221e7fe42226d2a7c2b04610faff71fd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a221e7fe42226d2a7c2b04610faff71fd"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>addcost</b> (int n, int x)</td></tr>
+<tr class="memitem:a221e7fe42226d2a7c2b04610faff71fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a221e7fe42226d2a7c2b04610faff71fd">addcost</a> (int n, int x)</td></tr>
 <tr class="separator:a221e7fe42226d2a7c2b04610faff71fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2449abb4ca80fcd25df33af843918b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2449abb4ca80fcd25df33af843918b7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>evert</b> (int v)</td></tr>
+<tr class="memitem:aa2449abb4ca80fcd25df33af843918b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#aa2449abb4ca80fcd25df33af843918b7">evert</a> (int v)</td></tr>
 <tr class="separator:aa2449abb4ca80fcd25df33af843918b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adc60d20d2143b368c8df69a35766fb38"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc60d20d2143b368c8df69a35766fb38"></a>
-vector&lt; <a class="el" href="structLinkCutTree_1_1node.html">node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>nodes</b></td></tr>
+<tr class="memitem:adc60d20d2143b368c8df69a35766fb38"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structLinkCutTree_1_1node.html">node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a></td></tr>
 <tr class="separator:adc60d20d2143b368c8df69a35766fb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a8d39f983ac0eb908af459df950f6a4ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8d39f983ac0eb908af459df950f6a4ee"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>L</b> = 0</td></tr>
+<tr class="memitem:a8d39f983ac0eb908af459df950f6a4ee"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a> = 0</td></tr>
 <tr class="separator:a8d39f983ac0eb908af459df950f6a4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab811efbdd4ede04e652f6fbf84a34f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab811efbdd4ede04e652f6fbf84a34f04"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>R</b> = 1</td></tr>
+<tr class="memitem:ab811efbdd4ede04e652f6fbf84a34f04"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a> = 1</td></tr>
 <tr class="separator:ab811efbdd4ede04e652f6fbf84a34f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Link-Cut Tree.</p>
+<p>Link-Cut Treeは木を管理する木構造である．管理対象の木をパスに分解し，パスはSplay木で表す． いろいろな操作が <img class="formulaInl" alt="$O(\log N)$" src="form_2.png"/> で行える</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keyword">struct </span><a class="code" href="structLinkCutTree.html">LinkCutTree</a>{</div>
+<div class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a> = 0, <a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a> = 1;</div>
+<div class="line">    <span class="keyword">struct </span>node{</div>
+<div class="line">        <a class="code" href="structLinkCutTree_1_1node.html#a3b80bad4d9b9606af75c4d202508fefc">node</a> *<a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>, *<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[2];<span class="comment">//*lp, *rp;</span></div>
+<div class="line">        <span class="keywordtype">bool</span> <a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a>;</div>
+<div class="line">        <span class="keywordtype">int</span> <a class="code" href="structLinkCutTree_1_1node.html#ae6a32e97ac5ce3056f769ad5c08b02b5">dcost</a>, <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a>;</div>
+<div class="line">        <span class="keywordtype">int</span> <a class="code" href="structLinkCutTree_1_1node.html#a3283a4877d46d2b3e9371f98fa2212ad">id</a>;</div>
+<div class="line">        <a class="code" href="structLinkCutTree_1_1node.html#a3b80bad4d9b9606af75c4d202508fefc">node</a>(){</div>
+<div class="line">            <span class="keywordtype">id</span> = -1;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a> = <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] = <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] = NULL;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a> = <span class="keyword">false</span>;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#ae6a32e97ac5ce3056f769ad5c08b02b5">dcost</a> = <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a> = 0;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// Splay木の根であるか</span></div>
+<div class="line">        <span class="keywordtype">bool</span> <a class="code" href="structLinkCutTree_1_1node.html#a9c69da8704a7c1931cefb5f85c58bc1f">isRoot</a>(){</div>
+<div class="line">            <span class="keywordflow">return</span> !<a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a> || <a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>-&gt;<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] != <span class="keyword">this</span> &amp;&amp; <a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>-&gt;<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] != <span class="keyword">this</span>;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// ノードの状態（反転など）を子に伝搬させる</span></div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree_1_1node.html#a256ec4b719a7cabe6d6913c5eb5bb331">push</a>(){</div>
+<div class="line">            <span class="keywordflow">if</span>(<a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a>){</div>
+<div class="line">                swap(<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>], <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>]);</div>
+<div class="line">                <span class="keywordflow">if</span>(<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]) <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;<a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a> ^= <span class="keyword">true</span>;</div>
+<div class="line">                <span class="keywordflow">if</span>(<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>]) <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>]-&gt;<a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a> ^= <span class="keyword">true</span>;</div>
+<div class="line">                <a class="code" href="structLinkCutTree_1_1node.html#ad1d6cf52b923da8ac9cce905a08382b3">rev</a> = <span class="keyword">false</span>;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// dがRなら右回転，dがLなら左回転を行う</span></div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(<span class="keywordtype">int</span> d){</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#a3b80bad4d9b9606af75c4d202508fefc">node</a> *q = <a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>, *r = q-&gt;pp;</div>
+<div class="line">            <span class="keywordtype">int</span> e = 1 - d;</div>
+<div class="line">            <span class="keywordflow">if</span>(q-&gt;cp[e] = <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[d]) <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[d]-&gt;<a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a> = q;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[d] = q; q-&gt;pp = <span class="keyword">this</span>;</div>
+<div class="line"></div>
+<div class="line">            <span class="keywordtype">int</span> qd = q-&gt;dmin;</div>
+<div class="line">            q-&gt;dmin = q-&gt;dcost;</div>
+<div class="line">            <span class="keywordflow">if</span>(q-&gt;cp[e]) q-&gt;dmin = min(q-&gt;dmin, <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a> + q-&gt;cp[e]-&gt;dmin);</div>
+<div class="line">            <span class="keywordflow">if</span>(q-&gt;cp[d]) q-&gt;dmin = min(q-&gt;dmin, q-&gt;cp[d]-&gt;dmin);</div>
+<div class="line">            q-&gt;dcost -= q-&gt;dmin;</div>
+<div class="line">            <span class="keywordflow">if</span>(q-&gt;cp[e]) q-&gt;cp[e]-&gt;dmin += <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a> - q-&gt;dmin;</div>
+<div class="line">            <span class="keywordflow">if</span>(q-&gt;cp[d]) q-&gt;cp[d]-&gt;dmin -= q-&gt;dmin;</div>
+<div class="line">            <span class="keywordflow">if</span>(<a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[e]) <a class="code" href="structLinkCutTree_1_1node.html#a7eb31b11d9086b53ea2ebc549556648c">cp</a>[e]-&gt;<a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a> += <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a>;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#ae6a32e97ac5ce3056f769ad5c08b02b5">dcost</a> += <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a>;</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#aff79d1f0759147e85ff9bc8e75e46c59">dmin</a> = qd;</div>
+<div class="line"></div>
+<div class="line">            <span class="keywordflow">if</span>(<a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>=r){</div>
+<div class="line">                <span class="keywordflow">if</span>(r-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] == q) r-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] = <span class="keyword">this</span>;</div>
+<div class="line">                <span class="keywordflow">if</span>(r-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] == q) r-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] = <span class="keyword">this</span>;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="comment">// Splay操作</span></div>
+<div class="line">        <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree_1_1node.html#a7aab1f60a2926e73f45e15c01eb00537">splay</a>(){</div>
+<div class="line">            <a class="code" href="structLinkCutTree_1_1node.html#a256ec4b719a7cabe6d6913c5eb5bb331">push</a>();</div>
+<div class="line">            <span class="keywordflow">while</span>(!<a class="code" href="structLinkCutTree_1_1node.html#a9c69da8704a7c1931cefb5f85c58bc1f">isRoot</a>()){</div>
+<div class="line">                <a class="code" href="structLinkCutTree_1_1node.html#a3b80bad4d9b9606af75c4d202508fefc">node</a> *q = <a class="code" href="structLinkCutTree_1_1node.html#abdb8de299a8b3a7c2f04c51bc2147383">pp</a>;</div>
+<div class="line">                <span class="keywordflow">if</span>(q-&gt;isRoot()){</div>
+<div class="line">                    q-&gt;push(); <a class="code" href="structLinkCutTree_1_1node.html#a256ec4b719a7cabe6d6913c5eb5bb331">push</a>();</div>
+<div class="line">                    <span class="keywordflow">if</span>(q-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] == <span class="keyword">this</span>) <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>);</div>
+<div class="line">                    <span class="keywordflow">else</span> <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>);</div>
+<div class="line">                }</div>
+<div class="line">                <span class="keywordflow">else</span>{</div>
+<div class="line">                    <a class="code" href="structLinkCutTree_1_1node.html#a3b80bad4d9b9606af75c4d202508fefc">node</a> *r = q-&gt;pp;</div>
+<div class="line">                    r-&gt;push(); q-&gt;push(); <a class="code" href="structLinkCutTree_1_1node.html#a256ec4b719a7cabe6d6913c5eb5bb331">push</a>();</div>
+<div class="line">                    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 2; ++i) <span class="keywordflow">if</span>(r-&gt;cp[i] == q){</div>
+<div class="line">                        <span class="keywordflow">if</span>(q-&gt;cp[i] == <span class="keyword">this</span>){ q-&gt;rot(1-i); <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(1-i); }</div>
+<div class="line">                        <span class="keywordflow">else</span>{ <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(i); <a class="code" href="structLinkCutTree_1_1node.html#a5a1809726665c305dd74be6932c75f9d">rot</a>(1-i); }</div>
+<div class="line">                        <span class="keywordflow">break</span>;</div>
+<div class="line">                    }</div>
+<div class="line">                }</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    };</div>
+<div class="line">    vector&lt;node&gt; <a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>;</div>
+<div class="line">    <a class="code" href="structLinkCutTree.html#a6c2ef237c6ad6ae28823661cd3358911">LinkCutTree</a>(<span class="keywordtype">int</span> n) : <a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>(n) {</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) <a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[i].<span class="keywordtype">id</span> = i;</div>
+<div class="line">    }</div>
+<div class="line">    node *<a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(node *x){</div>
+<div class="line">        node *rp = NULL;</div>
+<div class="line">        <span class="keywordflow">for</span>(node *p = x; p != NULL; p = p-&gt;pp){</div>
+<div class="line">            <span class="keywordtype">int</span> ndmin;</div>
+<div class="line">            p-&gt;<a class="code" href="structLinkCutTree_1_1node.html#a7aab1f60a2926e73f45e15c01eb00537">splay</a>();</div>
+<div class="line"></div>
+<div class="line">            <span class="keywordflow">if</span>(p-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>]) p-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>]-&gt;dmin += p-&gt;dmin;</div>
+<div class="line">            ndmin = p-&gt;dmin + p-&gt;dcost;</div>
+<div class="line">            <span class="keywordflow">if</span>(rp) ndmin = min(ndmin, rp-&gt;dmin);</div>
+<div class="line">            <span class="keywordflow">if</span>(p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]) ndmin = min(ndmin, p-&gt;dmin + p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;dmin);</div>
+<div class="line">            <span class="keywordflow">if</span>(rp) rp-&gt;dmin = rp-&gt;dmin - ndmin;</div>
+<div class="line">            <span class="keywordflow">if</span>(p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]) p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;dmin += p-&gt;dmin - ndmin;</div>
+<div class="line">            p-&gt;dcost += p-&gt;dmin - ndmin;</div>
+<div class="line">            p-&gt;dmin = ndmin;</div>
+<div class="line"></div>
+<div class="line">            p-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] = rp;</div>
+<div class="line">            rp = p;</div>
+<div class="line">        }</div>
+<div class="line">        x-&gt;splay();</div>
+<div class="line">        <span class="keywordflow">return</span> x;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree.html#affd1dd542a49aa740dbd0f300c5b7c3e">link</a>(<span class="keywordtype">int</span> v, <span class="keywordtype">int</span> w){</div>
+<div class="line">        node *c = &amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[v], *p = &amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[w];</div>
+<div class="line">        <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(c);</div>
+<div class="line">        <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(p);</div>
+<div class="line">        c-&gt;pp = p;</div>
+<div class="line">        p-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>] = c;</div>
+<div class="line"></div>
+<div class="line">        p-&gt;dcost += p-&gt;dmin - min(p-&gt;dmin, c-&gt;dmin);</div>
+<div class="line">        <span class="keywordflow">if</span>(p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]) p-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;dmin += p-&gt;dmin - min(p-&gt;dmin, c-&gt;dmin);</div>
+<div class="line">        p-&gt;dmin = min(p-&gt;dmin, c-&gt;dmin);</div>
+<div class="line">        c-&gt;dmin = c-&gt;dmin - p-&gt;dmin;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree.html#ac1ad892ca90d7aa17b19d14a7d742f58">cut</a>(<span class="keywordtype">int</span> v){</div>
+<div class="line">        node *c = &amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[v];</div>
+<div class="line">        <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(c);</div>
+<div class="line">        node *p = c -&gt; cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>];</div>
+<div class="line">        c-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] = NULL;</div>
+<div class="line">        p-&gt;pp = NULL;</div>
+<div class="line"></div>
+<div class="line">        p-&gt;dmin += c-&gt;dmin;</div>
+<div class="line">        c-&gt;dmin += c-&gt;dcost;</div>
+<div class="line">        c-&gt;dcost = 0;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code" href="structLinkCutTree.html#a42cedafc6d62f0ad67383ed2003aee90">findroot</a>(<span class="keywordtype">int</span> n){</div>
+<div class="line">        node *v = <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(&amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[n]);</div>
+<div class="line">        <span class="keywordflow">while</span>(v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]) v-&gt;push(), v = v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>];</div>
+<div class="line">        v-&gt;splay();</div>
+<div class="line">        <span class="keywordflow">return</span> v-&gt;id;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    pair&lt;int, int&gt; <a class="code" href="structLinkCutTree.html#a8e6dd457999a60c83c7b744fbdb8d2c7">findcost</a>(<span class="keywordtype">int</span> n){</div>
+<div class="line">        node *v = <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(&amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[n]);</div>
+<div class="line">        <span class="keywordflow">for</span>(;;){</div>
+<div class="line">            v-&gt;push();</div>
+<div class="line">            <span class="keywordflow">if</span>(v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] &amp;&amp; v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;dmin == 0) v = v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>];</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">if</span>((!v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>] || v-&gt;cp[<a class="code" href="structLinkCutTree.html#a8d39f983ac0eb908af459df950f6a4ee">L</a>]-&gt;dmin &gt; 0) &amp;&amp; v-&gt;dcost &gt; 0) v = v-&gt;cp[<a class="code" href="structLinkCutTree.html#ab811efbdd4ede04e652f6fbf84a34f04">R</a>];</div>
+<div class="line">            <span class="keywordflow">else</span> <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">        v-&gt;splay();</div>
+<div class="line">        <span class="keywordflow">return</span> make_pair(v-&gt;dmin, v-&gt;id);</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree.html#a221e7fe42226d2a7c2b04610faff71fd">addcost</a>(<span class="keywordtype">int</span> n, <span class="keywordtype">int</span> x){</div>
+<div class="line">        node *v = <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(&amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[n]);</div>
+<div class="line">        v-&gt;dmin += x;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    <span class="keywordtype">void</span> <a class="code" href="structLinkCutTree.html#aa2449abb4ca80fcd25df33af843918b7">evert</a>(<span class="keywordtype">int</span> v){</div>
+<div class="line">        node *r = <a class="code" href="structLinkCutTree.html#a7dee85c9eee97c55086fec941ebf3686">expose</a>(&amp;<a class="code" href="structLinkCutTree.html#adc60d20d2143b368c8df69a35766fb38">nodes</a>[v]);</div>
+<div class="line">        r-&gt;rev ^= <span class="keyword">true</span>;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>JOI2013年春合宿4日目 SpaceShips(link,cut,findrootのみ)</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>iwiwi先生のスライド</li>
+<li>Data Structures and Network Algorithms </li>
+</ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a6c2ef237c6ad6ae28823661cd3358911"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">LinkCutTree::LinkCutTree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a221e7fe42226d2a7c2b04610faff71fd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinkCutTree::addcost </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>頂点 <em>n</em> から根に向かうパスの中にある頂点の重みに値 <em>x</em> を加える </p>
+
+</div>
+</div>
+<a class="anchor" id="ac1ad892ca90d7aa17b19d14a7d742f58"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinkCutTree::cut </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>木を頂点 <em>v</em> から親に向かう辺を削除することで2つの木に分ける </p>
+
+</div>
+</div>
+<a class="anchor" id="aa2449abb4ca80fcd25df33af843918b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinkCutTree::evert </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>頂点 <em>v</em> を根にする </p>
+
+</div>
+</div>
+<a class="anchor" id="a7dee85c9eee97c55086fec941ebf3686"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structLinkCutTree_1_1node.html">node</a>* LinkCutTree::expose </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLinkCutTree_1_1node.html">node</a> *&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8e6dd457999a60c83c7b744fbdb8d2c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">pair&lt;int, int&gt; LinkCutTree::findcost </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>頂点 <em>n</em> から根に向かうパスの中で最小の重みと，その重みをもつ頂点のうち最も根に近い頂点の組を返す </p>
+<dl class="section return"><dt>Returns</dt><dd>(重み最小の頂点，重み最大の頂点） </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a42cedafc6d62f0ad67383ed2003aee90"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int LinkCutTree::findroot </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>頂点 <em>n</em> が属する木の根を見つける </p>
+<dl class="section return"><dt>Returns</dt><dd>木の根の番号 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="affd1dd542a49aa740dbd0f300c5b7c3e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LinkCutTree::link </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>頂点 <em>v</em> を根とする木を頂点 <em>w</em> に接続する </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a8d39f983ac0eb908af459df950f6a4ee"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int LinkCutTree::L = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adc60d20d2143b368c8df69a35766fb38"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="structLinkCutTree_1_1node.html">node</a>&gt; LinkCutTree::nodes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab811efbdd4ede04e652f6fbf84a34f04"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int LinkCutTree::R = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>datastructure/linkcut.cpp</li>
+<li>datastructure/<a class="el" href="linkcut_8cpp.html">linkcut.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

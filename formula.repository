@@ -1,5 +1,21 @@
 \form#0:$O(\log n)$
 \form#1:$[0,i)$
-\form#2:$O(n)$
-\form#3:$[a, b)$
-\form#4:$O(\alpha(n))$
+\form#2:$O(\log N)$
+\form#3:$O(n)$
+\form#4:$[a, b)$
+\form#5:$O(\alpha(n))$
+\form#6:$G=(V,E)$
+\form#7:$v \in V$
+\form#8:$G[V-{v}]$
+\form#9:$v$
+\form#10:$G$
+\form#11:$\iff$
+\form#12:$w$
+\form#13:$O(|V|+|E|)$
+\form#14:$e \in E$
+\form#15:$G^\prime=(V,E-{e})$
+\form#16:$e$
+\form#17:$O(E)$
+\form#18:$O(V^2)$
+\form#19:$O(\|V\|+\|E\|)$
+\form#20:$O(n log log n)$

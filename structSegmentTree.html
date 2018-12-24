@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -98,22 +99,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac392bed1372a8e356f1e50333af8fdf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6bdaf42089061a526755f472e9857ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#ac6bdaf42089061a526755f472e9857ee">update</a> (int k, T d)</td></tr>
 <tr class="separator:ac6bdaf42089061a526755f472e9857ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a857f66d15a4f4be819646e8cdff5aec3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a857f66d15a4f4be819646e8cdff5aec3"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> (int a, int b, int k, int l, int r)</td></tr>
+<tr class="memitem:a857f66d15a4f4be819646e8cdff5aec3"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#a857f66d15a4f4be819646e8cdff5aec3">get</a> (int a, int b, int k, int l, int r)</td></tr>
 <tr class="separator:a857f66d15a4f4be819646e8cdff5aec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2d4b007e0cf8f12841c365a7d871ef5"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#aa2d4b007e0cf8f12841c365a7d871ef5">query</a> (int a, int b)</td></tr>
 <tr class="separator:aa2d4b007e0cf8f12841c365a7d871ef5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:af0a623be0171a05f90090a33c755ddfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af0a623be0171a05f90090a33c755ddfb"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+<tr class="memitem:af0a623be0171a05f90090a33c755ddfb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#af0a623be0171a05f90090a33c755ddfb">n</a></td></tr>
 <tr class="separator:af0a623be0171a05f90090a33c755ddfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa54ece488144ec1425257ec96a7794e2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa54ece488144ec1425257ec96a7794e2"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>dat</b></td></tr>
+<tr class="memitem:aa54ece488144ec1425257ec96a7794e2"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a></td></tr>
 <tr class="separator:aa54ece488144ec1425257ec96a7794e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff1cff7aea1b16c694ab2d4b803e8bc8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff1cff7aea1b16c694ab2d4b803e8bc8"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>ign</b></td></tr>
+<tr class="memitem:aff1cff7aea1b16c694ab2d4b803e8bc8"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSegmentTree.html#aff1cff7aea1b16c694ab2d4b803e8bc8">ign</a></td></tr>
 <tr class="separator:aff1cff7aea1b16c694ab2d4b803e8bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -128,44 +125,44 @@ struct SegmentTree&lt; T &gt;</h3>
   </dd>
 </dl>
 <p><a class="el" href="structSegment.html">Segment</a> Treeは区間を扱う問題に強い効果を発揮するデータ構造． 完全二分木であり，各接点は区間を管理する．根は区間全体，その子は半分ずつを管理，．．．葉は1つの要素を管理となる． n個の要素があるとき，区間についての操作を <img class="formulaInl" alt="$O(\log n)$" src="form_0.png"/>でできる． Range Minimum Queryや，DPの高速化に利用される．</p>
-<p>空間計算量は <img class="formulaInl" alt="$O(n)$" src="form_2.png"/> になる．</p>
+<p>空間計算量は <img class="formulaInl" alt="$O(n)$" src="form_3.png"/> になる．</p>
 <h3>ソースコード</h3>
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">struct </span><a class="code" href="structSegmentTree.html">SegmentTree</a>{</div>
-<div class="line">    <span class="keywordtype">int</span> n;</div>
-<div class="line">    vector&lt;T&gt; dat;</div>
-<div class="line">    T ign;</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code" href="structSegmentTree.html#af0a623be0171a05f90090a33c755ddfb">n</a>;</div>
+<div class="line">    vector&lt;T&gt; <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>;</div>
+<div class="line">    T <a class="code" href="structSegmentTree.html#aff1cff7aea1b16c694ab2d4b803e8bc8">ign</a>;</div>
 <div class="line"></div>
 <div class="line">    <a class="code" href="structSegmentTree.html#a12e68bd7c02cdc939491812f920d625c">SegmentTree</a>(<span class="keywordtype">int</span> n_, T ignore){</div>
 <div class="line">        <span class="keywordflow">for</span>(n = 1; n &lt; n_; n *= 2);</div>
-<div class="line">        ign = ignore;</div>
-<div class="line">        dat = vector&lt;T&gt;(n * 2 - 1, ignore);</div>
+<div class="line">        <a class="code" href="structSegmentTree.html#aff1cff7aea1b16c694ab2d4b803e8bc8">ign</a> = ignore;</div>
+<div class="line">        <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a> = vector&lt;T&gt;(n * 2 - 1, ignore);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> <a class="code" href="structSegmentTree.html#ac392bed1372a8e356f1e50333af8fdf0">init</a>(vector&lt;T&gt; &amp;v){</div>
 <div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; v.size(); ++i){</div>
-<div class="line">            dat[i + n - 1] = v[i];</div>
+<div class="line">            <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[i + n - 1] = v[i];</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = n - 2; k &gt;= 0; --k){</div>
-<div class="line">            dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);</div>
+<div class="line">            <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k] = min(<a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k * 2 + 1], <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k * 2 + 2]);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> <a class="code" href="structSegmentTree.html#ac6bdaf42089061a526755f472e9857ee">update</a>(<span class="keywordtype">int</span> k, T d){</div>
 <div class="line">        k += n - 1;</div>
-<div class="line">        dat[k] = d;</div>
+<div class="line">        <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k] = d;</div>
 <div class="line">        <span class="keywordflow">while</span>(k &gt; 0){</div>
 <div class="line">            k = (k - 1) / 2;</div>
-<div class="line">            dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);</div>
+<div class="line">            <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k] = min(<a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k * 2 + 1], <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k * 2 + 2]);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    T <span class="keyword">get</span>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b, <span class="keywordtype">int</span> k, <span class="keywordtype">int</span> l, <span class="keywordtype">int</span> r){</div>
 <div class="line">        <span class="keywordflow">if</span>(b &lt;= l || r &lt;= a)</div>
-<div class="line">            <span class="keywordflow">return</span> ign;</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code" href="structSegmentTree.html#aff1cff7aea1b16c694ab2d4b803e8bc8">ign</a>;</div>
 <div class="line">        <span class="keywordflow">if</span>(a &lt;= l &amp;&amp; r &lt;= b){</div>
-<div class="line">            <span class="keywordflow">return</span> dat[k];</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code" href="structSegmentTree.html#aa54ece488144ec1425257ec96a7794e2">dat</a>[k];</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">else</span>{</div>
 <div class="line">            T vl = <span class="keyword">get</span>(a, b, k * 2 + 1, l, (l + r) / 2);</div>
@@ -175,7 +172,7 @@ struct SegmentTree&lt; T &gt;</h3>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    T <a class="code" href="structSegmentTree.html#aa2d4b007e0cf8f12841c365a7d871ef5">query</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b){</div>
-<div class="line">        <span class="keywordflow">return</span> <span class="keyword">get</span>(a, b, 0, 0, n);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">get</span>(a, b, 0, 0, <a class="code" href="structSegmentTree.html#af0a623be0171a05f90090a33c755ddfb">n</a>);</div>
 <div class="line">    }</div>
 <div class="line">};</div>
 </div><!-- fragment --><h3>確認済み問題</h3>
@@ -220,7 +217,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="structSegment.html">Segment</a> Treeを全て<em>ignore</em> で初期化する． 計算量は <img class="formulaInl" alt="$O(n)$" src="form_2.png"/> . </p>
+<p><a class="el" href="structSegment.html">Segment</a> Treeを全て<em>ignore</em> で初期化する． 計算量は <img class="formulaInl" alt="$O(n)$" src="form_3.png"/> . </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">n_</td><td><a class="el" href="structSegment.html">Segment</a> Treeの要素数 </td></tr>
@@ -232,6 +229,60 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a857f66d15a4f4be819646e8cdff5aec3"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="structSegmentTree.html">SegmentTree</a>&lt; T &gt;::get </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>b</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ac392bed1372a8e356f1e50333af8fdf0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +306,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p><a class="el" href="structSegment.html">Segment</a> Treeを与えられたベクタを初期値として初期化する． 計算量は <img class="formulaInl" alt="$O(n)$" src="form_2.png"/> . </p>
+<p><a class="el" href="structSegment.html">Segment</a> Treeを与えられたベクタを初期値として初期化する． 計算量は <img class="formulaInl" alt="$O(n)$" src="form_3.png"/> . </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>初期化するデータを与えるベクタ </td></tr>
@@ -298,7 +349,7 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>区間 <img class="formulaInl" alt="$[a, b)$" src="form_3.png"/> 内での最小値を返す． </p>
+<p>区間 <img class="formulaInl" alt="$[a, b)$" src="form_4.png"/> 内での最小値を返す． </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>区間の開始位置．(0-indexed) </td></tr>
@@ -354,13 +405,56 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aa54ece488144ec1425257ec96a7794e2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;T&gt; <a class="el" href="structSegmentTree.html">SegmentTree</a>&lt; T &gt;::dat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aff1cff7aea1b16c694ab2d4b803e8bc8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="structSegmentTree.html">SegmentTree</a>&lt; T &gt;::ign</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af0a623be0171a05f90090a33c755ddfb"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structSegmentTree.html">SegmentTree</a>&lt; T &gt;::n</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>datastructure/segmenttree.cpp</li>
+<li>datastructure/<a class="el" href="segmenttree_8cpp.html">segmenttree.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

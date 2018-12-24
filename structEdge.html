@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,35 +93,165 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a01d36a720f610031ea19e9fbfdece4bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01d36a720f610031ea19e9fbfdece4bc"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Edge</b> (int from, int to, Weight weight)</td></tr>
+<tr class="memitem:a01d36a720f610031ea19e9fbfdece4bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a01d36a720f610031ea19e9fbfdece4bc">Edge</a> (int <a class="el" href="structEdge.html#afc7e8ea9d90f972411ed2a6acbe32a6c">from</a>, int <a class="el" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>, <a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="el" href="structEdge.html#a6a421a0116639d6a0f5977ece2304a48">weight</a>)</td></tr>
 <tr class="separator:a01d36a720f610031ea19e9fbfdece4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9538356e2d8ca4ab434a75ed19e60392"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9538356e2d8ca4ab434a75ed19e60392"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Edge</b> (int from, int to, Weight weight, int rev)</td></tr>
+<tr class="memitem:a9538356e2d8ca4ab434a75ed19e60392"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a9538356e2d8ca4ab434a75ed19e60392">Edge</a> (int <a class="el" href="structEdge.html#afc7e8ea9d90f972411ed2a6acbe32a6c">from</a>, int <a class="el" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>, <a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="el" href="structEdge.html#a6a421a0116639d6a0f5977ece2304a48">weight</a>, int <a class="el" href="structEdge.html#adf8a03cbd155c21e41ffed86ed1bb45b">rev</a>)</td></tr>
 <tr class="separator:a9538356e2d8ca4ab434a75ed19e60392"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:afc7e8ea9d90f972411ed2a6acbe32a6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc7e8ea9d90f972411ed2a6acbe32a6c"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>from</b></td></tr>
+<tr class="memitem:afc7e8ea9d90f972411ed2a6acbe32a6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#afc7e8ea9d90f972411ed2a6acbe32a6c">from</a></td></tr>
 <tr class="separator:afc7e8ea9d90f972411ed2a6acbe32a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7848f67e4e8ccb97be14506164d7a267"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7848f67e4e8ccb97be14506164d7a267"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>to</b></td></tr>
+<tr class="memitem:a7848f67e4e8ccb97be14506164d7a267"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a></td></tr>
 <tr class="separator:a7848f67e4e8ccb97be14506164d7a267"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a421a0116639d6a0f5977ece2304a48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a421a0116639d6a0f5977ece2304a48"></a>
-Weight&#160;</td><td class="memItemRight" valign="bottom"><b>weight</b></td></tr>
+<tr class="memitem:a6a421a0116639d6a0f5977ece2304a48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#a6a421a0116639d6a0f5977ece2304a48">weight</a></td></tr>
 <tr class="separator:a6a421a0116639d6a0f5977ece2304a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf8a03cbd155c21e41ffed86ed1bb45b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf8a03cbd155c21e41ffed86ed1bb45b"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>rev</b></td></tr>
+<tr class="memitem:adf8a03cbd155c21e41ffed86ed1bb45b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structEdge.html#adf8a03cbd155c21e41ffed86ed1bb45b">rev</a></td></tr>
 <tr class="separator:adf8a03cbd155c21e41ffed86ed1bb45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a01d36a720f610031ea19e9fbfdece4bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Edge::Edge </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td>
+          <td class="paramname"><em>weight</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9538356e2d8ca4ab434a75ed19e60392"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Edge::Edge </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>to</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td>
+          <td class="paramname"><em>weight</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="afc7e8ea9d90f972411ed2a6acbe32a6c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::from</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adf8a03cbd155c21e41ffed86ed1bb45b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::rev</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7848f67e4e8ccb97be14506164d7a267"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Edge::to</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6a421a0116639d6a0f5977ece2304a48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> Edge::weight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>graph/graph.cpp</li>
+<li>graph/<a class="el" href="graph_8cpp.html">graph.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

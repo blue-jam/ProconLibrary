@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,35 +93,115 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7fc8a1cfce36667fd590494a862ef02f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fc8a1cfce36667fd590494a862ef02f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (const string &amp;s)</td></tr>
+<tr class="memitem:a7fc8a1cfce36667fd590494a862ef02f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#a7fc8a1cfce36667fd590494a862ef02f">init</a> (const string &amp;s)</td></tr>
 <tr class="separator:a7fc8a1cfce36667fd590494a862ef02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adee261ffc31b98708f062d9ce9963580"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adee261ffc31b98708f062d9ce9963580"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
+<tr class="memitem:adee261ffc31b98708f062d9ce9963580"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#adee261ffc31b98708f062d9ce9963580">n</a></td></tr>
 <tr class="separator:adee261ffc31b98708f062d9ce9963580"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c75f1e52bacf07223df15fb23e8ac52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c75f1e52bacf07223df15fb23e8ac52"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>S</b></td></tr>
+<tr class="memitem:a1c75f1e52bacf07223df15fb23e8ac52"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#a1c75f1e52bacf07223df15fb23e8ac52">S</a></td></tr>
 <tr class="separator:a1c75f1e52bacf07223df15fb23e8ac52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a057d64bc216ffc560500df405ef05217"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a057d64bc216ffc560500df405ef05217"></a>
-vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>sa</b></td></tr>
+<tr class="memitem:a057d64bc216ffc560500df405ef05217"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#a057d64bc216ffc560500df405ef05217">sa</a></td></tr>
 <tr class="separator:a057d64bc216ffc560500df405ef05217"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35bb7e191c4d03e347cfc355f8efb5d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a35bb7e191c4d03e347cfc355f8efb5d8"></a>
-vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rank</b></td></tr>
+<tr class="memitem:a35bb7e191c4d03e347cfc355f8efb5d8"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#a35bb7e191c4d03e347cfc355f8efb5d8">rank</a></td></tr>
 <tr class="separator:a35bb7e191c4d03e347cfc355f8efb5d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0093db65bd27e7b0892b05d66bc4e6ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0093db65bd27e7b0892b05d66bc4e6ee"></a>
-vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>lcp</b></td></tr>
+<tr class="memitem:a0093db65bd27e7b0892b05d66bc4e6ee"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSuffixArray.html#a0093db65bd27e7b0892b05d66bc4e6ee">lcp</a></td></tr>
 <tr class="separator:a0093db65bd27e7b0892b05d66bc4e6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7fc8a1cfce36667fd590494a862ef02f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SuffixArray::init </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a0093db65bd27e7b0892b05d66bc4e6ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; SuffixArray::lcp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adee261ffc31b98708f062d9ce9963580"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SuffixArray::n</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a35bb7e191c4d03e347cfc355f8efb5d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; SuffixArray::rank</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a1c75f1e52bacf07223df15fb23e8ac52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string SuffixArray::S</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a057d64bc216ffc560500df405ef05217"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;int&gt; SuffixArray::sa</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>string/suffixarray.cpp</li>
+<li>string/<a class="el" href="suffixarray_8cpp.html">suffixarray.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

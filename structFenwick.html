@@ -39,6 +39,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -70,7 +71,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -101,11 +102,9 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a5f916b869ba6ae1fca02d5a6c35feff2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f916b869ba6ae1fca02d5a6c35feff2"></a>
-vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>bit</b></td></tr>
+<tr class="memitem:a5f916b869ba6ae1fca02d5a6c35feff2"><td class="memItemLeft" align="right" valign="top">vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a></td></tr>
 <tr class="separator:a5f916b869ba6ae1fca02d5a6c35feff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e9dddc2457a6b485d36b73324838a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2e9dddc2457a6b485d36b73324838a0"></a>
-T&#160;</td><td class="memItemRight" valign="bottom"><b>mod</b></td></tr>
+<tr class="memitem:aa2e9dddc2457a6b485d36b73324838a0"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a></td></tr>
 <tr class="separator:aa2e9dddc2457a6b485d36b73324838a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -125,19 +124,19 @@ struct Fenwick&lt; T &gt;</h3>
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">struct </span><a class="code" href="structFenwick.html">Fenwick</a>{</div>
-<div class="line">    vector&lt;T&gt; bit;</div>
-<div class="line">    T mod;</div>
+<div class="line">    vector&lt;T&gt; <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>;</div>
+<div class="line">    T <a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a>;</div>
 <div class="line">    <a class="code" href="structFenwick.html#afb08cc940912b2020a54275544c7379a">Fenwick</a>(<span class="keywordtype">int</span> n){</div>
-<div class="line">        bit = vector&lt;T&gt;(n + 1);</div>
-<div class="line">        mod = 0;</div>
+<div class="line">        <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a> = vector&lt;T&gt;(n + 1);</div>
+<div class="line">        <a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a> = 0;</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">void</span> <a class="code" href="structFenwick.html#a005dfcbd30da54488e4acfca48b539ea">add</a>(<span class="keywordtype">int</span> i, T v){</div>
-<div class="line">        <span class="keywordtype">int</span> n = bit.size();</div>
+<div class="line">        <span class="keywordtype">int</span> n = <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>.size();</div>
 <div class="line">        ++i;</div>
 <div class="line">        <span class="keywordflow">while</span>(i &lt; n){</div>
-<div class="line">            bit[i] += v;</div>
-<div class="line">            <span class="keywordflow">if</span>(mod &gt; eps) bit[i] %= mod;</div>
+<div class="line">            <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>[i] += v;</div>
+<div class="line">            <span class="keywordflow">if</span>(<a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a> &gt; <a class="code" href="template_8cpp.html#a3d8c24629d725b9ef8c238cf27c9b158">eps</a>) <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>[i] %= <a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a>;</div>
 <div class="line">            i += i &amp; -i;</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
@@ -146,8 +145,8 @@ struct Fenwick&lt; T &gt;</h3>
 <div class="line">        T res = 0;</div>
 <div class="line">        ++i;</div>
 <div class="line">        <span class="keywordflow">while</span>(i &gt; 0){</div>
-<div class="line">            res += bit[i];</div>
-<div class="line">            <span class="keywordflow">if</span>(mod &gt; eps) bit[i] %= mod;</div>
+<div class="line">            res += <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>[i];</div>
+<div class="line">            <span class="keywordflow">if</span>(<a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a> &gt; <a class="code" href="template_8cpp.html#a3d8c24629d725b9ef8c238cf27c9b158">eps</a>) <a class="code" href="structFenwick.html#a5f916b869ba6ae1fca02d5a6c35feff2">bit</a>[i] %= <a class="code" href="structFenwick.html#aa2e9dddc2457a6b485d36b73324838a0">mod</a>;</div>
 <div class="line">            i -= i &amp; -i;</div>
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">return</span> res;</div>
@@ -254,13 +253,42 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a5f916b869ba6ae1fca02d5a6c35feff2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;T&gt; <a class="el" href="structFenwick.html">Fenwick</a>&lt; T &gt;::bit</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa2e9dddc2457a6b485d36b73324838a0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="structFenwick.html">Fenwick</a>&lt; T &gt;::mod</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>datastructure/fenwick.cpp</li>
+<li>datastructure/<a class="el" href="fenwick_8cpp.html">fenwick.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 01:35:34 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
