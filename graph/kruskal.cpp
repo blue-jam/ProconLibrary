@@ -11,6 +11,10 @@
  *
  *   * O(E log V) (= O(E log E))
  *
+ * ### ソースコード
+ *
+ * @include kruskal.cpp
+ *
  * ### 確認済み問題
  *
  *   * POJ 3723

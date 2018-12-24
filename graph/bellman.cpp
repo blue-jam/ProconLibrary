@@ -17,6 +17,10 @@
  *
  *   * O(VE)
  *
+ * ### ソースコード
+ *
+ * @include bellman.cpp
+ *
  * ### 確認済み問題
  *
  *   * POJ 3169(Layout)
