@@ -98,7 +98,47 @@ Functions</h2></td></tr>
 <tr class="memitem:a90ba8afffcd21d69ef9a6a3bd387cb4f"><td class="memItemLeft" align="right" valign="top">pair&lt; <a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>, <a class="el" href="graph_8cpp.html#a6395953c8c8a22b6fac32f7ebdac0211">Edges</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="kruskal_8cpp.html#a90ba8afffcd21d69ef9a6a3bd387cb4f">kruskal_g</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g)</td></tr>
 <tr class="separator:a90ba8afffcd21d69ef9a6a3bd387cb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>最小全域森(Kruskal)</h2>
+<p>辺のコストを小さいほうから見ていき，2つの短点がまだ連結していないときはその辺を加え，すでに連結なときは辺を加えない．同じ集合属しているか否かの判定を <a href="union-find.html">Union-Find木</a>を使用して調べている．</p>
+<p>グラフが連結な場合は最小全域木と一致する．また，N個の木からなる最小全域森を計算したい場合は，辺を1つ追加するごとに木の数が1つ減っていくことを利用して求めればよい．</p>
+<h3>計算量</h3>
+<ul>
+<li>O(E log V) (= O(E log E))</li>
+</ul>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line">pair&lt;Weight, Edges&gt; <a class="code" href="kruskal_8cpp.html#a3ee2e648e54eed9df78404e98b027c42">kruskal_e</a>(Edges &amp;edges, <span class="keywordtype">int</span> n){</div>
+<div class="line">    sort(<a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(edges)); reverse(<a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(edges));  <span class="comment">//a &lt; b &lt;-&gt; a.weight &gt; b.weight</span></div>
+<div class="line">    <span class="keywordtype">int</span> sz = edges.size();</div>
+<div class="line"></div>
+<div class="line">    <a class="code" href="structUnionFind.html">UnionFind</a> uf(n);</div>
+<div class="line">    Weight total = 0;</div>
+<div class="line">    Edges F;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; sz; ++i){</div>
+<div class="line">        <span class="keywordflow">if</span>(uf.unite(edges[i].from, edges[i].to)){</div>
+<div class="line">            total = total + edges[i].weight;</div>
+<div class="line">            F.push_back(edges[i]);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> make_pair(total, F);</div>
+<div class="line">}</div>
+<div class="line">pair&lt;Weight, Edges&gt; <a class="code" href="kruskal_8cpp.html#a90ba8afffcd21d69ef9a6a3bd387cb4f">kruskal_g</a>(<span class="keyword">const</span> Graph &amp;g){</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    vector&lt;Edge&gt; edges;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) edges.insert(edges.end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(g[i]));</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="kruskal_8cpp.html#a3ee2e648e54eed9df78404e98b027c42">kruskal_e</a>(edges, n);</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>POJ 3723</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.prefield.com/algorithm/graph/kruskal.html">Spaghetti Source</a></li>
+<li>プログラミングコンテストチャレンジブック(p101) </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a3ee2e648e54eed9df78404e98b027c42"></a>
 <div class="memitem">
 <div class="memproto">
@@ -122,6 +162,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>辺の集合と頂点の数を受け取り，最小全域木を計算する．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edges</td><td>グラフに含まれる辺の集合．終了した後ソートされているので注意． </td></tr>
+    <tr><td class="paramname">n</td><td>グラフの頂点の個数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>最小全域森の重みとそれに含まれる辺の集合 </dd></dl>
 
 </div>
 </div>
@@ -138,13 +187,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>グラフを受け取り，最小全域木を計算する．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>最小全域森を求めたいグラフ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>最小全域森の重みとそれに含まれる辺の集合 </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

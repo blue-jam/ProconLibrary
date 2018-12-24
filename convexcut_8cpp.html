@@ -98,7 +98,46 @@ Functions</h2></td></tr>
 <tr class="memitem:ab8cc7c532ebb3026fc364a867c230dc1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="convexcut_8cpp.html#ab8cc7c532ebb3026fc364a867c230dc1">convex_intersect</a> (const <a class="el" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> &amp;a, const <a class="el" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> &amp;b)</td></tr>
 <tr class="separator:ab8cc7c532ebb3026fc364a867c230dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>凸多角形の切断</h2>
+<p>与えられた多角形の直線に対して左側を切除し，右側部分を残す．</p>
+<p>多角形は反時計回りに点が格納されているものとする．</p>
+<h3>計算量</h3>
+<p>N角形に対してO(N)</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="comment">// 左側切除</span></div>
+<div class="line"><a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> <a class="code" href="convexcut_8cpp.html#acef3c25d1f264803707e6c06549e2536">convex_cut</a>(<span class="keyword">const</span> <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> &amp;p, <span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;l){</div>
+<div class="line">    <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> res;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; p.size(); ++i){</div>
+<div class="line">        <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> a = <a class="code" href="geometry_8cpp.html#a253d8e577600a7c986cfd8b4c170fee7">curr</a>(p,i), b = <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>(p,i);</div>
+<div class="line">        <a class="code" href="structLine.html">Line</a> tl = <a class="code" href="structLine.html">Line</a>(a, b);</div>
+<div class="line">        <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(l[0], l[1], a) != -1) res.push_back(a);</div>
+<div class="line">        <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(l[0], l[1], a) * <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(l[0], l[1], b) &lt; 0)</div>
+<div class="line">            res.push_back(<a class="code" href="crosspoint_8cpp.html#a26c8728b0750c4c6455396a7d6d8c9cc">crosspointLL</a>(tl, l));</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> res;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 凸多角形の共通部分．O(nm)．</span></div>
+<div class="line"><span class="comment">// TODO:O(n+m)にする</span></div>
+<div class="line"><a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> <a class="code" href="convexcut_8cpp.html#ab8cc7c532ebb3026fc364a867c230dc1">convex_intersect</a>(<span class="keyword">const</span> <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> &amp;a, <span class="keyword">const</span> <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> &amp;b){</div>
+<div class="line">    <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a> res = a;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; b.size(); ++i){</div>
+<div class="line">        res = <a class="code" href="convexcut_8cpp.html#acef3c25d1f264803707e6c06549e2536">convex_cut</a>(res, <a class="code" href="structLine.html">Line</a>(<a class="code" href="geometry_8cpp.html#a253d8e577600a7c986cfd8b4c170fee7">curr</a>(b,i), <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>(b,i)));</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> res;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 1283</li>
+</ul>
+<h3>使用方法</h3>
+<p>右側を切除したい場合は，if(ccwl[0], l[1], curr) != 1))の1を-1に置き換える．</p>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.prefield.com/">Spaghetti Source</a> </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="acef3c25d1f264803707e6c06549e2536"></a>
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +193,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -100,7 +100,73 @@ Functions</h2></td></tr>
 <tr class="memitem:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bellman_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a> (const vector&lt; int &gt; &amp;prev, int t)</td></tr>
 <tr class="separator:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>単一始点最短路問題(Bellman-Ford)</h2>
+<h3>説明</h3>
+<p>Bellman-Fordのアルゴリズムは，始点を距離0，そのほかを距離INFに設定したうえで，距離が求められている頂点から辺を伸ばし， 既存の距離よりも短ければ距離を更新するという操作を繰り返し実行することで最短路を求めるアルゴリズムである． Dijkstraが負の辺を扱えないのに対し，こちらは負の辺を扱える．</p>
+<p>また，負の閉路が存在しなければそれぞれの頂点を最大でも1回ずつしか通らないので，高々V-1回のループで終わることがわかっている． V回目のループで更新が起こった場合は負の閉路があることがわかるので， 負の閉路の検出にも利用される．\ しかし，負の閉路があったからといってそれが目的の頂点への最短路に影響を与えるとは限らないので注意が必要である．(例：AOJ1169)</p>
+<h3>計算量</h3>
+<ul>
+<li>O(VE)</li>
+</ul>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="bellman_8cpp.html#ae6524fd0c595b0019229189c5adeeafe">bellmanFord</a>(<span class="keyword">const</span> <a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, vector&lt;Weight&gt; &amp;dist, vector&lt;int&gt; &amp;prev){</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    <span class="keywordtype">bool</span> nagativeRoop = <span class="keyword">false</span>;</div>
+<div class="line">    dist.assign(n, INF); dist[s] = 0;</div>
+<div class="line">    prev.assign(n, -1);</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = 0; k &lt; n; ++k){</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = 0; v &lt; n; ++v){</div>
+<div class="line">            <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v]){</div>
+<div class="line">            <span class="comment">//for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){</span></div>
+<div class="line">                <span class="keywordflow">if</span>(dist[i -&gt; from] != INF &amp;&amp; dist[i -&gt; to] &gt; dist[i -&gt; from] + i -&gt; weight){</div>
+<div class="line">                    dist[i -&gt; to] = dist[i -&gt; from] + i-&gt; weight;</div>
+<div class="line">                    prev[i -&gt; to] = i -&gt; from;</div>
+<div class="line">                    <span class="keywordflow">if</span>(k == n - 1){</div>
+<div class="line">                        dist[i -&gt; to] = -INF;</div>
+<div class="line">                        nagativeRoop = <span class="keyword">true</span>;</div>
+<div class="line">                    }</div>
+<div class="line">                }</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> nagativeRoop;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="bellman_8cpp.html#af40068e2a7a87e8b6a98ed6b43bf0ab6">findNegativeRoop</a>(<span class="keyword">const</span> <a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g){</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    vector&lt;Weight&gt; dist(n, 0);</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = 0; k &lt; n; ++k){</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = 0; v &lt; n; ++v){</div>
+<div class="line">            <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v]){</div>
+<div class="line">            <span class="comment">//for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){</span></div>
+<div class="line">                <span class="keywordflow">if</span>(dist[i -&gt; to] &gt; dist[i -&gt; from] + i -&gt; weight){</div>
+<div class="line">                    dist[i -&gt; to] = dist[i -&gt; from] + i -&gt; weight;</div>
+<div class="line">                    <span class="keywordflow">if</span>(k == n - 1) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line">                }</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line">vector&lt;int&gt; <a class="code" href="bellman_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a>(<span class="keyword">const</span> vector&lt;int&gt; &amp;prev, <span class="keywordtype">int</span> t){</div>
+<div class="line">    vector&lt;int&gt; path;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = t; v &gt;= 0; v = prev[v])</div>
+<div class="line">        path.push_back(v);</div>
+<div class="line">    reverse(path.begin(), path.end());</div>
+<div class="line">    <span class="keywordflow">return</span> path;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>POJ 3169(Layout)</li>
+</ul>
+<p>最短路の計算のみしか行っていない．経路の復元と，負の閉路の検出は今後．</p>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.prefield.com/algorithm/graph/bellman_ford.html">Spaghetti Source</a></li>
+<li>プログラミングコンテストチャレンジブック(p95-p96) </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ae6524fd0c595b0019229189c5adeeafe"></a>
 <div class="memitem">
 <div class="memproto">
@@ -136,6 +202,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>bellmanFordでは最短路を計算する．</p>
+<p>bellmanFordにおいて，distに-INFと記録された頂点以外にも，負の閉路の影響を受ける頂点があることがある．-INFと記録された頂点から到達できるすべての頂点は負の閉路の影響を受ける．（要確認）</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>最短路を求めたいグラフ </td></tr>
+    <tr><td class="paramname">s</td><td>始点 </td></tr>
+    <tr><td class="paramname">dist</td><td>距離を記録する．経路がない場合はINF，そこへ到達するまでに負の閉路が含まれることがわかっていれば-1 </td></tr>
+    <tr><td class="paramname">prev</td><td>経路復元用の1つ前の位置を示す配列 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>負の閉路が含まれているか </dd></dl>
 
 </div>
 </div>
@@ -162,6 +240,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>経路を復元する</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prev</td><td>経路復元用の1つ前の位置を示す配列 </td></tr>
+    <tr><td class="paramname">t</td><td>経路を復元したい時の目的地 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -178,13 +264,21 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Graphの全域において負の閉路があるか検出する．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>最短路を求めたいグラフ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>負の閉路が含まれているか </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

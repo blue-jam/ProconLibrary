@@ -123,11 +123,11 @@ Public Attributes</h2></td></tr>
 <div class="line">    vector&lt;int&gt; <a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>;</div>
 <div class="line">    vector&lt;int&gt; <a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>;</div>
 <div class="line"></div>
-<div class="line">    <a class="code" href="structUnionFind.html#aab2b783c6c2b20c187844788e3f3dd0a">UnionFind</a>(<span class="keywordtype">int</span> n){ <a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a> = vector&lt;int&gt;(n, -1); <a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a> = vector&lt;int&gt;(n, 0); }</div>
+<div class="line">    <a class="code" href="structUnionFind.html#aab2b783c6c2b20c187844788e3f3dd0a">UnionFind</a>(<span class="keywordtype">int</span> n){ parent = vector&lt;int&gt;(n, -1); <a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a> = vector&lt;int&gt;(n, 0); }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">int</span> <a class="code" href="structUnionFind.html#aa3fe04bfd2e9ce2e33c3edf8c91c3aea">find</a>(<span class="keywordtype">int</span> x){</div>
-<div class="line">        <span class="keywordflow">if</span>(<a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>[x] == -1) <span class="keywordflow">return</span> x;</div>
-<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">return</span> (<a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>[x] = <a class="code" href="structUnionFind.html#aa3fe04bfd2e9ce2e33c3edf8c91c3aea">find</a>(<a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>[x]));</div>
+<div class="line">        <span class="keywordflow">if</span>(parent[x] == -1) <span class="keywordflow">return</span> x;</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">return</span> (parent[x] = <a class="code" href="structUnionFind.html#aa3fe04bfd2e9ce2e33c3edf8c91c3aea">find</a>(parent[x]));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">bool</span> <a class="code" href="structUnionFind.html#ac293e615592ebd4ff06d86e1fa4ab644">unite</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y){</div>
@@ -135,9 +135,9 @@ Public Attributes</h2></td></tr>
 <div class="line">        y = <a class="code" href="structUnionFind.html#aa3fe04bfd2e9ce2e33c3edf8c91c3aea">find</a>(y);</div>
 <div class="line">        <span class="keywordflow">if</span>(x == y) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line">        <span class="keywordflow">if</span>(<a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>[x] &lt; <a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>[y])</div>
-<div class="line">            <a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>[x] = y;</div>
+<div class="line">            parent[x] = y;</div>
 <div class="line">        <span class="keywordflow">else</span></div>
-<div class="line">            <a class="code" href="structUnionFind.html#a916e09e220667fb55fbf332c8852c948">parent</a>[y] = x;</div>
+<div class="line">            parent[y] = x;</div>
 <div class="line">        <span class="keywordflow">if</span>(<a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>[x] == <a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>[y])</div>
 <div class="line">            ++<a class="code" href="structUnionFind.html#a769d9195e1d005bfe2c8fb99f2bdf6d9">rank</a>[x];</div>
 <div class="line">        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
@@ -339,7 +339,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

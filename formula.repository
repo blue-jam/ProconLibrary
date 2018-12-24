@@ -15,7 +15,8 @@
 \form#14:$e \in E$
 \form#15:$G^\prime=(V,E-{e})$
 \form#16:$e$
-\form#17:$O(E)$
-\form#18:$O(V^2)$
-\form#19:$O(\|V\|+\|E\|)$
-\form#20:$O(n log log n)$
+\form#17:$O(E \log V)$
+\form#18:$O(E)$
+\form#19:$O(V^2)$
+\form#20:$O(\|V\|+\|E\|)$
+\form#21:$O(n log log n)$

@@ -112,7 +112,94 @@ Functions</h2></td></tr>
 <tr class="memitem:ae7518e682783f3412f6e9516d355916b"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="crosspoint_8cpp.html#ae7518e682783f3412f6e9516d355916b">crosspointLC</a> (const <a class="el" href="structLine.html">Line</a> &amp;l, const <a class="el" href="structCircle.html">Circle</a> &amp;c)</td></tr>
 <tr class="separator:ae7518e682783f3412f6e9516d355916b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>直線，線分の交差判定，交点計算</h2>
+<p>直線の交差判定については簡単である．ベクトルa，bで表される直線とベクトルc，dで表される直線が与えられたとき，cross(b - a, d - c)が0であれば，2つの直線は平行であるから，重なっていない限り交差はしない．</p>
+<h3>使用方法</h3>
+<h4>intersection</h4>
+<p>直線，線分の交点計算．2直線が平行でないことが前提．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="comment">// 依存：geometry</span></div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="crosspoint_8cpp.html#abcf814cb3cbe38a4ed6bc61d416eb310">intersectSS</a>(<span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;t){</div>
+<div class="line">    <span class="keywordflow">return</span>  <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(s[0],s[1],t[0]) * <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(s[0],s[1],t[1]) &lt;= 0 &amp;&amp;</div>
+<div class="line">            <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(t[0],t[1],s[0]) * <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(t[0],t[1],s[1]) &lt;= 0;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// TODO:端点の扱いが雑なのを何とかする</span></div>
+<div class="line"><a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> <a class="code" href="crosspoint_8cpp.html#a725c09bb9869ed786a2a081996952934">crosspointSS</a>(<span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;t){</div>
+<div class="line">    <span class="keywordtype">double</span> a = <a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(s[1] - s[0], t[1] - t[0]);</div>
+<div class="line">    <span class="keywordtype">double</span> b = <a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(s[1] - s[0], s[1] - t[0]);</div>
+<div class="line">    <span class="keywordflow">if</span>(!<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(a)) &amp;&amp; !<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(b))) <span class="keywordflow">return</span> s[0];   <span class="comment">// same line</span></div>
+<div class="line">    <span class="comment">// if(abs(a) &lt; eps) assert(false);</span></div>
+<div class="line">    <span class="keywordflow">return</span> t[0] + b/a * (t[1] - t[0]);</div>
+<div class="line">}</div>
+<div class="line"><a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> <a class="code" href="crosspoint_8cpp.html#a26c8728b0750c4c6455396a7d6d8c9cc">crosspointLL</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;t){</div>
+<div class="line">    <span class="keywordtype">double</span> a = <a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(s[1] - s[0], t[1] - t[0]);</div>
+<div class="line">    <span class="keywordtype">double</span> b = <a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(s[1] - s[0], s[1] - t[0]);</div>
+<div class="line">    <span class="keywordflow">if</span>(!<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(a)) &amp;&amp; !<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(b))) <span class="keywordflow">return</span> s[0];   <span class="comment">// same line</span></div>
+<div class="line">    <span class="comment">// if(abs(a) &lt; eps) assert(false);</span></div>
+<div class="line">    <span class="keywordflow">return</span> t[0] + b/a * (t[1] - t[0]);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 直線と点の距離</span></div>
+<div class="line"><span class="keywordtype">double</span> <a class="code" href="crosspoint_8cpp.html#accaadc880377280e600e2959bed54f48">distanceLP</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> &amp;p){</div>
+<div class="line">    <span class="keywordflow">return</span> abs(<a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(p-s[0],s[1]-s[0])) / abs(s[1]-s[0]);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 線分と点の距離</span></div>
+<div class="line"><span class="keywordtype">double</span> <a class="code" href="crosspoint_8cpp.html#a51b28a6ad111a189f16ac14a0c9ba0bf">distanceSP</a>(<span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;s, <span class="keyword">const</span> <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> &amp;p){</div>
+<div class="line">    <span class="keywordflow">if</span>(min(<a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(s[1]-s[0], p-s[0]), <a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(s[0]-s[1], p-s[1])) &lt; 0)</div>
+<div class="line">        <span class="keywordflow">return</span> min(abs(p-s[0]), abs(p-s[1]));</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code" href="crosspoint_8cpp.html#accaadc880377280e600e2959bed54f48">distanceLP</a>(s, p);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 線分と線分の距離</span></div>
+<div class="line"><span class="keywordtype">double</span> <a class="code" href="crosspoint_8cpp.html#a74a06bc3d6ea09779bac62e394fec051">distanceSS</a>(<span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structSegment.html">Segment</a> &amp;t){</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="crosspoint_8cpp.html#abcf814cb3cbe38a4ed6bc61d416eb310">intersectSS</a>(s, t)) <span class="keywordflow">return</span> 0;</div>
+<div class="line">    <span class="keywordflow">return</span> min( min(<a class="code" href="crosspoint_8cpp.html#a51b28a6ad111a189f16ac14a0c9ba0bf">distanceSP</a>(s, t[0]), <a class="code" href="crosspoint_8cpp.html#a51b28a6ad111a189f16ac14a0c9ba0bf">distanceSP</a>(s, t[1])),</div>
+<div class="line">                min(<a class="code" href="crosspoint_8cpp.html#a51b28a6ad111a189f16ac14a0c9ba0bf">distanceSP</a>(t, s[0]), <a class="code" href="crosspoint_8cpp.html#a51b28a6ad111a189f16ac14a0c9ba0bf">distanceSP</a>(t, s[1])));</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 円と円の交点（aからbへ向かう左側がfirst）</span></div>
+<div class="line">pair&lt;P,P&gt; <a class="code" href="crosspoint_8cpp.html#a07162972ed27cd90c5ff4e8b4ee0eed0">crosspointCC</a>(<span class="keyword">const</span> <a class="code" href="structCircle.html">Circle</a> &amp;a, <span class="keyword">const</span> <a class="code" href="structCircle.html">Circle</a> &amp;b){</div>
+<div class="line">    <span class="keywordtype">double</span> d = abs(b.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a> - a.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>);</div>
+<div class="line">    <span class="keywordtype">double</span> x = (a.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> * a.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> - b.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> * b.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> + d * d) / (d * 2);</div>
+<div class="line">    <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> v = (b.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a> - a.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>) * (1.0 / d);</div>
+<div class="line">    <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> n = <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a>(0,1) * v;</div>
+<div class="line">    <span class="keywordtype">double</span> h = sqrt(a.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> * a.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> - x * x);</div>
+<div class="line">    <span class="keywordflow">return</span> make_pair(a.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a> + v * x + n * h,</div>
+<div class="line">                     a.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a> + v * x - n * h);</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 直線と円の交点の個数</span></div>
+<div class="line"><span class="comment">// 交点の個数を返す</span></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="crosspoint_8cpp.html#af5470bb1ca7dd0d4211a00fd4ab0ea4e">intersectLC</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;l, <span class="keyword">const</span> <a class="code" href="structCircle.html">Circle</a> &amp;c){</div>
+<div class="line">    <span class="keywordtype">double</span> d = <a class="code" href="crosspoint_8cpp.html#accaadc880377280e600e2959bed54f48">distanceLP</a>(l, c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(d, c.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>) + 1;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 直線と円の交点</span></div>
+<div class="line"><span class="comment">// 直線が中心を通らない場合は，中心から直線へ向かう左側から．</span></div>
+<div class="line"><span class="comment">// 通る場合は，中心から(l[1]-l[0])に向かう向きが先．</span></div>
+<div class="line">vector&lt;P&gt; <a class="code" href="crosspoint_8cpp.html#ae7518e682783f3412f6e9516d355916b">crosspointLC</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;l, <span class="keyword">const</span> <a class="code" href="structCircle.html">Circle</a> &amp;c){</div>
+<div class="line">    <span class="keywordtype">int</span> n = <a class="code" href="crosspoint_8cpp.html#af5470bb1ca7dd0d4211a00fd4ab0ea4e">intersectLC</a>(l, c);</div>
+<div class="line">    vector&lt;P&gt; res;</div>
+<div class="line">    <span class="keywordflow">if</span>(!n) <span class="keywordflow">return</span> res;</div>
+<div class="line">    <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a> p = <a class="code" href="geometry_8cpp.html#a4674c19583a662f23c680db3dfde77d7">projection</a>(l, c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>), e = 1.0/abs(l[1]-l[0])*(l[1]-l[0]);</div>
+<div class="line">    <span class="keywordflow">if</span>(n == 1){</div>
+<div class="line">        res.push_back(p); <span class="keywordflow">return</span> res;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(p - c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>)))</div>
+<div class="line">        e = (p - c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>) * <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a>(0, 1/abs(p - c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>));</div>
+<div class="line">    <span class="keywordtype">double</span> d = sqrt(c.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>*c.<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>-norm(p-c.<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>));</div>
+<div class="line">    res.push_back(p + e * d);</div>
+<div class="line">    res.push_back(p - e * d);</div>
+<div class="line">    <span class="keywordflow">return</span> res;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 1283(intersection)</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.deqnotes.net/">deq notes</a> </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a07162972ed27cd90c5ff4e8b4ee0eed0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -350,7 +437,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

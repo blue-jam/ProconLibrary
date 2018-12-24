@@ -102,7 +102,77 @@ Functions</h2></td></tr>
 <tr class="memitem:aeeac138fb32ebd41f31b4bebe9f176d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="aho_8cpp.html#aeeac138fb32ebd41f31b4bebe9f176d7">buildPMA</a> (vector&lt; string &gt; &amp;words, vector&lt; <a class="el" href="structPMA.html">PMA</a> * &gt; &amp;vp)</td></tr>
 <tr class="separator:aeeac138fb32ebd41f31b4bebe9f176d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>複数パターンの検索(Aho-Corasick法)</h2>
+<p>複数の文字列パターンについていったんTrie木を構築した後，KMP法を実行しながら失敗したときのリンクを作成する．これにより，複数の文字列についてのマッチングが同時に行えるパターンマッチングオートマトンが作成できる．</p>
+<h3>計算量</h3>
+<ul>
+<li>PMAの構築:O(m)</li>
+<li>パターンの検索:O(n+m)</li>
+</ul>
+<p>mはパターンの文字列の長さの総和．nは検索する文字列の長さ．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keyword">struct </span><a class="code" href="structPMA.html">PMA</a>{</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code" href="structPMA.html#a59520e5b2e4d649dee9f751955052115">id</a>;</div>
+<div class="line">    <a class="code" href="structPMA.html">PMA</a> *<a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a>[0x100];       <span class="comment">//next[0] is for fail</span></div>
+<div class="line">    vector&lt;int&gt; <a class="code" href="structPMA.html#aa0ddd0e50cc4b25937d709637f4c7b7a">accept</a>;</div>
+<div class="line">    <a class="code" href="structPMA.html#a5756dad7bb8034c71d7e5ae6b103284a">PMA</a>() { fill(<a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a>, <a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a> + 0x100, (<a class="code" href="structPMA.html">PMA</a>*)NULL); }</div>
+<div class="line">};</div>
+<div class="line"></div>
+<div class="line"><span class="comment">//Pattern Matching AutoMaton</span></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="aho_8cpp.html#aeeac138fb32ebd41f31b4bebe9f176d7">buildPMA</a>(vector&lt;string&gt; &amp;words, vector&lt;PMA*&gt; &amp;vp){</div>
+<div class="line">    <span class="keywordtype">int</span> n = words.size();</div>
+<div class="line">    <a class="code" href="structPMA.html">PMA</a> *root = <span class="keyword">new</span> <a class="code" href="structPMA.html">PMA</a>;    <span class="comment">//createTrie</span></div>
+<div class="line">    root -&gt; <span class="keywordtype">id</span> = 0;</div>
+<div class="line">    vp.push_back(root);</div>
+<div class="line">    <span class="keywordtype">int</span> count = 1;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i&lt;n; ++i){</div>
+<div class="line">        <a class="code" href="structPMA.html">PMA</a> *v = root;</div>
+<div class="line">        <span class="keywordtype">int</span> m = words[i].size();</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; m; ++j){</div>
+<div class="line">            <span class="keywordtype">int</span> c = words[i][j];</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] == NULL){</div>
+<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = <span class="keyword">new</span> <a class="code" href="structPMA.html">PMA</a>;</div>
+<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <span class="keywordtype">id</span> = count++;</div>
+<div class="line">                vp.push_back(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
+<div class="line">            }</div>
+<div class="line">            v = v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">        }</div>
+<div class="line">        v -&gt; accept.push_back(i);</div>
+<div class="line">    }</div>
+<div class="line">    queue&lt;PMA*&gt; Q;          <span class="comment">//make failure link</span></div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c = 1; c &lt; 0x100; ++c){</div>
+<div class="line">        <span class="keywordflow">if</span>(root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL){</div>
+<div class="line">            root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] = root;</div>
+<div class="line">            Q.push(root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
+<div class="line">        } <span class="keywordflow">else</span> root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = root;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
+<div class="line">        <a class="code" href="structPMA.html">PMA</a> *v = Q.front(); Q.pop();</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c = 1; c &lt; 0x100; ++c){</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL) </div>
+<div class="line">                Q.push(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
+<div class="line">            <a class="code" href="structPMA.html">PMA</a> *r = v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0];</div>
+<div class="line">            <span class="keywordflow">while</span>(r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] == NULL) r = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0];</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL)</div>
+<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">        }</div>
+<div class="line">        v -&gt; accept.insert(v -&gt; accept.end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] -&gt; accept));</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>SRM519 Div1 Medium (RequiredSubstrings)</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.prefield.com/algorithm/string/aho_corasick.html">Spaghetti Source</a></li>
+</ul>
+<p>ソースコードの参考．状態遷移の際に何回もリンク先へ飛ぶ必要がある，ほかの文字列を部分列として含んでいるときの対策がないといった点を改善した．また，DPを行いやすいように状態に一意のインデックスを割り振るようにした． </p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="aeeac138fb32ebd41f31b4bebe9f176d7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -126,13 +196,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>パターンマッチのオートマトンを生成する.</p>
+<ol type="1">
+<li>buildPMAを使ってPMAを構築する．</li>
+<li>vectorの先頭が開始状態なのでそこから検索を開始．</li>
+<li>出てくる文字に応じて状態を遷移させながら読み進めていき一致するものを探す．acceptの中に一致するパターンの番号が入っている．</li>
+</ol>
+<p>パターンマッチングの状態を用いたDPがやりやすいように，各ノードにインデックスを持たせている．状態数は(パターンの数)*(文字列の長さ)でおおよそ見積もる．(必ず余裕は持たせる) </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -98,7 +98,51 @@ Functions</h2></td></tr>
 <tr class="memitem:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstra_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a> (const vector&lt; int &gt; &amp;prev, int t)</td></tr>
 <tr class="separator:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>単一始点最短路(Dijkstra)</h2>
+<h3>説明</h3>
+<p>始点の距離を0とし，近いところから順番に距離を確定していく．負の辺が存在しないグラフのある頂点からすべての頂点に対しての最短距離を求めることができる．</p>
+<p>経路復元では，目的地から直前の頂点をたどることで，経路の逆順を復元している．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="dijkstra_8cpp.html#a51592267317b9a8b4abec18fbb080235">dijkstra</a>(<span class="keyword">const</span> <a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, vector&lt;Weight&gt; &amp;dist, vector&lt;int&gt; &amp;prev){</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    dist.assign(n, INF);</div>
+<div class="line">    dist[s] = 0;</div>
+<div class="line">    prev.assign(n, -1);</div>
+<div class="line">    priority_queue&lt;Edge&gt; Q;     <span class="comment">// a &lt; b &lt;-&gt; a.weight &gt; b.weight</span></div>
+<div class="line">    Q.push(<a class="code" href="structEdge.html">Edge</a>(-2, s, 0));</div>
+<div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
+<div class="line">        <a class="code" href="structEdge.html">Edge</a> e = Q.top(); Q.pop();</div>
+<div class="line">        <span class="keywordflow">if</span>(prev[e.<a class="code" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>] != -1) <span class="keywordflow">continue</span>;</div>
+<div class="line">        prev[e.<a class="code" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>] = e.<a class="code" href="structEdge.html#afc7e8ea9d90f972411ed2a6acbe32a6c">from</a>;</div>
+<div class="line">        <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[e.<a class="code" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>]){</div>
+<div class="line">        <span class="comment">//for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき</span></div>
+<div class="line">            <span class="keywordflow">if</span>(dist[i -&gt; to] &gt; dist[i -&gt; from] + i -&gt; weight){</div>
+<div class="line">                dist[i -&gt; to] = dist[i -&gt; from] + i -&gt; weight;</div>
+<div class="line">                Q.push(<a class="code" href="structEdge.html">Edge</a>(i -&gt; from, i -&gt; to, dist[i -&gt; to]));</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line">vector&lt;int&gt; <a class="code" href="bellman_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a>(<span class="keyword">const</span> vector&lt;int&gt; &amp;prev, <span class="keywordtype">int</span> t){</div>
+<div class="line">    vector&lt;int&gt; path;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = t; v &gt;= 0; v = prev[v])</div>
+<div class="line">        path.push_back(v);</div>
+<div class="line">    reverse(path.begin(), path.end());</div>
+<div class="line">    <span class="keywordflow">return</span> path;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>POJ 3268</li>
+<li>経路復元は行っていない</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li><a href="http://www.prefield.com/algorithm/graph/dijkstra.html">Spaghetti Source</a> 変数名以外はそのまま </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a9f8ce2d2c81cab14425fc504abfa7655"></a>
 <div class="memitem">
 <div class="memproto">
@@ -122,6 +166,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>頂点 <em>t</em> への最短経路を復元する．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prev</td><td>直前の頂点を格納した配列 </td></tr>
+    <tr><td class="paramname">t</td><td>経路を復元したいときの目的地 </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -160,13 +212,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>グラフ <em>g</em> の <em>s</em> を始点とする最短経路を <img class="formulaInl" alt="$O(E \log V)$" src="form_17.png"/> 時間で計算する． 経路の復元には，接点の直前の位置を記録した配列と目的の頂点を渡す．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>グラフ </td></tr>
+    <tr><td class="paramname">s</td><td>始点 </td></tr>
+    <tr><td class="paramname">dist</td><td>最短距離を格納．頂点数と同じ要素数． </td></tr>
+    <tr><td class="paramname">prev</td><td>直前の頂点を格納．頂点数と同じ要素数． </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

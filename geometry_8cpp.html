@@ -150,7 +150,133 @@ Variables</h2></td></tr>
 <tr class="memitem:a952eac791b596a61bba0a133a3bb439f"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="geometry_8cpp.html#a952eac791b596a61bba0a133a3bb439f">PI</a> = atan(1) * 4</td></tr>
 <tr class="separator:a952eac791b596a61bba0a133a3bb439f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>平面幾何の要素</h2>
+<h3>浮動小数の誤差について</h3>
+<p>平面幾何の問題を計算するときは浮動小数の演算が必要となることが多く，答えの出力の際に誤差が許容されていたり，計算の際にどれぐらいの誤差を0とみてよいかなどが与えられることが多い．0の判定などにはepsを使用すること．</p>
+<h4>点の表現</h4>
+<p>数多くのC++の競技プログラミング用ライブラリでは，complex型を使用することが多い．</p>
+<p>その理由としては，</p>
+<ul>
+<li>宣言が楽（typedef complex&lt;double&gt; P;で終わる）</li>
+<li>絶対値の定義や数値の掛け算などの定義がなされていること</li>
+</ul>
+<p>が主な理由として挙げられる．</p>
+<p>x座標は実数値，y座標は虚数値として扱うので，x座標を取得するときはp.real()，real(p)，y座標を取得するときはp.imag()，imag(p)とする．</p>
+<p>operator&lt; では，x座標が小さい方を小さいものとして，x座標が等しいときはy座標が小さい方を小さいものとしている．</p>
+<h4>直線，線分</h4>
+<p>直線は通る2点，線分は2つの端点を用いて表現する．vector</p>
+<p>を継承するので，以下の2点が利点として得られる．</p>
+<ul>
+<li>辞書順の比較ができる</li>
+<li>点に添え字を用いてアクセスできる</li>
+</ul>
+<p>半直線は出てくることが少ないので，詳細は説明しないが，ライブラリで行っていることを理解すれば，必要なときに実装できるはず．</p>
+<h4>辺の交差のない多角形</h4>
+<p>vector</p>
+<p>で表す．点を格納する向きは反時計回りとする．</p>
+<h4>円</h4>
+<p>円は中心と半径を用いて表す．</p>
+<h3>使用方法</h3>
+<p>特に記述しない．Lineのコンストラクタは一個減らしてもいい気がするが．</p>
+<p>conjはcomplexの共役なものを返す関数である．</p>
+<p>conj(a) * b = (real(a) - i imag(a)) * (real(b) - i imag(b)) = (real(a) * real(b) + imag(a) * imag(b)) + i (real(a) * imag(b) - imag(a) * real(b)) となる．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="geometry_8cpp.html#a952eac791b596a61bba0a133a3bb439f">PI</a> = atan(1) * 4;</div>
+<div class="line"><span class="comment">// 大小比較用</span></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(<span class="keywordtype">double</span> a){</div>
+<div class="line">    <span class="keywordflow">return</span> a &lt; -<a class="code" href="template_8cpp.html#a3d8c24629d725b9ef8c238cf27c9b158">eps</a> ? -1: a &gt; <a class="code" href="template_8cpp.html#a3d8c24629d725b9ef8c238cf27c9b158">eps</a> ? 1: 0;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(<span class="keywordtype">double</span> a, <span class="keywordtype">double</span> b){</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(b - a);</div>
+<div class="line">}</div>
+<div class="line"><span class="keyword">typedef</span> complex&lt;double&gt; <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a>;</div>
+<div class="line"><span class="keyword">typedef</span> vector&lt;P&gt; <a class="code" href="geometry_8cpp.html#a8dc32d121c3c59afdc5575299d66b800">Polygon</a>;</div>
+<div class="line"><span class="preprocessor">#define curr(p,i) p[i]</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#define next(p,i) p[(i+1)%p.size()]</span></div>
+<div class="line"><span class="preprocessor"></span><span class="keyword">struct </span><a class="code" href="structLine.html">Line</a> : <span class="keyword">public</span> vector&lt;P&gt; {</div>
+<div class="line">    <a class="code" href="structLine.html#adb4bd025de191e3d2b9849e4c08caf03">Line</a>(P a, P b) {</div>
+<div class="line">        push_back(a); push_back(b);</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"><span class="keyword">struct </span><a class="code" href="structSegment.html">Segment</a> : <span class="keyword">public</span> <a class="code" href="structLine.html">Line</a> {</div>
+<div class="line">    <a class="code" href="structSegment.html#ab29f18d22435de7a1e557ecc6b921912">Segment</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b) : <a class="code" href="structLine.html">Line</a>(a,b) { }</div>
+<div class="line">};</div>
+<div class="line"><span class="keyword">struct </span><a class="code" href="structCircle.html">Circle</a>{</div>
+<div class="line">    P <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>;</div>
+<div class="line">    <span class="keywordtype">double</span> <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>;</div>
+<div class="line">    <a class="code" href="structCircle.html#ad1ecfcfc7bf34529c6a6d6c448bf70fe">Circle</a>() { }</div>
+<div class="line">    <a class="code" href="structCircle.html#ad1ecfcfc7bf34529c6a6d6c448bf70fe">Circle</a>(<span class="keyword">const</span> P &amp;<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>, <span class="keywordtype">double</span> <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>) : o(o), r(r) { }</div>
+<div class="line">    <a class="code" href="structCircle.html#ad1ecfcfc7bf34529c6a6d6c448bf70fe">Circle</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, <span class="keywordtype">double</span> <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>) : <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>(x,y), r(r) { }</div>
+<div class="line">    <span class="comment">// 点の包含（境界を含む）</span></div>
+<div class="line">    <span class="keywordtype">bool</span> <a class="code" href="structCircle.html#a5c71c10420d264317c52059faf3fb4ba">contains</a>(<span class="keyword">const</span> P &amp;p)<span class="keyword"> const</span>{</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(p-<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>), <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>) &lt;= 0;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// 内部（境界を含まず）</span></div>
+<div class="line">    <span class="keywordtype">bool</span> <a class="code" href="structCircle.html#a90af1870f6f7070eac91ab7f8a0672be">inside</a>(<span class="keyword">const</span> P &amp;p)<span class="keyword"> const</span>{</div>
+<div class="line">        <span class="keywordflow">return</span> <a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(p-<a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>), <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>) &lt; 0;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// 点pを通る接線．pからoへ向かうベクトルの左側がfirstに入る</span></div>
+<div class="line">    pair&lt;Line,Line&gt; <a class="code" href="structCircle.html#af49e4afa906f90fae418e1403257ae4e">tangent</a>(<span class="keyword">const</span> P &amp;p)<span class="keyword"> const</span>{</div>
+<div class="line">        vector&lt;Line&gt; res;</div>
+<div class="line">        <span class="keywordtype">double</span> d = abs(p - <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>), s = <a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>*<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a> / d, t = sqrt(<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>*<a class="code" href="structCircle.html#a1e492090654899b1b52902b875a431b6">r</a>-s*s);</div>
+<div class="line">        P q = <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a> + s/d * (p - <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>), e = (p - <a class="code" href="structCircle.html#ad807f4fe18ed955790f612a880d068a9">o</a>) * <a class="code" href="geometry_8cpp.html#ade95ab3339de05a0d43c34763540b4b6">P</a>(0, 1/d); </div>
+<div class="line">        <span class="keywordflow">return</span> make_pair(<a class="code" href="structLine.html">Line</a>(p,q+e*t), <a class="code" href="structLine.html">Line</a>(p,q-e*t));</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="geometry_8cpp.html#a290075a0e4f05c3ccf3cf520e28d040c">near</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b){</div>
+<div class="line">    <span class="keywordflow">return</span> !<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(a-b));</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// sort用．ClosestPair用にX,Yに分けている</span></div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="geometry_8cpp.html#a5633ad6036811bfc6e3410d644165565">lessX</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b){</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(real(a), real(b))) <span class="keywordflow">return</span> real(a) &lt; real(b);</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(imag(a), imag(b))) <span class="keywordflow">return</span> imag(a) &lt; imag(b);</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="geometry_8cpp.html#a163661913fb5101201f5cffe8cab55f0">lessY</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b){</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(imag(a), imag(b))) <span class="keywordflow">return</span> imag(a) &lt; imag(b);</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(real(a), real(b))) <span class="keywordflow">return</span> real(a) &lt; real(b);</div>
+<div class="line">    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">double</span> <a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b){</div>
+<div class="line">    <span class="keywordflow">return</span> real(conj(a) * b);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">double</span> <a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(<span class="keyword">const</span> P &amp;a, <span class="keyword">const</span> P &amp;b){</div>
+<div class="line">    <span class="keywordflow">return</span> imag(conj(a) * b);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="geometry_8cpp.html#a73225adf92f79094a5b9917b15adbc3b">ccw</a>(<span class="keyword">const</span> P &amp;a, P b, P c){</div>
+<div class="line">    assert(!<a class="code" href="geometry_8cpp.html#a290075a0e4f05c3ccf3cf520e28d040c">near</a>(a, b));</div>
+<div class="line">    b -= a; c -= a;</div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(<a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(b, c)) &gt; 0)        <span class="keywordflow">return</span> +1;  <span class="comment">// ccw</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(<a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(b, c)) &lt; 0)        <span class="keywordflow">return</span> -1;  <span class="comment">// cw</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(<a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(b, c)) &lt; 0)          <span class="keywordflow">return</span> +2;  <span class="comment">// c-a-b</span></div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(norm(b), norm(c)) &gt; 0)   <span class="keywordflow">return</span> -2;  <span class="comment">// a-b-c</span></div>
+<div class="line">    <span class="keywordflow">return</span> 0;                                   <span class="comment">// a-c-b</span></div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="geometry_8cpp.html#ab16063336f32ddf1f094f679416b5f3e">parallel</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;t){</div>
+<div class="line">    <span class="keywordflow">return</span> !<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(<a class="code" href="geometry_8cpp.html#a6e847e458b7e355f7d9d8d2c69640c41">cross</a>(s[1]-s[0], t[1]-t[0])));</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">bool</span> <a class="code" href="geometry_8cpp.html#a1da67e41b11952fd24ee54c17c5e93c5">orthogonal</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;t){</div>
+<div class="line">    <span class="keywordflow">return</span> !<a class="code" href="geometry_8cpp.html#a704ccccc66c8524f9440a54dd06eac3b">sgn</a>(abs(<a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(s[1]-s[0], t[1]-t[0])));</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 点aの直線s上への射影</span></div>
+<div class="line">P <a class="code" href="geometry_8cpp.html#a4674c19583a662f23c680db3dfde77d7">projection</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> P &amp;a){</div>
+<div class="line">    P v = s[1] - s[0];</div>
+<div class="line">    <span class="keywordflow">return</span> s[0] + <a class="code" href="geometry_8cpp.html#af7f01549fcbf5aaeb678aa64dc71e7b4">dot</a>(v, a - s[0]) / abs(v) / abs(v) * v;</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// 直線sに対する点aの鏡映</span></div>
+<div class="line">P <a class="code" href="geometry_8cpp.html#a2c482d0fbbde79c3cf6fa13ba2cd1e26">reflection</a>(<span class="keyword">const</span> <a class="code" href="structLine.html">Line</a> &amp;s, <span class="keyword">const</span> P &amp;a){</div>
+<div class="line">    P p = <a class="code" href="geometry_8cpp.html#a4674c19583a662f23c680db3dfde77d7">projection</a>(s, a);</div>
+<div class="line">    <span class="keywordflow">return</span> 2.0 * p - a;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>参考</h3>
+<ul>
+<li><a href="http://www.deqnotes.net/">deq notes</a>(平面幾何の解説が詳しい)</li>
+<li><a href="http://www.prefield.com/">Spaghetti Source</a> </li>
+</ul>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a253d8e577600a7c986cfd8b4c170fee7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -553,7 +679,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

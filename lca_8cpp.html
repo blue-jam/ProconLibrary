@@ -100,7 +100,78 @@ Functions</h2></td></tr>
 <tr class="memitem:abeaa7c056e33f2e9e8707eabef140a99"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lca_8cpp.html#abeaa7c056e33f2e9e8707eabef140a99">lca</a> (int u, int v, vector&lt; int &gt; &amp;depth, vector&lt; vector&lt; int &gt; &gt; &amp;ancestor)</td></tr>
 <tr class="separator:abeaa7c056e33f2e9e8707eabef140a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>Lowest Common Ancestor(二分探索)</h2>
+<p>根付き木に対し，その2頂点u,vの共通の祖先で最も近いところにあるものを求める．ここではダブリングを用いて2^k個ずつさかのぼることで求めている．</p>
+<p>同じ高さまで上ったのち，LCA以上まで上ってしまう場合は上らず，LCAより低い位置ならそこまで上る．最終的にLCAの1個下まで到達するはずなので，片方の親がLCAとなっている．</p>
+<h3>計算量</h3>
+<p>初期化 O(n log n) クエリへの応答 O(log n)</p>
+<h3>使用方法</h3>
+<p>initLCAで初期化する．木の親節点の情報をparentに保存する．ancestorには出力先のvectorを渡す．また，別に深さのvectorを作っておく．dijkstraを使ったのは1例に過ぎない．頂点数がそんなに多くない場合は再帰で，多い場合はstackを使って． クエリを渡すときは，2つの頂点の番号と深さの情報，初期化で使用したvectorを渡す．</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="lca_8cpp.html#a7747921b9b49f83a3357d10daa96857d">calcDepth</a>(vector&lt;int&gt; &amp;parent, <span class="keywordtype">int</span> root, vector&lt;int&gt; &amp;depth){</div>
+<div class="line">    <span class="keywordtype">int</span> n = parent.size();</div>
+<div class="line">    vector&lt;vector&lt;int&gt;&gt; child(n);</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) if(parent[i] &gt;= 0) child[parent[i]].push_back(i);</div>
+<div class="line">    queue&lt;int&gt; Q;</div>
+<div class="line">    depth.assign(n, -1);</div>
+<div class="line">    Q.push(root);</div>
+<div class="line">    depth[0] = 0;</div>
+<div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
+<div class="line">        <span class="keywordtype">int</span> v = Q.front(); Q.pop();</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> u: child[v]) {</div>
+<div class="line">            depth[u] = depth[v] + 1;</div>
+<div class="line">            Q.push(u);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="lca_8cpp.html#a21f510e7d210c38daa8a98a02a736b3e">initLCA</a>(vector&lt;int&gt; &amp;parent, vector&lt;vector&lt;int&gt; &gt; &amp;ancestor){</div>
+<div class="line">    <span class="keywordtype">int</span> n = parent.size();</div>
+<div class="line">    <span class="keywordtype">int</span> tn = 1;</div>
+<div class="line">    <span class="keywordtype">int</span> maxLog = 0;</div>
+<div class="line">    <span class="keywordflow">for</span>(maxLog = 0; tn &lt; n; ++maxLog) tn *= 2;</div>
+<div class="line">    ancestor.resize(maxLog, vector&lt;int&gt;(n, -1));</div>
+<div class="line">    <span class="keywordflow">if</span>(maxLog == 0) <span class="keywordflow">return</span>;         <span class="comment">//頂点が1個の時の処理．急遽付け加えたため確認はされていないので注意．</span></div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; n; ++i)</div>
+<div class="line">        ancestor[0][i] = parent[i];</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i + 1 &lt; maxLog; ++i){</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; n; ++j){</div>
+<div class="line">            <span class="keywordflow">if</span>(ancestor[i][j] &lt; 0)</div>
+<div class="line">                ancestor[i + 1][j] = -1;</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">                ancestor[i + 1][j] = ancestor[i][ancestor[i][j]];</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">int</span> <a class="code" href="lca_8cpp.html#abeaa7c056e33f2e9e8707eabef140a99">lca</a>(<span class="keywordtype">int</span> u, <span class="keywordtype">int</span> v, vector&lt;int&gt; &amp;depth, vector&lt;vector&lt;int&gt; &gt; &amp;ancestor){</div>
+<div class="line">    <span class="keywordtype">int</span> maxLog = ancestor.size();</div>
+<div class="line">    <span class="keywordflow">if</span>(depth[u] &gt; depth[v]) swap(u, v);</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = 0; k &lt; maxLog; ++k){</div>
+<div class="line">        <span class="keywordflow">if</span>((depth[v] - depth[u]) &gt;&gt; k &amp; 1){</div>
+<div class="line">            v = ancestor[k][v];</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">if</span>(u == v) <span class="keywordflow">return</span> u;</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = maxLog - 1; k &gt;= 0; --k){</div>
+<div class="line">        <span class="keywordflow">if</span>(ancestor[k][u] != ancestor[k][v]){</div>
+<div class="line">            u = ancestor[k][u];</div>
+<div class="line">            v = ancestor[k][v];</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> ancestor[0][u];</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 0575</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>プログラミングコンテストチャレンジブック(p.274-p.276) </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a7747921b9b49f83a3357d10daa96857d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -130,6 +201,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>親の節点，ない場合は-1 </td></tr>
+    <tr><td class="paramname">depth</td><td>よそで計算した深さ．親が0． </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -156,6 +234,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>initLCAで初期化する．木の親節点の情報をparentに保存する．ancestorには出力先のvectorを渡す．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>親の節点，ない場合は-1 </td></tr>
+    <tr><td class="paramname">ancestor</td><td>ダブリングで使用するvector </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -194,13 +280,23 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>クエリを渡すときは，2つの頂点の番号と深さの情報，初期化で使用したvectorを渡す．</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">u</td><td>頂点番号その1 </td></tr>
+    <tr><td class="paramname">v</td><td>頂点番号その2 </td></tr>
+    <tr><td class="paramname">depth</td><td>よそで計算した深さ．親が0． </td></tr>
+    <tr><td class="paramname">ancestor</td><td>ダブリングで使用するvector </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

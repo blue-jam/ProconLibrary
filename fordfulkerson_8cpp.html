@@ -98,7 +98,53 @@ Functions</h2></td></tr>
 <tr class="memitem:a42817f7c2f1ad7f1cacc79fc74db25cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="fordfulkerson_8cpp.html#a42817f7c2f1ad7f1cacc79fc74db25cd">ford_fulkerson</a> (<a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int s, int t)</td></tr>
 <tr class="separator:a42817f7c2f1ad7f1cacc79fc74db25cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>最大流(Ford-Fulkerson)</h2>
+<h3>説明</h3>
+<p>最大フローを求めるアルゴリズム.ネットワークが大きい場合はほかのアルゴリズムを使用すること.</p>
+<h3>計算量</h3>
+<ul>
+<li>O(V E C)</li>
+</ul>
+<p>ただし，Cは最大流量</p>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="code" href="fordfulkerson_8cpp.html#a762cf048f36e3950ab6fb2746c4e4fa1">ford_dfs</a>(<a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> v, <span class="keywordtype">int</span> t, <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> f, vector&lt;int&gt; &amp;used){</div>
+<div class="line">    <span class="keywordflow">if</span>(v == t) <span class="keywordflow">return</span> f;</div>
+<div class="line">    used[v] = <span class="keyword">true</span>;</div>
+<div class="line">    <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v]){</div>
+<div class="line">        <span class="keywordflow">if</span>(!used[i -&gt; to] &amp;&amp; i -&gt; weight &gt; 0){</div>
+<div class="line">            <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> d = <a class="code" href="fordfulkerson_8cpp.html#a762cf048f36e3950ab6fb2746c4e4fa1">ford_dfs</a>(g, i -&gt; to, t, min(f, i -&gt; weight), used);</div>
+<div class="line">            <span class="keywordflow">if</span>(d &gt; 0){</div>
+<div class="line">                i -&gt; weight -= d;</div>
+<div class="line">                g[i -&gt; to][i -&gt; rev].weight += d;</div>
+<div class="line">                <span class="keywordflow">return</span> d;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"><a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="code" href="fordfulkerson_8cpp.html#a42817f7c2f1ad7f1cacc79fc74db25cd">ford_fulkerson</a>(<a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, <span class="keywordtype">int</span> t){</div>
+<div class="line">    vector&lt;int&gt; used(g.size());</div>
+<div class="line">    <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> flow = 0;</div>
+<div class="line">    <span class="keywordflow">for</span>(;;){</div>
+<div class="line">        fill(<a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(used), 0);</div>
+<div class="line">        <span class="keywordtype">int</span> f = <a class="code" href="fordfulkerson_8cpp.html#a762cf048f36e3950ab6fb2746c4e4fa1">ford_dfs</a>(g, s, t, INF, used);</div>
+<div class="line">        <span class="keywordflow">if</span>(f == 0) <span class="keywordflow">return</span> flow;</div>
+<div class="line">        flow += f;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> flow;</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 2304</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>グラフ・ネットワーク・組み合わせ論</li>
+<li>蟻本 </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a762cf048f36e3950ab6fb2746c4e4fa1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -172,13 +218,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>グラフの <em>s</em> から <em>t</em> への最短経路を計算する． 事前に逆辺をweight=0で追加しておく．また，グラフは書き換えを行うので必要な場合はコピーを取っておくこと． </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

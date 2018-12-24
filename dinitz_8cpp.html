@@ -98,7 +98,60 @@ Functions</h2></td></tr>
 <tr class="memitem:a808e24d1cabffed7b2ac28fd0bfe8499"><td class="memItemLeft" align="right" valign="top"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dinitz_8cpp.html#a808e24d1cabffed7b2ac28fd0bfe8499">dinitz</a> (<a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int s, int t)</td></tr>
 <tr class="separator:a808e24d1cabffed7b2ac28fd0bfe8499"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>最大流(Dinitz)</h2>
+<p>多くの文献で"Dinic"として紹介されているが，原論文を英訳するときに著者名がそう訳されたためそちらが広まっただけで，その後の自著では"Dinitz"と表記されている．</p>
+<p>ネットワークをBFSで層別ネットワークに分け，その中での極大フローを探し，増加させることを繰り返し最大流量を求める．</p>
+<h3>計算量</h3>
+<ul>
+<li>O(V^2 E)</li>
+</ul>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="code" href="dinitz_8cpp.html#aec70deb1b2e170b505c3e69e1e1ddd7f">blockingFlow</a>(<a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, vector&lt;int&gt; &amp;l, <span class="keywordtype">int</span> v, <span class="keywordtype">int</span> t, <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> f){</div>
+<div class="line">    <span class="keywordflow">if</span>(v == t) <span class="keywordflow">return</span> f;</div>
+<div class="line">    <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v]){</div>
+<div class="line">        <span class="keywordflow">if</span>(i -&gt; weight &gt; 0 &amp;&amp; l[v] &lt; l[i -&gt; to]){</div>
+<div class="line">            <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> d = <a class="code" href="dinitz_8cpp.html#aec70deb1b2e170b505c3e69e1e1ddd7f">blockingFlow</a>(g, l, i -&gt; to, t, min(f, i -&gt; weight));</div>
+<div class="line">            <span class="keywordflow">if</span>(d &gt; 0){</div>
+<div class="line">                i -&gt; weight -= d;</div>
+<div class="line">                g[i -&gt; to][i -&gt; rev].weight += d;</div>
+<div class="line">                <span class="keywordflow">return</span> d;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"><a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="code" href="dinitz_8cpp.html#a808e24d1cabffed7b2ac28fd0bfe8499">dinitz</a>(<a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, <span class="keywordtype">int</span> t){</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> flow = 0;</div>
+<div class="line">    vector&lt;int&gt; l(n, -1);</div>
+<div class="line">    <span class="keywordflow">for</span>(;;){</div>
+<div class="line">        queue&lt;int&gt; Q;</div>
+<div class="line">        fill(<a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(l), -1);</div>
+<div class="line">        l[s] = 0;</div>
+<div class="line">        Q.push(s);</div>
+<div class="line">        <span class="keywordflow">while</span>(!Q.empty()){</div>
+<div class="line">            <span class="keywordtype">int</span> v = Q.front(); Q.pop();</div>
+<div class="line">            <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v])<span class="keywordflow">if</span>(i -&gt; weight &gt; 0 &amp;&amp; l[i -&gt; to] &lt; 0){</div>
+<div class="line">                l[i -&gt; to] = l[v] + 1;</div>
+<div class="line">                Q.push(i -&gt; to);</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span>(l[t] &lt; 0) <span class="keywordflow">return</span> flow;</div>
+<div class="line">        <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> f;</div>
+<div class="line">        <span class="keywordflow">while</span>((f = <a class="code" href="dinitz_8cpp.html#aec70deb1b2e170b505c3e69e1e1ddd7f">blockingFlow</a>(g, l, s, t, INF)) &gt; 0) flow += f;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 2304</li>
+</ul>
+<h3>参考</h3>
+<ul>
+<li>グラフ・ネットワーク・組合せ論 </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="aec70deb1b2e170b505c3e69e1e1ddd7f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -172,13 +225,14 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Ford-Fulkersonと同様にネットワークとソース，シンクの頂点を渡す．グラフを構築するときに逆辺を付け忘れないように． </p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

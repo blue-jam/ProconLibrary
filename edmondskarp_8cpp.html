@@ -96,7 +96,50 @@ Functions</h2></td></tr>
 <tr class="memitem:ad82bc2e8ddeabe78dfcd69e775ef7112"><td class="memItemLeft" align="right" valign="top"><a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="edmondskarp_8cpp.html#ad82bc2e8ddeabe78dfcd69e775ef7112">edmonds_karp</a> (<a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int s, int t)</td></tr>
 <tr class="separator:ad82bc2e8ddeabe78dfcd69e775ef7112"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h2>最大流(Edmond-Karp)</h2>
+<p>Ford-Fulkersonにおける増加パスの探索を幅優先探索によって行うアルゴリズム．</p>
+<h3>計算量</h3>
+<ul>
+<li>O(V E^2)</li>
+</ul>
+<h3>ソースコード</h3>
+<div class="fragment"><div class="line"></div>
+<div class="line"><a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> <a class="code" href="edmondskarp_8cpp.html#ad82bc2e8ddeabe78dfcd69e775ef7112">edmonds_karp</a>(<a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, <span class="keywordtype">int</span> t){</div>
+<div class="line">    <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> flow = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
+<div class="line">    vector&lt;int&gt; prev(n);</div>
+<div class="line">    vector&lt;int&gt; edge(n);</div>
+<div class="line">    <span class="keywordflow">for</span>(;;){</div>
+<div class="line">        queue&lt;int&gt; Q;</div>
+<div class="line">        fill(<a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(prev), -1);</div>
+<div class="line">        prev[s] = s;</div>
+<div class="line">        Q.push(s);</div>
+<div class="line">        <span class="keywordflow">while</span>(!Q.empty() &amp;&amp; prev[t] &lt; 0){</div>
+<div class="line">            <span class="keywordtype">int</span> v = Q.front(); Q.pop();</div>
+<div class="line">            <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v])<span class="keywordflow">if</span>(i -&gt; weight &gt; 0 &amp;&amp; prev[i -&gt; to] &lt; 0){</div>
+<div class="line">                prev[i -&gt; to] = v;</div>
+<div class="line">                edge[i -&gt; to] = i - g[v].begin();</div>
+<div class="line">                Q.push(i -&gt; to);</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">if</span>(prev[t] &lt; 0) <span class="keywordflow">return</span> flow;</div>
+<div class="line">        <a class="code" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> f = INF;</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> u = t; u != prev[u]; u = prev[u])</div>
+<div class="line">            f = min(f, g[prev[u]][edge[u]].weight);</div>
+<div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> u = t; u != prev[u]; u = prev[u]){</div>
+<div class="line">            <span class="keywordtype">int</span> v = prev[u], e = edge[u], r = g[v][edge[u]].<a class="code" href="structEdge.html#adf8a03cbd155c21e41ffed86ed1bb45b">rev</a>;</div>
+<div class="line">            g[v][e].weight -= f;</div>
+<div class="line">            g[u][r].weight += f;</div>
+<div class="line">        }</div>
+<div class="line">        flow += f;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+</div><!-- fragment --><h3>確認済み問題</h3>
+<ul>
+<li>AOJ 2304 </li>
+</ul>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ad82bc2e8ddeabe78dfcd69e775ef7112"></a>
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +175,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 05:17:58 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 24 2018 10:53:18 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
