@@ -15,6 +15,10 @@
  * ### ソースコード
  *
  * @include articulation.cpp
+ *
+ * ### 確認済み問題
+ *
+ * - AOJ Courses Library Graph Connected Components Problem A
  */
 void artcRecur(const Graph &g, int v, int u, vector<int> &artc,
                vector<vector<int> > &comp, vector<int> &low,
