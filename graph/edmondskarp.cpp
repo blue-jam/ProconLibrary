@@ -1,3 +1,22 @@
+/**
+ * @file
+ *
+ * ## 最大流(Edmond-Karp)
+ *
+ * Ford-Fulkersonにおける増加パスの探索を幅優先探索によって行うアルゴリズム．
+ *
+ * ### 計算量
+ *
+ *   * O(V E^2)
+ *
+ * ### ソースコード
+ *
+ * @include edmondskarp.cpp
+ *
+ * ### 確認済み問題
+ *
+ *   * AOJ 2304
+ */
 Weight edmonds_karp(Graph &g, int s, int t){
     Weight flow = 0;
     int n = g.size();
