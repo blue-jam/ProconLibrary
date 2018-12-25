@@ -6,9 +6,12 @@ python:
 before_install:
   - sudo apt-get install -y doxygen doxygen-latex graphviz
   - pip3 install online-judge-tools
+  - pip3 install git+https://github.com/icpc-jag/rime
+
 script:
   - ./verify.sh
   - doxygen
+
 deploy:
   provider: pages
   local-dir: html
