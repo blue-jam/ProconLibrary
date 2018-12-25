@@ -1,7 +1,10 @@
-language: cpp
+language: python
+
+python:
+  - 3.7
 
 before_install:
-  - sudo apt-get install -y doxygen doxygen-latex graphviz python3 python3-pip
+  - sudo apt-get install -y doxygen doxygen-latex graphviz
   - pip3 install online-judge-tools
 script:
   - ./verify.sh
