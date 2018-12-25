@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unionfind',['UnionFind',['../structUnionFind.html',1,'']]]
+  ['pattern',['pattern',['../classpattern.html',1,'']]],
+  ['pma',['PMA',['../structPMA.html',1,'']]]
 ];

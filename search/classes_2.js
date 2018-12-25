@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fenwick',['Fenwick',['../structFenwick.html',1,'']]]
+  ['edge',['Edge',['../structEdge.html',1,'']]]
 ];

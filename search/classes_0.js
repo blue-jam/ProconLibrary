@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['circle',['Circle',['../structCircle.html',1,'']]]
+  ['bufferedfileinputstreamreader',['BufferedFileInputStreamReader',['../classBufferedFileInputStreamReader.html',1,'']]]
 ];

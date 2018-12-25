@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,10 +91,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">dijkstra.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="dijkstra_8cpp__dep__incl.png" border="0" usemap="#graph_2dijkstra_8cppdep" alt=""/></div>
+<map name="graph_2dijkstra_8cppdep" id="graph_2dijkstra_8cppdep">
+<area shape="rect" id="node2" href="aojgrl_2GRL__1__A_2code_2main_8cc.html" title="working/aojgrl/GRL\l_1_A/code/main.cc" alt="" coords="5,81,139,122"/><area shape="rect" id="node3" href="aojgrl_2GRL__1__A_2rime-out_2code_2main_8cc.html" title="working/aojgrl/GRL\l_1_A/rime&#45;out/code/main.cc" alt="" coords="163,81,348,122"/></map>
+</div>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a51592267317b9a8b4abec18fbb080235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstra_8cpp.html#a51592267317b9a8b4abec18fbb080235">dijkstra</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int s, vector&lt; <a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> &gt; &amp;dist, vector&lt; int &gt; &amp;prev)</td></tr>
+<tr class="memitem:a51592267317b9a8b4abec18fbb080235"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstra_8cpp.html#a51592267317b9a8b4abec18fbb080235">dijkstra</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int <a class="el" href="datastructure_2aoj1351_2rime-out_2code_2main_8cc.html#a2016384928a1b557c51ef62964decea5">s</a>, vector&lt; <a class="el" href="graph_8cpp.html#aa4dd30204ac53d8c88cfd0cab7b81789">Weight</a> &gt; &amp;dist, vector&lt; int &gt; &amp;prev)</td></tr>
 <tr class="separator:a51592267317b9a8b4abec18fbb080235"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dijkstra_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a> (const vector&lt; int &gt; &amp;prev, int t)</td></tr>
 <tr class="separator:a9f8ce2d2c81cab14425fc504abfa7655"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,10 +115,10 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="dijkstra_8cpp.html#a51592267317b9a8b4abec18fbb080235">dijkstra</a>(<span class="keyword">const</span> <a class="code" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <span class="keywordtype">int</span> s, vector&lt;Weight&gt; &amp;dist, vector&lt;int&gt; &amp;prev){</div>
 <div class="line">    <span class="keywordtype">int</span> n = g.size();</div>
-<div class="line">    dist.assign(n, INF);</div>
-<div class="line">    dist[s] = 0;</div>
+<div class="line">    dist.assign(n, <a class="code" href="rime-out_2test_2validator_8cc.html#a14c9dbab105f1b8b8182a022d73e610c">INF</a>);</div>
+<div class="line">    dist[<a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#a2016384928a1b557c51ef62964decea5">s</a>] = 0;</div>
 <div class="line">    prev.assign(n, -1);</div>
-<div class="line">    priority_queue&lt;Edge&gt; Q;     <span class="comment">// a &lt; b &lt;-&gt; a.weight &gt; b.weight</span></div>
+<div class="line">    priority_queue&lt;Edge&gt; <a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c">Q</a>;     <span class="comment">// a &lt; b &lt;-&gt; a.weight &gt; b.weight</span></div>
 <div class="line">    Q.push(<a class="code" href="structEdge.html">Edge</a>(-2, s, 0));</div>
 <div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
 <div class="line">        <a class="code" href="structEdge.html">Edge</a> e = Q.top(); Q.pop();</div>
@@ -128,7 +136,7 @@ Functions</h2></td></tr>
 <div class="line"></div>
 <div class="line">vector&lt;int&gt; <a class="code" href="bellman_8cpp.html#a9f8ce2d2c81cab14425fc504abfa7655">buildPath</a>(<span class="keyword">const</span> vector&lt;int&gt; &amp;prev, <span class="keywordtype">int</span> t){</div>
 <div class="line">    vector&lt;int&gt; path;</div>
-<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = t; v &gt;= 0; v = prev[v])</div>
+<div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> v = t; v &gt;= 0; v = prev[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>])</div>
 <div class="line">        path.push_back(v);</div>
 <div class="line">    reverse(path.begin(), path.end());</div>
 <div class="line">    <span class="keywordflow">return</span> path;</div>
@@ -228,7 +236,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 14:16:35 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 25 2018 16:57:57 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

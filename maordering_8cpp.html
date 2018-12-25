@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -107,9 +108,9 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"></div>
 <div class="line">Weight <a class="code" href="maordering_8cpp.html#adbec2639f4754d9c4114ab0298a6fae1">maordering</a>(<span class="keyword">const</span> Graph &amp;g1, vector&lt;int&gt; &amp;w){</div>
 <div class="line">    <span class="keywordtype">int</span> n = g1.size();</div>
-<div class="line">    <span class="keywordtype">int</span> cut = INF;</div>
+<div class="line">    <span class="keywordtype">int</span> cut = <a class="code" href="rime-out_2test_2validator_8cc.html#a14c9dbab105f1b8b8182a022d73e610c">INF</a>;</div>
 <div class="line">    <a class="code" href="structUnionFind.html">UnionFind</a> uf(n);</div>
-<div class="line">    priority_queue&lt;Edge&gt; Q;</div>
+<div class="line">    priority_queue&lt;Edge&gt; <a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c">Q</a>;</div>
 <div class="line">    vector&lt;int&gt; used;</div>
 <div class="line">    vector&lt;Weight&gt; d;</div>
 <div class="line">    Graph g = g1;</div>
@@ -123,9 +124,9 @@ Functions</h2></td></tr>
 <div class="line">            <a class="code" href="structEdge.html">Edge</a> e = Q.top(); Q.pop();</div>
 <div class="line">            <span class="keywordtype">int</span> v = uf.find(e.<a class="code" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>);</div>
 <div class="line">            <span class="keywordflow">if</span>(used[v]) <span class="keywordflow">continue</span>;</div>
-<div class="line">            used[v] = <span class="keyword">true</span>;</div>
+<div class="line">            used[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>] = <span class="keyword">true</span>;</div>
 <div class="line">            s = uf.find(e.<a class="code" href="structEdge.html#afc7e8ea9d90f972411ed2a6acbe32a6c">from</a>);</div>
-<div class="line">            t = v;</div>
+<div class="line">            t = <a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>;</div>
 <div class="line">            <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[e.<a class="code" href="structEdge.html#a7848f67e4e8ccb97be14506164d7a267">to</a>]){</div>
 <div class="line">                <span class="keywordtype">int</span> u = uf.find(i -&gt; to);</div>
 <div class="line">                <span class="keywordflow">if</span>(!used[u]){</div>
@@ -141,8 +142,8 @@ Functions</h2></td></tr>
 <div class="line">                <span class="keywordflow">if</span>(uf.same(t, i)) w.push_back(i);</div>
 <div class="line">        }</div>
 <div class="line">        uf.unite(s, t);</div>
-<div class="line">        <span class="keywordflow">if</span>(uf.find(s) != s) swap(s, t);</div>
-<div class="line">        g[s].insert(g[s].end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(g[t]));</div>
+<div class="line">        <span class="keywordflow">if</span>(uf.find(s) != <a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#a2016384928a1b557c51ef62964decea5">s</a>) swap(s, t);</div>
+<div class="line">        g[<a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#a2016384928a1b557c51ef62964decea5">s</a>].insert(g[s].end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(g[t]));</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> cut;</div>
 <div class="line">}</div>
@@ -192,7 +193,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 14:16:35 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 25 2018 16:57:57 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['lazysegtree_2ecpp',['lazysegtree.cpp',['../lazysegtree_8cpp.html',1,'']]],
-  ['lca_2ecpp',['lca.cpp',['../lca_8cpp.html',1,'']]],
-  ['linkcut_2ecpp',['linkcut.cpp',['../linkcut_8cpp.html',1,'']]]
+  ['koj0093_2ecpp',['koj0093.cpp',['../koj0093_8cpp.html',1,'']]],
+  ['kruskal_2ecpp',['kruskal.cpp',['../kruskal_8cpp.html',1,'']]]
 ];

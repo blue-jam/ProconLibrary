@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,14 +91,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">lca.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="lca_8cpp__dep__incl.png" border="0" usemap="#graph_2lca_8cppdep" alt=""/></div>
+<map name="graph_2lca_8cppdep" id="graph_2lca_8cppdep">
+<area shape="rect" id="node2" href="aojgrl_2GRL__5__C_2code_2main_8cc.html" title="working/aojgrl/GRL\l_5_C/code/main.cc" alt="" coords="5,81,139,122"/><area shape="rect" id="node3" href="aojgrl_2GRL__5__C_2rime-out_2code_2main_8cc.html" title="working/aojgrl/GRL\l_5_C/rime&#45;out/code/main.cc" alt="" coords="164,81,351,122"/></map>
+</div>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a7747921b9b49f83a3357d10daa96857d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lca_8cpp.html#a7747921b9b49f83a3357d10daa96857d">calcDepth</a> (vector&lt; int &gt; &amp;parent, int root, vector&lt; int &gt; &amp;depth)</td></tr>
 <tr class="separator:a7747921b9b49f83a3357d10daa96857d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21f510e7d210c38daa8a98a02a736b3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lca_8cpp.html#a21f510e7d210c38daa8a98a02a736b3e">initLCA</a> (vector&lt; int &gt; &amp;parent, vector&lt; vector&lt; int &gt; &gt; &amp;ancestor)</td></tr>
 <tr class="separator:a21f510e7d210c38daa8a98a02a736b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeaa7c056e33f2e9e8707eabef140a99"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lca_8cpp.html#abeaa7c056e33f2e9e8707eabef140a99">lca</a> (int u, int v, vector&lt; int &gt; &amp;depth, vector&lt; vector&lt; int &gt; &gt; &amp;ancestor)</td></tr>
+<tr class="memitem:abeaa7c056e33f2e9e8707eabef140a99"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lca_8cpp.html#abeaa7c056e33f2e9e8707eabef140a99">lca</a> (int u, int <a class="el" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>, vector&lt; int &gt; &amp;depth, vector&lt; vector&lt; int &gt; &gt; &amp;ancestor)</td></tr>
 <tr class="separator:abeaa7c056e33f2e9e8707eabef140a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -114,14 +122,14 @@ Functions</h2></td></tr>
 <div class="line">    <span class="keywordtype">int</span> n = parent.size();</div>
 <div class="line">    vector&lt;vector&lt;int&gt;&gt; child(n);</div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; n; ++i) if(parent[i] &gt;= 0) child[parent[i]].push_back(i);</div>
-<div class="line">    queue&lt;int&gt; Q;</div>
+<div class="line">    queue&lt;int&gt; <a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c">Q</a>;</div>
 <div class="line">    depth.assign(n, -1);</div>
 <div class="line">    Q.push(root);</div>
 <div class="line">    depth[0] = 0;</div>
 <div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
 <div class="line">        <span class="keywordtype">int</span> v = Q.front(); Q.pop();</div>
 <div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> u: child[v]) {</div>
-<div class="line">            depth[u] = depth[v] + 1;</div>
+<div class="line">            depth[u] = depth[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>] + 1;</div>
 <div class="line">            Q.push(u);</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
@@ -151,14 +159,14 @@ Functions</h2></td></tr>
 <div class="line">    <span class="keywordflow">if</span>(depth[u] &gt; depth[v]) swap(u, v);</div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = 0; k &lt; maxLog; ++k){</div>
 <div class="line">        <span class="keywordflow">if</span>((depth[v] - depth[u]) &gt;&gt; k &amp; 1){</div>
-<div class="line">            v = ancestor[k][v];</div>
+<div class="line">            v = ancestor[k][<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>];</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span>(u == v) <span class="keywordflow">return</span> u;</div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> k = maxLog - 1; k &gt;= 0; --k){</div>
 <div class="line">        <span class="keywordflow">if</span>(ancestor[k][u] != ancestor[k][v]){</div>
 <div class="line">            u = ancestor[k][u];</div>
-<div class="line">            v = ancestor[k][v];</div>
+<div class="line">            v = ancestor[k][<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>];</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> ancestor[0][u];</div>
@@ -296,7 +304,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 14:16:35 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 25 2018 16:57:57 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

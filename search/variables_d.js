@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['s',['S',['../structSuffixArray.html#a1c75f1e52bacf07223df15fb23e8ac52',1,'SuffixArray']]],
-  ['sa',['sa',['../structSuffixArray.html#a057d64bc216ffc560500df405ef05217',1,'SuffixArray']]],
-  ['sum',['sum',['../structLasySegmentTree_1_1node__t.html#a74f30a027b9570b5a403cb7dcadc1c5a',1,'LasySegmentTree::node_t']]]
+  ['q',['Q',['../datastructure_2aoj1351_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c',1,'Q():&#160;main.cc'],['../datastructure_2aoj1351_2rime-out_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c',1,'Q():&#160;main.cc'],['../koj0093_8cpp.html#addc5298160c08b52aebfc4f44ab6e37c',1,'Q():&#160;koj0093.cpp']]],
+  ['quitcount',['quitCount',['../structTestlibFinalizeGuard.html#a59c31cc40e9f8a903d9da51c3cdd5186',1,'TestlibFinalizeGuard']]]
 ];

@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structLasySegmentTree.html" title="LasySegmentTree\&lt; T \&gt;" alt="" coords="5,5,165,32"/>
+<area shape="rect" id="node1" href="$classInputStreamReader.html" title="InputStreamReader" alt="" coords="6,56,141,83"/>
+<area shape="rect" id="node2" href="$classBufferedFileInputStreamReader.html" title="BufferedFileInputStreamReader" alt="" coords="189,5,395,32"/>
+<area shape="rect" id="node3" href="$classFileInputStreamReader.html" title="FileInputStreamReader" alt="" coords="214,56,370,83"/>
+<area shape="rect" id="node4" href="$classStringInputStreamReader.html" title="StringInputStreamReader" alt="" coords="207,107,377,133"/>
 </map>

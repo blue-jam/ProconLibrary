@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -115,9 +116,9 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="keyword">struct </span><a class="code" href="structPMA.html">PMA</a>{</div>
 <div class="line">    <span class="keywordtype">int</span> <a class="code" href="structPMA.html#a59520e5b2e4d649dee9f751955052115">id</a>;</div>
-<div class="line">    <a class="code" href="structPMA.html">PMA</a> *<a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a>[0x100];       <span class="comment">//next[0] is for fail</span></div>
+<div class="line">    <a class="code" href="structPMA.html">PMA</a> *next[0x100];       <span class="comment">//next[0] is for fail</span></div>
 <div class="line">    vector&lt;int&gt; <a class="code" href="structPMA.html#aa0ddd0e50cc4b25937d709637f4c7b7a">accept</a>;</div>
-<div class="line">    <a class="code" href="structPMA.html#a5756dad7bb8034c71d7e5ae6b103284a">PMA</a>() { fill(<a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a>, <a class="code" href="structPMA.html#adf19837592fee44432ee46e8cb7b1d8d">next</a> + 0x100, (<a class="code" href="structPMA.html">PMA</a>*)NULL); }</div>
+<div class="line">    <a class="code" href="structPMA.html#a5756dad7bb8034c71d7e5ae6b103284a">PMA</a>() { fill(next, next + 0x100, (<a class="code" href="structPMA.html">PMA</a>*)NULL); }</div>
 <div class="line">};</div>
 <div class="line"></div>
 <div class="line"><span class="comment">//Pattern Matching AutoMaton</span></div>
@@ -132,35 +133,35 @@ Functions</h2></td></tr>
 <div class="line">        <span class="keywordtype">int</span> m = words[i].size();</div>
 <div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; m; ++j){</div>
 <div class="line">            <span class="keywordtype">int</span> c = words[i][j];</div>
-<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] == NULL){</div>
-<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = <span class="keyword">new</span> <a class="code" href="structPMA.html">PMA</a>;</div>
-<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <span class="keywordtype">id</span> = count++;</div>
-<div class="line">                vp.push_back(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; next[c] == NULL){</div>
+<div class="line">                v -&gt; next[c] = <span class="keyword">new</span> <a class="code" href="structPMA.html">PMA</a>;</div>
+<div class="line">                v -&gt; next[c] -&gt; <span class="keywordtype">id</span> = count++;</div>
+<div class="line">                vp.push_back(v -&gt; next[c]);</div>
 <div class="line">            }</div>
-<div class="line">            v = v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">            v = v -&gt; next[c];</div>
 <div class="line">        }</div>
 <div class="line">        v -&gt; accept.push_back(i);</div>
 <div class="line">    }</div>
-<div class="line">    queue&lt;PMA*&gt; Q;          <span class="comment">//make failure link</span></div>
+<div class="line">    queue&lt;PMA*&gt; <a class="code" href="datastructure_2aoj1351_2code_2main_8cc.html#addc5298160c08b52aebfc4f44ab6e37c">Q</a>;          <span class="comment">//make failure link</span></div>
 <div class="line">    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c = 1; c &lt; 0x100; ++c){</div>
-<div class="line">        <span class="keywordflow">if</span>(root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL){</div>
-<div class="line">            root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] = root;</div>
-<div class="line">            Q.push(root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
-<div class="line">        } <span class="keywordflow">else</span> root -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = root;</div>
+<div class="line">        <span class="keywordflow">if</span>(root -&gt; next[c] != NULL){</div>
+<div class="line">            root -&gt; next[c] -&gt; next[0] = root;</div>
+<div class="line">            Q.push(root -&gt; next[c]);</div>
+<div class="line">        } <span class="keywordflow">else</span> root -&gt; next[c] = root;</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">while</span>(!Q.empty()){</div>
 <div class="line">        <a class="code" href="structPMA.html">PMA</a> *v = Q.front(); Q.pop();</div>
 <div class="line">        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> c = 1; c &lt; 0x100; ++c){</div>
-<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL) </div>
-<div class="line">                Q.push(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c]);</div>
-<div class="line">            <a class="code" href="structPMA.html">PMA</a> *r = v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0];</div>
-<div class="line">            <span class="keywordflow">while</span>(r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] == NULL) r = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0];</div>
-<div class="line">            <span class="keywordflow">if</span>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] != NULL)</div>
-<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; next[c] != NULL) </div>
+<div class="line">                Q.push(v -&gt; next[c]);</div>
+<div class="line">            <a class="code" href="structPMA.html">PMA</a> *r = v -&gt; next[0];</div>
+<div class="line">            <span class="keywordflow">while</span>(r -&gt; next[c] == NULL) r = r -&gt; next[0];</div>
+<div class="line">            <span class="keywordflow">if</span>(v -&gt; next[c] != NULL)</div>
+<div class="line">                v -&gt; next[c] -&gt; next[0] = r -&gt; next[c];</div>
 <div class="line">            <span class="keywordflow">else</span></div>
-<div class="line">                v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c] = r -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[c];</div>
+<div class="line">                v -&gt; next[c] = r -&gt; next[c];</div>
 <div class="line">        }</div>
-<div class="line">        v -&gt; accept.insert(v -&gt; accept.end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(v -&gt; <a class="code" href="geometry_8cpp.html#a22291ee62ec37774efbf036b5f5c13a8">next</a>[0] -&gt; accept));</div>
+<div class="line">        v -&gt; accept.insert(v -&gt; accept.end(), <a class="code" href="template_8cpp.html#a7ab29d3bd6e8d66e320f4224e75f6cea">ALL</a>(v -&gt; next[0] -&gt; accept));</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --><h3>確認済み問題</h3>
@@ -209,7 +210,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 14:16:35 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 25 2018 16:57:57 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

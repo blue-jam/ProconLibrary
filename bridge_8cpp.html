@@ -38,6 +38,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Namespaces</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Typedefs</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(10)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -90,10 +91,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">bridge.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="bridge_8cpp__dep__incl.png" border="0" usemap="#graph_2bridge_8cppdep" alt=""/></div>
+<map name="graph_2bridge_8cppdep" id="graph_2bridge_8cppdep">
+<area shape="rect" id="node2" href="aojgrl_2GRL__3__B_2code_2main_8cc.html" title="working/aojgrl/GRL\l_3_B/code/main.cc" alt="" coords="5,81,139,122"/><area shape="rect" id="node3" href="aojgrl_2GRL__3__B_2rime-out_2code_2main_8cc.html" title="working/aojgrl/GRL\l_3_B/rime&#45;out/code/main.cc" alt="" coords="163,81,348,122"/></map>
+</div>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a804fa30ab2255aca98e842171d74f51e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bridge_8cpp.html#a804fa30ab2255aca98e842171d74f51e">bridgeRecur</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int v, int u, <a class="el" href="graph_8cpp.html#a6395953c8c8a22b6fac32f7ebdac0211">Edges</a> &amp;bridge, vector&lt; vector&lt; int &gt; &gt; &amp;comp, vector&lt; int &gt; &amp;num, vector&lt; bool &gt; &amp;open, stack&lt; int &gt; &amp;oNodes, stack&lt; int &gt; &amp;oReps, int &amp;cnt)</td></tr>
+<tr class="memitem:a804fa30ab2255aca98e842171d74f51e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bridge_8cpp.html#a804fa30ab2255aca98e842171d74f51e">bridgeRecur</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, int <a class="el" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>, int u, <a class="el" href="graph_8cpp.html#a6395953c8c8a22b6fac32f7ebdac0211">Edges</a> &amp;bridge, vector&lt; vector&lt; int &gt; &gt; &amp;comp, vector&lt; int &gt; &amp;num, vector&lt; bool &gt; &amp;open, stack&lt; int &gt; &amp;oNodes, stack&lt; int &gt; &amp;oReps, int &amp;cnt)</td></tr>
 <tr class="separator:a804fa30ab2255aca98e842171d74f51e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f38b80c3f19948f66cc99f03258ea46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bridge_8cpp.html#a3f38b80c3f19948f66cc99f03258ea46">getBridge</a> (const <a class="el" href="graph_8cpp.html#a3795d303c46be1bf9193267e07a1d441">Graph</a> &amp;g, <a class="el" href="graph_8cpp.html#a6395953c8c8a22b6fac32f7ebdac0211">Edges</a> &amp;bridge, vector&lt; vector&lt; int &gt; &gt; &amp;comp)</td></tr>
 <tr class="separator:a3f38b80c3f19948f66cc99f03258ea46"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,11 +117,11 @@ Functions</h2></td></tr>
 <div class="line">                 vector&lt;int&gt; &amp;num, vector&lt;bool&gt; &amp;open,</div>
 <div class="line">                 stack&lt;int&gt; &amp;oNodes, stack&lt;int&gt; &amp;oReps, <span class="keywordtype">int</span> &amp;cnt){</div>
 <div class="line">    <span class="keywordflow">if</span>(num[v] != 0){</div>
-<div class="line">        <span class="keywordflow">if</span>(open[v]) <span class="keywordflow">while</span>(num[oReps.top()] &gt; num[v]) oReps.pop();</div>
+<div class="line">        <span class="keywordflow">if</span>(open[v]) <span class="keywordflow">while</span>(num[oReps.top()] &gt; num[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>]) oReps.pop();</div>
 <div class="line">        <span class="keywordflow">return</span>;</div>
 <div class="line">    }</div>
-<div class="line">    num[v] = ++cnt;</div>
-<div class="line">    oReps.push(v); oNodes.push(v); open[v] = <span class="keyword">true</span>;</div>
+<div class="line">    num[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>] = ++cnt;</div>
+<div class="line">    oReps.push(v); oNodes.push(v); open[<a class="code" href="koj0093_8cpp.html#a9d75c9ca70fceb20bd3118cca57a7a0a">v</a>] = <span class="keyword">true</span>;</div>
 <div class="line">    <a class="code" href="template_8cpp.html#a0fd30dceea7c71a81d46b29ebc601ba5">EACH</a>(i, g[v]) <span class="keywordflow">if</span>(i-&gt;to != u)</div>
 <div class="line">        <a class="code" href="bridge_8cpp.html#a804fa30ab2255aca98e842171d74f51e">bridgeRecur</a>(g, i-&gt;to, i-&gt;from, bridge, comp, num, open, oNodes, oReps, cnt);</div>
 <div class="line">    <span class="keywordflow">if</span>(v == oReps.top()){</div>
@@ -266,7 +274,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 24 2018 14:16:35 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 25 2018 16:57:57 for blue_jam&#39;s programming contest library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

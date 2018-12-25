@@ -1,0 +1,5 @@
+<map id="InputStreamReader" name="InputStreamReader">
+<area shape="rect" id="node2" href="$classBufferedFileInputStreamReader.html" title="BufferedFileInputStreamReader" alt="" coords="5,80,211,107"/>
+<area shape="rect" id="node3" href="$classFileInputStreamReader.html" title="FileInputStreamReader" alt="" coords="235,80,391,107"/>
+<area shape="rect" id="node4" href="$classStringInputStreamReader.html" title="StringInputStreamReader" alt="" coords="415,80,584,107"/>
+</map>
