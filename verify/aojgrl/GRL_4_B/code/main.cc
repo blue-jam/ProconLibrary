@@ -1,5 +1,5 @@
 #include "misc/template.cpp"
-#include "graph/graph.cpp"
+#include "graph/graph.hpp"
 #include "graph/topologicalsort.cpp"
 
 int main(){

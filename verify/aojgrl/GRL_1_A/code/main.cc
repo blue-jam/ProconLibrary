@@ -1,5 +1,5 @@
 #include "misc/template.cpp"
-#include "graph/graph.cpp"
+#include "graph/graph.hpp"
 const int INF = 1000000010;
 #include "graph/dijkstra.cpp"
 
@@ -12,7 +12,7 @@ int main(){
 		cin >> s >> t >> d;
 		g[s].push_back(Edge(s,t,d));
 	}
-	vector<int> dist(V);
+	vector<ll> dist(V);
 	vector<int> prev(V);
 
 	dijkstra(g, r, dist, prev);

@@ -1,6 +1,6 @@
 #include "misc/template.cpp"
 #include "datastructure/unionfind.cpp"
-#include "graph/graph.cpp"
+#include "graph/graph.hpp"
 #include "graph/kruskal.cpp"
 
 int main(){

@@ -1,7 +1,7 @@
 #include "misc/template.cpp"
-#include "graph/graph.cpp"
+#include "graph/graph.hpp"
 const int INF = 1000000010;
-#include "graph/bellman.cpp"
+#include "graph/bellman.hpp"
 
 int main(){
 	int V, E, r;
@@ -12,7 +12,7 @@ int main(){
 		cin >> s >> t >> d;
 		g[s].push_back(Edge(s,t,d));
 	}
-	vector<int> dist(V);
+	vector<ll> dist(V);
 	vector<int> prev(V);
 
 	bool res = bellmanFord(g, r, dist, prev);
