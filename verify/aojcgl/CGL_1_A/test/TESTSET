@@ -8,13 +8,13 @@
 
 ## Input validators.
 #c_validator(src='validator.c')
-cxx_validator(src='validator.cc', dependency=['testlib.h'])
+#cxx_validator(src='validator.cc', dependency=['testlib.h'])
 #java_validator(src='Validator.java', encoding='UTF-8', mainclass='tmp/validator/Validator')
 #script_validator(src='validator.pl')
 
 ## Output judges.
 #c_judge(src='judge.c')
-cxx_judge(src='judge.cc', dependency=['testlib.h'], variant=testlib_judge_runner)
+#cxx_judge(src='judge.cc', dependency=['testlib.h'], variant=testlib_judge_runner)
 #java_judge(src='Judge.java', encoding='UTF-8', mainclass='Judge')
 #script_judge(src='judge.py')
 
