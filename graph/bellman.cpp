@@ -71,7 +71,7 @@ bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev)
  * @param g 最短路を求めたいグラフ
  * @return 負の閉路が含まれているか
  */
-bool findNegativeRoop(const Graph &g){
+bool findNegativeLoop(const Graph &g){
     int n = g.size();
     vector<Weight> dist(n, 0);
     for(int k = 0; k < n; ++k){
