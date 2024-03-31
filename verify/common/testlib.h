@@ -3685,7 +3685,7 @@ void shuffle(_RandomAccessIter __first, _RandomAccessIter __last)
 
 
 template<typename _RandomAccessIter>
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__clang__)
 __attribute__ ((error("Don't use random_shuffle(), use shuffle() instead")))
 #endif
 void random_shuffle(_RandomAccessIter , _RandomAccessIter )
@@ -3699,7 +3699,7 @@ void random_shuffle(_RandomAccessIter , _RandomAccessIter )
 #  define RAND_THROW_STATEMENT
 #endif
 
-#ifdef __GNUC__
+#if defined(__GNUC__) && !defined(__clang__)
 __attribute__ ((error("Don't use rand(), use rnd.next() instead")))
 #endif
 #ifdef _MSC_VER
@@ -3713,8 +3713,8 @@ int rand() RAND_THROW_STATEMENT
     //throw "Don't use rand(), use rnd.next() instead";
 }
 
-#ifdef __GNUC__
-__attribute__ ((error("Don't use srand(), you should use " 
+#if defined(__GNUC__) && !defined(__clang__)
+__attribute__ ((error("Don't use srand(), you should use "
         "'registerGen(argc, argv, 1);' to initialize generator seed "
         "by hash code of the command line params. The third parameter "
         "is randomGeneratorVersion (currently the latest is 1).")))
