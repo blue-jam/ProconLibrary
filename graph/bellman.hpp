@@ -19,7 +19,7 @@
  *
  * ### ソースコード
  *
- * @include bellman.cpp
+ * @include bellman.hpp
  *
  * ### 確認済み問題
  *
@@ -104,3 +104,38 @@ vector<int> buildPath(const vector<int> &prev, int t){
     reverse(path.begin(), path.end());
     return path;
 }
+
+template<typename T, T (*add)(T, T), bool (*lt)(T, T), T (*zero)(), T (*inf)()>
+struct bellman_ford {
+    graph<T> g;
+    vector<T> dist;
+    vector<ll> prev;
+    bool has_negative_loop;
+
+    explicit bellman_ford(graph<T> g) : g(g), dist(g.n, inf()), prev(g.n, -1), has_negative_loop(false) {}
+
+    bool run(int s) {
+        const T INF = inf();
+        const auto eq = [](T a, T b) { return !lt(a, b) && !lt(b, a); };
+
+        int n = g.n;
+        dist[s] = zero();
+
+        for (int k = 0; k < 2 * n; ++k) {
+            for (int v = 0; v < n; ++v) {
+                for (auto &e: g.edges[v]) {
+                    auto new_distance = add(dist[e.from], e.weight);
+                    if (!eq(dist[e.from], INF) && lt(new_distance, dist[e.to])) {
+                        dist[e.to] = new_distance;
+                        prev[e.to] = e.from;
+                        if (k >= n - 1) {
+                            dist[e.to] = -INF;
+                            has_negative_loop = true;
+                        }
+                    }
+                }
+            }
+        }
+        return has_negative_loop;
+    }
+};

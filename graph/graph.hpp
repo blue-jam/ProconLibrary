@@ -11,7 +11,7 @@
  *
  * ### ソースコード
  *
- * @include graph.cpp
+ * @include graph.hpp
  *
  * Edgeのless演算子のオーバーロードで，大きいほうが左辺のときにtrueを返すようにしている．
  * これはpriority_queueで，weightの小さいほうを先に取り出すときの工夫である．
@@ -21,7 +21,10 @@
  * priority_queue<Edge>, vector<Edge>, greater<Edge>> Q;
  * @endcode
  */
-typedef int Weight;
+
+#pragma once
+
+typedef ll Weight;
 struct Edge{
     int from, to;
     Weight weight;
@@ -49,3 +52,27 @@ void addUndirectedEdge(Graph &g, int a, int b, Weight c){
     g[a].push_back(Edge(a, b, c, g[b].size()));
     g[b].push_back(Edge(b, a, c, g[a].size() - 1));
 }
+
+template<typename T>
+struct edge {
+    ll from, to;
+    T weight;
+
+    edge() : from(-1), to(-1) {}
+
+    edge(ll from, ll to, T weight) :
+            from(from), to(to), weight(weight) {}
+};
+
+template<typename T>
+struct graph {
+    ll n;
+    vector<vector<edge<T>>> edges;
+
+    explicit graph(ll n) : n(n), edges(n) {}
+
+    void add(ll from, ll to, T weight) {
+        edges[from].emplace_back(from, to, weight);
+    }
+};
+
