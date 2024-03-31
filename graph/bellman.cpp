@@ -48,12 +48,16 @@ bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev)
     bool negativeLoop = false;
     dist.assign(n, INF); dist[s] = 0;
     prev.assign(n, -1);
-    for(int k = 0; k < n; ++k){
+    for(int k = 0; k < 2 * n; ++k){
         for(int v = 0; v < n; ++v){
             EACH(i, g[v]){
             //for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
                 if(dist[i -> from] != INF && dist[i -> to] > dist[i -> from] + i -> weight){
-                    dist[i -> to] = dist[i -> from] + i-> weight;
+                    if (dist[i -> from] == -INF) {
+                        dist[i -> to] = -INF;
+                    } else {
+                        dist[i -> to] = dist[i -> from] + i-> weight;
+                    }
                     prev[i -> to] = i -> from;
                     if(k == n - 1){
                         dist[i -> to] = -INF;
