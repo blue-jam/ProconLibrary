@@ -1,10 +1,6 @@
 #!/bin/bash
 
-if [ ! -e working ]; then
-    cp -r verify working
-fi
-
-cd working
+cd verify
 python3 download.py
 
 files=$(ls)
