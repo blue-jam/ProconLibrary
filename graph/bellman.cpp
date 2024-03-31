@@ -45,7 +45,7 @@
  */
 bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev){
     int n = g.size();
-    bool nagativeRoop = false;
+    bool negativeLoop = false;
     dist.assign(n, INF); dist[s] = 0;
     prev.assign(n, -1);
     for(int k = 0; k < n; ++k){
@@ -57,13 +57,13 @@ bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev)
                     prev[i -> to] = i -> from;
                     if(k == n - 1){
                         dist[i -> to] = -INF;
-                        nagativeRoop = true;
+                        negativeLoop = true;
                     }
                 }
             }
         }
     }
-    return nagativeRoop;
+    return negativeLoop;
 }
 /**
  * Graphの全域において負の閉路があるか検出する．
