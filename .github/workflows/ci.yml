@@ -1,0 +1,13 @@
+name: ci
+run-name: CI
+on:
+  - push
+jobs:
+  verify-libs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - run: pip3 install setuptools online-judge-tools rime
