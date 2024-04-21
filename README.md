@@ -1,6 +1,6 @@
 # プロコンのライブラリ
 
-[![Build Status](https://travis-ci.org/blue-jam/ProconLibrary.svg?branch=master)](https://travis-ci.org/blue-jam/ProconLibrary)
+[![ci](https://github.com/blue-jam/ProconLibrary/actions/workflows/ci.yml/badge.svg)](https://github.com/blue-jam/ProconLibrary/actions/workflows/ci.yml)
 
 動作は保証しない．
 いろいろな人のライブラリを参考にしてできています．

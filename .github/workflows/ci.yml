@@ -11,3 +11,4 @@ jobs:
         with:
           python-version: 3.11
       - run: pip3 install setuptools online-judge-tools rime
+      - run: ./verify.sh
