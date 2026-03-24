@@ -52,10 +52,13 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Generate docs
         run: oj-verify docs
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: .verify-helper/markdown/
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
-        with:
-          path: .verify-helper/markdown/
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
