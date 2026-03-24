@@ -42,9 +42,9 @@ int main() {
         vector<P> ps;
         Graph<double> graph = segmentArrangement(road, ps);
         int si = -1, gi = -1;
-        for (int i = 0; i < (int)ps.size(); ++i)
+        for (int i = 0; i < ps.size(); ++i)
             if (abs(ps[i] - s) < eps) si = i;
-        for (int i = 0; i < (int)ps.size(); ++i)
+        for (int i = 0; i < ps.size(); ++i)
             if (abs(ps[i] - g) < eps) gi = i;
 
         for (const auto& sign : signs) {

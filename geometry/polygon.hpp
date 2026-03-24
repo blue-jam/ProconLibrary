@@ -5,12 +5,12 @@
 // 依存: geometry
 double area(Polygon& p) {
     double a = 0;
-    for (int i = 0; i < (int)p.size(); ++i)
+    for (int i = 0; i < p.size(); ++i)
         a += cross(curr(p, i), next(p, i));
     return a / 2.0;
 }
 bool convex(Polygon& p) {
-    for (int i = 0; i < (int)p.size(); ++i) {
+    for (int i = 0; i < p.size(); ++i) {
         if (ccw(curr(p, i), next(p, i), next(p, i + 1)) == -1)
             return false;
     }
@@ -21,7 +21,7 @@ enum { OUT,
        IN };
 int contains(const Polygon& p, const P& q) {
     bool in = false;
-    for (int i = 0; i < (int)p.size(); ++i) {
+    for (int i = 0; i < p.size(); ++i) {
         P a = curr(p, i) - q, b = next(p, i) - q;
         if (imag(a) > imag(b)) swap(a, b);
         if (sgn(imag(a)) <= 0 && sgn(imag(b)) > 0)
