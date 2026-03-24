@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A"
+#include "graph/kruskal.hpp"
 #include "datastructure/unionfind.hpp"
 #include "graph/graph.hpp"
-#include "graph/kruskal.hpp"
 #include "misc/template.hpp"
 
 int main() {

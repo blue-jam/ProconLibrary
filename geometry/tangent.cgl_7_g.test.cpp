@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_7_G"
 #define ERROR 1e-8
-#include "geometry/geometry.hpp"
 #include "geometry/tangent.hpp"
+#include "geometry/geometry.hpp"
 #include "misc/template.hpp"
 
 int main() {
