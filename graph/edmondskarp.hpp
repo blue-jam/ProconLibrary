@@ -13,9 +13,6 @@
  *
  *   * O(V E^2)
  *
- * ### ソースコード
- *
- * @include edmondskarp.hpp
  *
  * ### 確認済み問題
  *

@@ -50,9 +50,6 @@
  * conj(a) * b = (real(a) - i imag(a)) * (real(b) - i imag(b)) = (real(a) *
  * real(b) + imag(a) * imag(b)) + i (real(a) * imag(b) - imag(a) * real(b)) となる．
  *
- * ### ソースコード
- *
- * @include geometry.hpp
  *
  * ### 参考
  *

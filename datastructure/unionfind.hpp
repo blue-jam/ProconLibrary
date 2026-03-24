@@ -12,9 +12,6 @@
  *   <dt>併合，検索</dt><dd>@f$O(\alpha(n))@f$</dd>
  * </dl>
  *
- * ### ソースコード
- *
- * @include unionfind.hpp
  *
  * ### 確認済み問題
  * - POJ 1182

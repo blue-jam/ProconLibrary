@@ -14,9 +14,6 @@
  *
  *   * O(V^2 + VE log V)
  *
- * ### ソースコード
- *
- * @include maordering.hpp
  *
  * ### 確認済み問題
  *
