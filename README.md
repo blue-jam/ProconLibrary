@@ -1,6 +1,6 @@
 # プロコンのライブラリ
 
-[![ci](https://github.com/blue-jam/ProconLibrary/actions/workflows/ci.yml/badge.svg)](https://github.com/blue-jam/ProconLibrary/actions/workflows/ci.yml)
+[![verify](https://github.com/blue-jam/ProconLibrary/actions/workflows/verify.yml/badge.svg)](https://github.com/blue-jam/ProconLibrary/actions/workflows/verify.yml)
 
 動作は保証しない．
 いろいろな人のライブラリを参考にしてできています．
