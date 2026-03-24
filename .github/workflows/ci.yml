@@ -25,6 +25,14 @@ jobs:
             verify-helper-
       - name: Run verification
         run: oj-verify run
+      - name: Upload verification results
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: verify-results
+          path: |
+            .verify-helper/cache
+            .verify-helper/timestamps.local.json
 
   deploy-docs:
     runs-on: ubuntu-latest
@@ -48,6 +56,10 @@ jobs:
           wget -q https://github.com/atcoder/ac-library/archive/refs/tags/v1.6.zip -O /tmp/acl.zip
           unzip -q /tmp/acl.zip -d /tmp/
           sudo cp -r /tmp/ac-library-1.6/atcoder /usr/local/include/
+      - name: Download verification results
+        uses: actions/download-artifact@v4
+        with:
+          name: verify-results
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Generate docs
