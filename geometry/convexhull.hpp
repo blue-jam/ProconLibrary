@@ -1,3 +1,6 @@
+#pragma once
+#include "geometry/geometry.hpp"
+
 /*
 	strict=1だと，辺上の点を出力しない
 				strict	not strict

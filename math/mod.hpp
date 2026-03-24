@@ -1,3 +1,5 @@
+#pragma once
+
 // O(n)での逆元配列計算
 vector<ll> calcinvs(ll n, ll mod){
 	vector<ll> inv(n);

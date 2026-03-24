@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_2_B"
-#include "misc/template.cpp"
-#include "geometry/geometry.cpp"
-#include "geometry/crosspoint.cpp"
+#include "misc/template.hpp"
+#include "geometry/geometry.hpp"
+#include "geometry/crosspoint.hpp"
 
 int main(){
     int q; cin >> q;

@@ -1,6 +1,6 @@
 // DISCO プレゼンツディスカバリーチャンネル プログラミングコンテスト予選 C問題
 // http://discovery2016-qual.contest.atcoder.jp/tasks/discovery_2016_qual_c
-#include "../../string/suffixarray.cpp"
+#include "../../string/suffixarray.hpp"
 
 int main(){
 	string S;

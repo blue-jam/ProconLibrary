@@ -1,3 +1,7 @@
+#pragma once
+#include "geometry/geometry.hpp"
+#include "geometry/crosspoint.hpp"
+
 /**
  * @file
  *
@@ -13,7 +17,7 @@
  *
  * ### ソースコード
  *
- * @include convexcut.cpp
+ * @include convexcut.hpp
  *
  * ### 確認済み問題
  *

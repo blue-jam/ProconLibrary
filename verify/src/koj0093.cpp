@@ -1,4 +1,4 @@
-#include "../../datastructure/lazysegtree.cpp"
+#include "../../datastructure/lazysegtree.hpp"
 
 int N, Q;
 vector<int> v;

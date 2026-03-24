@@ -39,10 +39,10 @@ void addUndirectedEdge(Graph &g, int a, int b, Weight c){
     g[b].push_back(Edge(b, a, c, g[a].size() - 1));
 }
 
-#include "geometry/geometry.cpp"
-#include "geometry/crosspoint.cpp"
-#include "geometry/polygon.cpp"
-#include "geometry/arrangement.cpp"
+#include "geometry/geometry.hpp"
+#include "geometry/crosspoint.hpp"
+#include "geometry/polygon.hpp"
+#include "geometry/arrangement.hpp"
 
 int main(){
     int N;

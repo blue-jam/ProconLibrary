@@ -1,5 +1,5 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 const int INF = 1000000010;
 #include "graph/bellman.hpp"

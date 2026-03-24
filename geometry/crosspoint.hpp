@@ -1,3 +1,6 @@
+#pragma once
+#include "geometry/geometry.hpp"
+
 /**
  * @file
  * ## 直線，線分の交差判定，交点計算
@@ -13,7 +16,7 @@
  *
  * ### ソースコード
  *
- * @include crosspoint.cpp
+ * @include crosspoint.hpp
  *
  * ### 確認済み問題
  *

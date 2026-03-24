@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C"
-#include "misc/template.cpp"
-#include "geometry/geometry.cpp"
-#include "geometry/polygon.cpp"
+#include "misc/template.hpp"
+#include "geometry/geometry.hpp"
+#include "geometry/polygon.hpp"
 
 int main(){
     int n; cin >> n;

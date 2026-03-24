@@ -1,9 +1,11 @@
+#pragma once
+
 /**
  * @file
  *
  * ### ソースコード
  *
- * @include eratosthenes.cpp
+ * @include eratosthenes.hpp
  */
 /**
  * [0, n)の範囲の素数をエラトステネスの篩で列挙する．

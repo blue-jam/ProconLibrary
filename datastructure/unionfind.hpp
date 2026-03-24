@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Union-Find木の実装.
  *
@@ -11,7 +13,7 @@
  *
  * ### ソースコード
  *
- * @include unionfind.cpp
+ * @include unionfind.hpp
  *
  * ### 確認済み問題
  * - POJ 1182

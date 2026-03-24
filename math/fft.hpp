@@ -1,3 +1,5 @@
+#pragma once
+
 typedef complex<double> P;
 const double PI = atan(1) * 4;
 

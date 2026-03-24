@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * @file
  *
@@ -14,7 +16,7 @@
  *
  * ### ソースコード
  *
- * @include aho.cpp
+ * @include aho.hpp
  *
  * ### 確認済み問題
  *

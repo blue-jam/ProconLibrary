@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_B"
-#include "misc/template.cpp"
-#include "datastructure/fenwick.cpp"
+#include "misc/template.hpp"
+#include "datastructure/fenwick.hpp"
 
 int main(){
 	int n,q;

@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_5_A"
 #define ERROR 1e-6
-#include "misc/template.cpp"
-#include "geometry/geometry.cpp"
-#include "geometry/closestpair.cpp"
+#include "misc/template.hpp"
+#include "geometry/geometry.hpp"
+#include "geometry/closestpair.hpp"
 
 int main(){
     int n; cin >> n;

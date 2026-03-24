@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  *
@@ -10,7 +13,7 @@
  *
  * ### ソースコード
  *
- * @include dijkstra.cpp
+ * @include dijkstra.hpp
  *
  * ### 確認済み問題
  *

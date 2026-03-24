@@ -1,3 +1,6 @@
+#pragma once
+#include "geometry/geometry.hpp"
+
 // 依存: geometry
 double area(Polygon &p){
     double a = 0;

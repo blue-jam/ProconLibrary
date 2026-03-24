@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 const int INF = 1000000010;
-#include "graph/dijkstra.cpp"
+#include "graph/dijkstra.hpp"
 
 int main(){
 	int V, E, r;

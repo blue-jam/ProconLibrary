@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_4_B"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
-#include "graph/topologicalsort.cpp"
+#include "graph/topologicalsort.hpp"
 
 int main(){
 	int V, E;

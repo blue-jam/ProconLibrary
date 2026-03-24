@@ -1,3 +1,5 @@
+#pragma once
+
 struct SuffixArray{
 	int n;
 	string S;

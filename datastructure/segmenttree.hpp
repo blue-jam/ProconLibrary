@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Range Minimum Queryを解くSegment Tree.
  *
@@ -12,7 +14,7 @@
  *
  * ### ソースコード
  *
- * @include segmenttree.cpp
+ * @include segmenttree.hpp
  *
  * ### 確認済み問題
  * - POJ 3264

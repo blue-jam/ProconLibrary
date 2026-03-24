@@ -1,3 +1,6 @@
+#pragma once
+#include "geometry/geometry.hpp"
+
 // 依存: geometry
 double closestPairRecur(vector<P> &v, int l, int r, P &a, P &b){
     if(r - l < 2) return numeric_limits<double>::max();

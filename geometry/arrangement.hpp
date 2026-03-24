@@ -1,4 +1,8 @@
-// graph.cppとcrosspoint.cppが必要
+#pragma once
+#include "geometry/geometry.hpp"
+#include "geometry/crosspoint.hpp"
+
+// graph.hppが必要（呼び出し元でincludeすること）
 bool merge_if_able(Segment &s, Segment t){
     if(!parallel(s,t)) return false;
 	bool f = true;

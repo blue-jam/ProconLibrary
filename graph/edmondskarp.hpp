@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  *
@@ -11,7 +14,7 @@
  *
  * ### ソースコード
  *
- * @include edmondskarp.cpp
+ * @include edmondskarp.hpp
  *
  * ### 確認済み問題
  *

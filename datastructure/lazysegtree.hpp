@@ -1,3 +1,5 @@
+#pragma once
+
 // 遅延評価SegmentTree
 // get(a,b)		: [a,b)の最小値
 // get(a,b,p)	: 上記+最小値の場所（leftmost）[verifyしてない]

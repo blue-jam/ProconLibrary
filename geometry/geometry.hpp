@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * @file
  * ## 平面幾何の要素
@@ -49,7 +51,7 @@
  *
  * ### ソースコード
  *
- * @include geometry.cpp
+ * @include geometry.hpp
  *
  * ### 参考
  *

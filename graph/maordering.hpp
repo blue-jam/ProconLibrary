@@ -1,3 +1,7 @@
+#pragma once
+#include "graph/graph.hpp"
+#include "datastructure/unionfind.hpp"
+
 /**
  * @file
  *
@@ -11,7 +15,7 @@
  *
  * ### ソースコード
  *
- * @include maordering.cpp
+ * @include maordering.hpp
  *
  * ### 確認済み問題
  *

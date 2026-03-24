@@ -1,3 +1,6 @@
+#pragma once
+#include "misc/template.hpp"
+
 /**
  * Link-Cut Tree.
  *
@@ -6,7 +9,7 @@
  *
  * ### ソースコード
  *
- * @include linkcut.cpp
+ * @include linkcut.hpp
  *
  * ### 確認済み問題
  *

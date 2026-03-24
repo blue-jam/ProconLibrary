@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  * ## 単一始点最短路問題(Bellman-Ford)

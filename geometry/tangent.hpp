@@ -1,3 +1,6 @@
+#pragma once
+#include "geometry/geometry.hpp"
+
 // 内接線．aからbへ向かうとき，aの左からbの右に抜けるのが先．
 // aとbが接するときは，2点目に適当な点を取る
 vector<Line> innertangent(const Circle &a, const Circle &b){

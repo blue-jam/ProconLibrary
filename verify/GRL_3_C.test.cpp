@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_C"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
-#include "graph/scc.cpp"
+#include "graph/scc.hpp"
 
 int main(){
 	int V,E;

@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  * ## 関節点，二連結成分分解
@@ -14,7 +17,7 @@
  *
  * ### ソースコード
  *
- * @include articulation.cpp
+ * @include articulation.hpp
  *
  * ### 確認済み問題
  *

@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  * ## 最大流(Ford-Fulkerson)
@@ -13,7 +16,7 @@
  *
  * ### ソースコード
  *
- * @include fordfulkerson.cpp
+ * @include fordfulkerson.hpp
  *
  * ### 確認済み問題
  *

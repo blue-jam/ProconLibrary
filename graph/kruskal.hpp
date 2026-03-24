@@ -1,3 +1,7 @@
+#pragma once
+#include "graph/graph.hpp"
+#include "datastructure/unionfind.hpp"
+
 /**
  * @file
  * ## 最小全域森(Kruskal)
@@ -13,7 +17,7 @@
  *
  * ### ソースコード
  *
- * @include kruskal.cpp
+ * @include kruskal.hpp
  *
  * ### 確認済み問題
  *

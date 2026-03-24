@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * Binary Indexed Tree(Fenwick Tree).
  * Segment Treeが任意の範囲に対する操作ができるのに対して，BITは始点からある点までの範囲に対する操作しか行えない．
@@ -12,7 +14,7 @@
  *
  * ### ソースコード
  *
- * @include fenwick.cpp
+ * @include fenwick.hpp
  *
  * ### 確認済み問題
  * - AOJ 2326(Number Sorting)

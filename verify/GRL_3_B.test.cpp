@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
-#include "graph/bridge.cpp"
+#include "graph/bridge.hpp"
 
 bool func(const Edge &a, const Edge &b){
 	if(a.from != b.from) return a.from < b.from;

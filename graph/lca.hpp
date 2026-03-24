@@ -1,3 +1,5 @@
+#pragma once
+
 /**
  * @file
  *
@@ -20,7 +22,7 @@
  *
  * ### ソースコード
  *
- * @include lca.cpp
+ * @include lca.hpp
  *
  * ### 確認済み問題
  *

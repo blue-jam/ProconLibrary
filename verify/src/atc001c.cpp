@@ -1,4 +1,4 @@
-#include "../../math/fft.cpp"
+#include "../../math/fft.hpp"
 
 int main(){
 	int N;

@@ -1,5 +1,5 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1279"
-#include "misc/template.cpp"
+#include "misc/template.hpp"
 
 const double INF = 1e+10;
 typedef double Weight;
@@ -57,10 +57,10 @@ vector<int> buildPath(const vector<int> &prev, int t){
     reverse(path.begin(), path.end());
     return path;
 }
-#include "geometry/geometry.cpp"
-#include "geometry/crosspoint.cpp"
-#include "geometry/polygon.cpp"
-#include "geometry/arrangement.cpp"
+#include "geometry/geometry.hpp"
+#include "geometry/crosspoint.hpp"
+#include "geometry/polygon.hpp"
+#include "geometry/arrangement.hpp"
 
 int main(){
     for(;;){

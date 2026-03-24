@@ -1,3 +1,6 @@
+#pragma once
+#include "graph/graph.hpp"
+
 /**
  * @file
  * ## 最大流(Dinitz)
@@ -12,7 +15,7 @@
  *
  * ### ソースコード
  *
- * @include dinitz.cpp
+ * @include dinitz.hpp
  *
  * ### 確認済み問題
  *

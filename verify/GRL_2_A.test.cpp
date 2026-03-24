@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_2_A"
-#include "misc/template.cpp"
-#include "datastructure/unionfind.cpp"
+#include "misc/template.hpp"
+#include "datastructure/unionfind.hpp"
 #include "graph/graph.hpp"
-#include "graph/kruskal.cpp"
+#include "graph/kruskal.hpp"
 
 int main(){
 	int V,E;

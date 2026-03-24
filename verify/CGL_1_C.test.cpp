@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_1_C"
-#include "misc/template.cpp"
-#include "geometry/geometry.cpp"
+#include "misc/template.hpp"
+#include "geometry/geometry.hpp"
 
 int main(){
     int x1, x2, y1, y2, q;
