@@ -3,12 +3,12 @@
 
 const double INF = 1e+10;
 
-#include "graph/graph.hpp"
-#include "graph/dijkstra.hpp"
-#include "geometry/geometry.hpp"
-#include "geometry/crosspoint.hpp"
-#include "geometry/polygon.hpp"
 #include "geometry/arrangement.hpp"
+#include "geometry/crosspoint.hpp"
+#include "geometry/geometry.hpp"
+#include "geometry/polygon.hpp"
+#include "graph/dijkstra.hpp"
+#include "graph/graph.hpp"
 
 int main() {
     for (;;) {
@@ -50,18 +50,18 @@ int main() {
         for (const auto& sign : signs) {
             Segment ss = sign;
             for (auto& edges : graph)
-            for (auto& edge : edges) {
-                int a = edge.from, b = edge.to;
-                double d = 1;
-                if (ccw(ps[a], ps[b], ss[0]) == 0) {
-                    d = dot(ss[0] - ss[1], ps[b] - ps[a]);
-                } else if (ccw(ps[a], ps[b], ss[1]) == 0) {
-                    d = dot(ss[1] - ss[0], ps[b] - ps[a]);
+                for (auto& edge : edges) {
+                    int a = edge.from, b = edge.to;
+                    double d = 1;
+                    if (ccw(ps[a], ps[b], ss[0]) == 0) {
+                        d = dot(ss[0] - ss[1], ps[b] - ps[a]);
+                    } else if (ccw(ps[a], ps[b], ss[1]) == 0) {
+                        d = dot(ss[1] - ss[0], ps[b] - ps[a]);
+                    }
+                    if (d < eps) {
+                        edge.weight = INF;
+                    }
                 }
-                if (d < eps) {
-                    edge.weight = INF;
-                }
-            }
         }
 
         vector<int> prev(ps.size(), -1);

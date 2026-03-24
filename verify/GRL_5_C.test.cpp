@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C"
-#include "misc/template.hpp"
 #include "graph/lca.hpp"
+#include "misc/template.hpp"
 
 int main() {
     int n;

@@ -1,15 +1,15 @@
 #pragma once
-#include "misc/template.hpp"
-#include "geometry/geometry.hpp"
 #include "geometry/crosspoint.hpp"
+#include "geometry/geometry.hpp"
 #include "geometry/polygon.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 bool merge_if_able(Segment& s, Segment t) {
     if (!parallel(s, t)) return false;
     bool f = true;
     for (const auto& si : s)
-    for (const auto& tj : t)
-    f = f && !near(si, tj);
+        for (const auto& tj : t)
+            f = f && !near(si, tj);
     if (f) {
         if (abs(ccw(s[0], t[0], s[1])) == 1) return false;
         if (ccw(s[0], s[1], t[0]) == -2 || ccw(t[0], t[1], s[0]) == -2) return false;
@@ -74,9 +74,9 @@ bool walkCW(const Graph<double>& g, int v, int u, vector<int>& lst, const vector
     P e = (ps[v] - ps[u]) / abs(ps[v] - ps[u]);
     P n = e * P(0, 1);
     for (const auto& adj : g[v])
-    if (adj.to != u && !used[v][adj.to]) {
-        es.push_back(make_pair(atan2(dot(n, ps[adj.to] - ps[v]), dot(e, ps[adj.to] - ps[v])), adj.to));
-    }
+        if (adj.to != u && !used[v][adj.to]) {
+            es.push_back(make_pair(atan2(dot(n, ps[adj.to] - ps[v]), dot(e, ps[adj.to] - ps[v])), adj.to));
+        }
     sort(ALL(es));
     reverse(ALL(es));
     lst.push_back(v);
@@ -97,11 +97,12 @@ vector<vector<int>> getPolygon(const Graph<double>& g, const vector<P>& ps) {
     vector<vector<int>> used(n, vector<int>(n));
 
     res.clear();
-    for (int i = 0; i < n; ++i) for (const auto& edge : g[i])
-    if (!used[i][edge.to]) {
-        vector<int> v;
-        walkCW(g, edge.to, i, v, ps, used, res);
-        used[i][edge.to] = true;
-    }
+    for (int i = 0; i < n; ++i)
+        for (const auto& edge : g[i])
+            if (!used[i][edge.to]) {
+                vector<int> v;
+                walkCW(g, edge.to, i, v, ps, used, res);
+                used[i][edge.to] = true;
+            }
     return res;
 }

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_4_A"
-#include "misc/template.hpp"
-#include "geometry/geometry.hpp"
 #include "geometry/convexhull.hpp"
+#include "geometry/geometry.hpp"
+#include "misc/template.hpp"
 
 int main() {
     int n;

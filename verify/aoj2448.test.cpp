@@ -3,11 +3,11 @@
 #define EPS 1e-4
 #include "misc/template.hpp"
 
-#include "graph/graph.hpp"
-#include "geometry/geometry.hpp"
-#include "geometry/crosspoint.hpp"
-#include "geometry/polygon.hpp"
 #include "geometry/arrangement.hpp"
+#include "geometry/crosspoint.hpp"
+#include "geometry/geometry.hpp"
+#include "geometry/polygon.hpp"
+#include "graph/graph.hpp"
 
 int main() {
     int N;
@@ -28,13 +28,13 @@ int main() {
     for (const auto& pol : pols) {
         Polygon p;
         for (const auto& idx : pol)
-        p.push_back(ps[idx]);
+            p.push_back(ps[idx]);
         res.push_back(area(p));
     }
     double sum = 0;
     sort(ALL(res));
     for (const auto& r : res)
-    sum += r;
+        sum += r;
     cout << fixed << setprecision(5) << sum << endl;
     return 0;
 }

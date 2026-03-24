@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A"
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 const int INF = 1000000010;
 #include "graph/dijkstra.hpp"
 

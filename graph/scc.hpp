@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -37,7 +37,7 @@ void sccRecur(const Graph<W>& g, int v, vector<vector<int>>& comp,
     oNodes.push(v);
     open[v] = true;
     for (const auto& edge : g[v])
-    sccRecur(g, edge.to, comp, num, open, oNodes, oReps, cnt);
+        sccRecur(g, edge.to, comp, num, open, oNodes, oReps, cnt);
     if (v == oReps.top()) {
         int w;
         oReps.pop();

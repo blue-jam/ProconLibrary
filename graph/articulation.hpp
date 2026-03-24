@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -30,22 +30,22 @@ void artcRecur(const Graph<W>& g, int v, int u, vector<int>& artc,
     low[v] = d = ++cnt;
     S.push(v);
     for (const auto& edge : g[v])
-    if (edge.to != u) {
-        if (low[edge.to] == 0) {
-            artcRecur(g, edge.to, v, artc, comp, low, open, S, cnt);
-            ++c;
-            if (low[edge.to] >= low[v]) {
-                isArtc = true;
-                comp.push_back(vector<int>());
-                while (S.top() != v) {
-                    comp.back().push_back(S.top());
-                    S.pop();
+        if (edge.to != u) {
+            if (low[edge.to] == 0) {
+                artcRecur(g, edge.to, v, artc, comp, low, open, S, cnt);
+                ++c;
+                if (low[edge.to] >= low[v]) {
+                    isArtc = true;
+                    comp.push_back(vector<int>());
+                    while (S.top() != v) {
+                        comp.back().push_back(S.top());
+                        S.pop();
+                    }
+                    comp.back().push_back(v);
                 }
-                comp.back().push_back(v);
             }
+            d = min(d, low[edge.to]);
         }
-        d = min(d, low[edge.to]);
-    }
     low[v] = d;
     if ((u >= 0 && isArtc) || (u < 0 && c > 1)) artc.push_back(v);
     if (u < 0) S.pop();

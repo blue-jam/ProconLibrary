@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "geometry/geometry.hpp"
+#include "misc/template.hpp"
 
 // 依存: geometry
 double closestPairRecur(vector<P>& v, int l, int r, P& a, P& b) {

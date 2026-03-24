@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2402"
 #define ERROR 1e-6
-#include "misc/template.hpp"
-#include "geometry/geometry.hpp"
 #include "geometry/crosspoint.hpp"
+#include "geometry/geometry.hpp"
+#include "misc/template.hpp"
 
 typedef double Weight;
 const Weight INF = 1e+10;

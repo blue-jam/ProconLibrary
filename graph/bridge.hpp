@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -37,8 +37,8 @@ void bridgeRecur(const Graph<W>& g, int v, int u,
     oNodes.push(v);
     open[v] = true;
     for (const auto& edge : g[v])
-    if (edge.to != u)
-        bridgeRecur(g, edge.to, edge.from, bridge, comp, num, open, oNodes, oReps, cnt);
+        if (edge.to != u)
+            bridgeRecur(g, edge.to, edge.from, bridge, comp, num, open, oNodes, oReps, cnt);
     if (v == oReps.top()) {
         int w;
         oReps.pop();

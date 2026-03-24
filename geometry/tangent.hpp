@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "geometry/geometry.hpp"
+#include "misc/template.hpp"
 
 // 内接線．aからbへ向かうとき，aの左からbの右に抜けるのが先．
 // aとbが接するときは，2点目に適当な点を取る
@@ -22,8 +22,9 @@ vector<Line> outertangent(const Circle& a, const Circle& b) {
     if (sgn(a.r, b.r) > 0) {
         auto l = outertangent(b, a);
         reverse(ALL(l));
-        if (l.size() != 1) for (auto& li : l)
-        reverse(ALL(li));
+        if (l.size() != 1)
+            for (auto& li : l)
+                reverse(ALL(li));
         return l;
     }
     double d = abs(b.o - a.o), t = -b.r * d / (b.r - a.r);

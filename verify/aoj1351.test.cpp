@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1351"
-#include "misc/template.hpp"
 #include "datastructure/lazysegtree.hpp"
+#include "misc/template.hpp"
 
 int N, Q;
 string s;

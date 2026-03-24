@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "geometry/geometry.hpp"
+#include "misc/template.hpp"
 
 // 依存: geometry
 double area(Polygon& p) {

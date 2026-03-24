@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -55,10 +55,10 @@ W dinitz(Graph<W>& g, int s, int t) {
             int v = Q.front();
             Q.pop();
             for (const auto& edge : g[v])
-            if (edge.weight > 0 && l[edge.to] < 0) {
-                l[edge.to] = l[v] + 1;
-                Q.push(edge.to);
-            }
+                if (edge.weight > 0 && l[edge.to] < 0) {
+                    l[edge.to] = l[v] + 1;
+                    Q.push(edge.to);
+                }
         }
         if (l[t] < 0) return flow;
         W f;

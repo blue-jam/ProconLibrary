@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -33,11 +33,11 @@ W edmonds_karp(Graph<W>& g, int s, int t) {
             int v = Q.front();
             Q.pop();
             for (int idx = 0; idx < (int)g[v].size(); ++idx)
-            if (g[v][idx].weight > 0 && prev[g[v][idx].to] < 0) {
-                prev[g[v][idx].to] = v;
-                edge[g[v][idx].to] = idx;
-                Q.push(g[v][idx].to);
-            }
+                if (g[v][idx].weight > 0 && prev[g[v][idx].to] < 0) {
+                    prev[g[v][idx].to] = v;
+                    edge[g[v][idx].to] = idx;
+                    Q.push(g[v][idx].to);
+                }
         }
         if (prev[t] < 0) return flow;
         W f = INF;
