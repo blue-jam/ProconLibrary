@@ -23,7 +23,7 @@ pip3 install setuptools online-judge-tools rime
 ```bash
 cmake -B build && cmake --build build
 ```
-C++標準はC++14。
+C++標準はC++23。
 
 ## アーキテクチャ
 

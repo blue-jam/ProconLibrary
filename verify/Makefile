@@ -10,7 +10,7 @@ all:	$(dsts)
 %.cpp:	src/%.cpp $(template)
 	cat $(template) > $@
 	g++ -E src/$@ >> $@
-	g++ -std=c++11 -fsyntax-only $@
+	g++ -std=c++23 -fsyntax-only $@
 
 .PHONY:	clean
 clean:
