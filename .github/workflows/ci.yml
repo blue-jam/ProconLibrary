@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Configure CMake
-        run: cmake -S . -B build
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11
@@ -37,6 +35,8 @@ jobs:
           key: verify-helper-${{ github.sha }}
           restore-keys: |
             verify-helper-
+      - name: Configure CMake
+        run: cmake -S . -B build
       - name: Run verification
         run: cmake --build build --target verify-all
       - name: Upload docs artifact
