@@ -8,7 +8,7 @@ int main() {
     int V, E;
     cin >> V >> E;
     Edges<ll> es;
-    for(int i = 0; i < E; ++i) {
+    for (int i = 0; i < E; ++i) {
         int s, t, w;
         cin >> s >> t >> w;
         es.push_back(Edge<ll>(s, t, w));

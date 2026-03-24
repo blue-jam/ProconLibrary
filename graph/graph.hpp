@@ -32,8 +32,8 @@ struct Edge {
     Edge(int from, int to, W weight) : from(from), to(to), weight(weight) {}
     Edge(int from, int to, W weight, int rev) : from(from), to(to), weight(weight), rev(rev) {}
     bool operator<(const Edge& b) const {
-        if(weight != b.weight) return weight > b.weight;
-        if(from != b.from) return from > b.from;
+        if (weight != b.weight) return weight > b.weight;
+        if (from != b.from) return from > b.from;
         return to > b.to;
     }
 };

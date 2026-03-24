@@ -71,7 +71,7 @@ struct static_top_tree {
      */
     void update(int v) {
         int ni = v_to_node[v];
-        while(ni != -1) {
+        while (ni != -1) {
             do_update(ni);
             ni = nodes[ni].parent;
         }
@@ -86,9 +86,9 @@ private:
      */
     int hl_dfs(int v, int previous) {
         int size = 1, max_c_size = 0; // 部分木のサイズ、最大の部分木のサイズ
-        for(size_t i = 0; i < g[v].size(); i++) {
+        for (size_t i = 0; i < g[v].size(); i++) {
             int u = g[v][i];
-            if(g[v][i] == previous) {
+            if (g[v][i] == previous) {
                 // 親の頂点への枝を削除
                 swap(g[v][i], g[v].back());
                 g[v].pop_back();
@@ -97,7 +97,7 @@ private:
             }
             int c_size = hl_dfs(u, v);
             size += c_size;
-            if(c_size > max_c_size) {
+            if (c_size > max_c_size) {
                 // 最大の部分木を最初に持ってくる
                 swap(g[v][i], g[v][0]);
                 max_c_size = c_size;
@@ -113,8 +113,8 @@ private:
     int add_node(Type type, int left, int right) {
         int id = nodes.size();
         nodes.emplace_back(type, id, left, right);
-        if(left != -1) nodes[left].parent = id;
-        if(right != -1) nodes[right].parent = id;
+        if (left != -1) nodes[left].parent = id;
+        if (right != -1) nodes[right].parent = id;
         return id;
     }
 
@@ -126,16 +126,16 @@ private:
      * aをtypeの操作で平衡二分木になるように分割する
      */
     Result merge(vector<Result>& a, Type type) {
-        if(a.size() == 1) {
+        if (a.size() == 1) {
             return a[0];
         }
         int size = 0;
-        for(const auto& r : a) {
+        for (const auto& r : a) {
             size += r.size;
         }
         vector<Result> b, c;
-        for(size_t i = 0; i < a.size(); i++) {
-            if(size > a[i].size) {
+        for (size_t i = 0; i < a.size(); i++) {
+            if (size > a[i].size) {
                 b.push_back(a[i]);
             } else {
                 c.push_back(a[i]);
@@ -152,7 +152,7 @@ private:
      */
     Result comp(int v) {
         vector<Result> children{do_add_v(v)};
-        while(!g[v].empty()) {
+        while (!g[v].empty()) {
             v = g[v][0];
             children.push_back(do_add_v(v));
         }
@@ -164,7 +164,7 @@ private:
      */
     Result do_rake(int v) {
         vector<Result> children;
-        for(size_t i = 1; i < g[v].size(); i++) { // compressで処理するため、heavy-edge(indexが0)は除外
+        for (size_t i = 1; i < g[v].size(); i++) { // compressで処理するため、heavy-edge(indexが0)は除外
             children.push_back(do_add_e(g[v][i]));
         }
         return merge(children, RAKE);
@@ -182,7 +182,7 @@ private:
      * Add Vertex操作を行う
      */
     Result do_add_v(int v) {
-        if(g[v].size() <= 1) {
+        if (g[v].size() <= 1) {
             // 葉またはheavy-edgeしかない場合は、Vertex操作を行う
             return do_vertex(v);
         }
@@ -207,15 +207,15 @@ private:
      * ノードnvのPath/Pointを更新する便利関数
      */
     void do_update(int nv) {
-        if(nodes[nv].type == COMPRESS) {
+        if (nodes[nv].type == COMPRESS) {
             paths[nv] = compress(paths[nodes[nv].left], paths[nodes[nv].right]);
-        } else if(nodes[nv].type == RAKE) {
+        } else if (nodes[nv].type == RAKE) {
             points[nv] = rake(points[nodes[nv].left], points[nodes[nv].right]);
-        } else if(nodes[nv].type == ADD_EDGE) {
+        } else if (nodes[nv].type == ADD_EDGE) {
             points[nv] = add_edge(paths[nodes[nv].left]);
-        } else if(nodes[nv].type == ADD_VERTEX) {
+        } else if (nodes[nv].type == ADD_VERTEX) {
             paths[nv] = add_vertex(points[nodes[nv].left], nodes[nv].v_index);
-        } else if(nodes[nv].type == VERTEX) {
+        } else if (nodes[nv].type == VERTEX) {
             paths[nv] = vertex(nodes[nv].v_index);
         }
     }
@@ -224,9 +224,9 @@ private:
      * 再帰的にPath/Pointを初期化する
      */
     void init_dfs(int ni) {
-        if(nodes[ni].left != -1)
+        if (nodes[ni].left != -1)
             init_dfs(nodes[ni].left);
-        if(nodes[ni].right != -1)
+        if (nodes[ni].right != -1)
             init_dfs(nodes[ni].right);
         do_update(ni);
     }

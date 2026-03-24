@@ -45,8 +45,8 @@ pair<W, Edges<W>> kruskal_e(Edges<W>& edges, int n) {
     UnionFind uf(n);
     W total = 0;
     Edges<W> F;
-    for(int i = 0; i < sz; ++i) {
-        if(uf.unite(edges[i].from, edges[i].to)) {
+    for (int i = 0; i < sz; ++i) {
+        if (uf.unite(edges[i].from, edges[i].to)) {
             total = total + edges[i].weight;
             F.push_back(edges[i]);
         }
@@ -63,6 +63,6 @@ template<typename W>
 pair<W, Edges<W>> kruskal_g(const Graph<W>& g) {
     int n = g.size();
     vector<Edge<W>> edges;
-    for(int i = 0; i < n; ++i) edges.insert(edges.end(), ALL(g[i]));
+    for (int i = 0; i < n; ++i) edges.insert(edges.end(), ALL(g[i]));
     return kruskal_e(edges, n);
 }

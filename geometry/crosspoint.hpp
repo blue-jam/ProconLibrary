@@ -37,14 +37,14 @@ bool intersectSS(const Segment& s, const Segment& t) {
 P crosspointSS(const Segment& s, const Segment& t) {
     double a = cross(s[1] - s[0], t[1] - t[0]);
     double b = cross(s[1] - s[0], s[1] - t[0]);
-    if(!sgn(abs(a)) && !sgn(abs(b))) return s[0]; // same line
+    if (!sgn(abs(a)) && !sgn(abs(b))) return s[0]; // same line
     // if(abs(a) < eps) assert(false);
     return t[0] + b / a * (t[1] - t[0]);
 }
 P crosspointLL(const Line& s, const Line& t) {
     double a = cross(s[1] - s[0], t[1] - t[0]);
     double b = cross(s[1] - s[0], s[1] - t[0]);
-    if(!sgn(abs(a)) && !sgn(abs(b))) return s[0]; // same line
+    if (!sgn(abs(a)) && !sgn(abs(b))) return s[0]; // same line
     // if(abs(a) < eps) assert(false);
     return t[0] + b / a * (t[1] - t[0]);
 }
@@ -54,14 +54,14 @@ double distanceLP(const Line& s, const P& p) {
 }
 // 線分と点の距離
 double distanceSP(const Segment& s, const P& p) {
-    if(min(dot(s[1] - s[0], p - s[0]), dot(s[0] - s[1], p - s[1])) < 0)
+    if (min(dot(s[1] - s[0], p - s[0]), dot(s[0] - s[1], p - s[1])) < 0)
         return min(abs(p - s[0]), abs(p - s[1]));
     else
         return distanceLP(s, p);
 }
 // 線分と線分の距離
 double distanceSS(const Segment& s, const Segment& t) {
-    if(intersectSS(s, t)) return 0;
+    if (intersectSS(s, t)) return 0;
     return min(min(distanceSP(s, t[0]), distanceSP(s, t[1])),
                min(distanceSP(t, s[0]), distanceSP(t, s[1])));
 }
@@ -87,13 +87,13 @@ int intersectLC(const Line& l, const Circle& c) {
 vector<P> crosspointLC(const Line& l, const Circle& c) {
     int n = intersectLC(l, c);
     vector<P> res;
-    if(!n) return res;
+    if (!n) return res;
     P p = projection(l, c.o), e = 1.0 / abs(l[1] - l[0]) * (l[1] - l[0]);
-    if(n == 1) {
+    if (n == 1) {
         res.push_back(p);
         return res;
     }
-    if(sgn(abs(p - c.o)))
+    if (sgn(abs(p - c.o)))
         e = (p - c.o) * P(0, 1 / abs(p - c.o));
     double d = sqrt(c.r * c.r - norm(p - c.o));
     res.push_back(p + e * d);

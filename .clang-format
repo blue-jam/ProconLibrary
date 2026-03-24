@@ -8,7 +8,7 @@ UseTab: Never
 BreakBeforeBraces: Attach
 
 # No space before parentheses in control statements: if(...), for(...)
-SpaceBeforeParens: Never
+SpaceBeforeParens: ControlStatements
 
 # No space inside parentheses
 SpacesInParentheses: false

@@ -42,9 +42,9 @@ struct Fenwick {
     void add(int i, T v) {
         int n = bit.size();
         ++i;
-        while(i < n) {
+        while (i < n) {
             bit[i] += v;
-            if(mod > eps) bit[i] %= mod;
+            if (mod > eps) bit[i] %= mod;
             i += i & -i;
         }
     }
@@ -56,9 +56,9 @@ struct Fenwick {
     T get(int i) {
         T res = 0;
         ++i;
-        while(i > 0) {
+        while (i > 0) {
             res += bit[i];
-            if(mod > eps) bit[i] %= mod;
+            if (mod > eps) bit[i] %= mod;
             i -= i & -i;
         }
         return res;

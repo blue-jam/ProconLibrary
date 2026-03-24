@@ -15,10 +15,10 @@ Polygon convex_hull(vector<P>& ps, int strict = 1) {
     int n = ps.size(), k = 0;
     sort(ALL(ps), lessX);
     Polygon qs(n * 2);
-    for(int i = 0; i < n; qs[k++] = ps[i++])
-        while(k > 1 && (ccw(qs[k - 2], qs[k - 1], ps[i]) & 7) > 6 - strict) --k;
-    for(int i = n - 2, t = k; i >= 0; qs[k++] = ps[i--])
-        while(k > t && (ccw(qs[k - 2], qs[k - 1], ps[i]) & 7) > 6 - strict) --k;
+    for (int i = 0; i < n; qs[k++] = ps[i++])
+        while (k > 1 && (ccw(qs[k - 2], qs[k - 1], ps[i]) & 7) > 6 - strict) --k;
+    for (int i = n - 2, t = k; i >= 0; qs[k++] = ps[i--])
+        while (k > t && (ccw(qs[k - 2], qs[k - 1], ps[i]) & 7) > 6 - strict) --k;
     qs.resize(k - 1);
     return qs;
 }

@@ -7,7 +7,7 @@ int main() {
     int n;
     cin >> n;
     Polygon p(n);
-    for(int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
         int x, y;
         cin >> x >> y;
         p[i] = P(x, y);

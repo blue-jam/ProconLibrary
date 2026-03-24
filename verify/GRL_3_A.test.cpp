@@ -7,7 +7,7 @@ int main() {
     int V, E;
     cin >> V >> E;
     Graph<ll> g(V);
-    for(int i = 0; i < E; ++i) {
+    for (int i = 0; i < E; ++i) {
         int s, t;
         cin >> s >> t;
         addUndirectedEdge(g, s, t, 0);
@@ -16,7 +16,7 @@ int main() {
     vector<vector<int>> comp;
     getArticulation(g, art, comp);
     sort(ALL(art));
-    for(auto a : art)
+    for (auto a : art)
         cout << a << endl;
     return 0;
 }

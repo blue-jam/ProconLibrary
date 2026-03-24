@@ -27,26 +27,26 @@ W edmonds_karp(Graph<W>& g, int s, int t) {
     int n = g.size();
     vector<int> prev(n);
     vector<int> edge(n);
-    for(;;) {
+    for (;;) {
         queue<int> Q;
         fill(ALL(prev), -1);
         prev[s] = s;
         Q.push(s);
-        while(!Q.empty() && prev[t] < 0) {
+        while (!Q.empty() && prev[t] < 0) {
             int v = Q.front();
             Q.pop();
             EACH(i, g[v])
-            if(i->weight > 0 && prev[i->to] < 0) {
+            if (i->weight > 0 && prev[i->to] < 0) {
                 prev[i->to] = v;
                 edge[i->to] = i - g[v].begin();
                 Q.push(i->to);
             }
         }
-        if(prev[t] < 0) return flow;
+        if (prev[t] < 0) return flow;
         W f = INF;
-        for(int u = t; u != prev[u]; u = prev[u])
+        for (int u = t; u != prev[u]; u = prev[u])
             f = min(f, g[prev[u]][edge[u]].weight);
-        for(int u = t; u != prev[u]; u = prev[u]) {
+        for (int u = t; u != prev[u]; u = prev[u]) {
             int v = prev[u], e = edge[u], r = g[v][edge[u]].rev;
             g[v][e].weight -= f;
             g[u][r].weight += f;

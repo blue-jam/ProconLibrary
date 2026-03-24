@@ -47,7 +47,7 @@ struct UnionFind {
      * @return 要素xの代表元
      */
     int find(int x) {
-        if(parent[x] == -1) return x;
+        if (parent[x] == -1) return x;
         else return (parent[x] = find(parent[x]));
     }
 
@@ -60,12 +60,12 @@ struct UnionFind {
     bool unite(int x, int y) {
         x = find(x);
         y = find(y);
-        if(x == y) return false;
-        if(rank[x] < rank[y])
+        if (x == y) return false;
+        if (rank[x] < rank[y])
             parent[x] = y;
         else
             parent[y] = x;
-        if(rank[x] == rank[y])
+        if (rank[x] == rank[y])
             ++rank[x];
         return true;
     }

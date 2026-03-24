@@ -36,7 +36,7 @@ struct SegmentTree {
      * @param ignore 無視されるデータ．例えば，Range Minimum Queryでは，正の無限大を用いる．
      */
     SegmentTree(int n_, T ignore) {
-        for(n = 1; n < n_; n *= 2);
+        for (n = 1; n < n_; n *= 2);
         ign = ignore;
         dat = vector<T>(n * 2 - 1, ignore);
     }
@@ -47,10 +47,10 @@ struct SegmentTree {
      * @param v 初期化するデータを与えるベクタ
      */
     void init(vector<T>& v) {
-        for(int i = 0; i < v.size(); ++i) {
+        for (int i = 0; i < v.size(); ++i) {
             dat[i + n - 1] = v[i];
         }
-        for(int k = n - 2; k >= 0; --k) {
+        for (int k = n - 2; k >= 0; --k) {
             dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);
         }
     }
@@ -64,16 +64,16 @@ struct SegmentTree {
     void update(int k, T d) {
         k += n - 1;
         dat[k] = d;
-        while(k > 0) {
+        while (k > 0) {
             k = (k - 1) / 2;
             dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);
         }
     }
 
     T get(int a, int b, int k, int l, int r) {
-        if(b <= l || r <= a)
+        if (b <= l || r <= a)
             return ign;
-        if(a <= l && r <= b) {
+        if (a <= l && r <= b) {
             return dat[k];
         } else {
             T vl = get(a, b, k * 2 + 1, l, (l + r) / 2);

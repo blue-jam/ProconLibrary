@@ -7,7 +7,7 @@ using namespace std;
 using namespace atcoder;
 
 #define ALL(x) (x).begin(), (x).end()
-#define EACH(i, c) for(auto i = (c).begin(); i != (c).end(); ++i)
+#define EACH(i, c) for (auto i = (c).begin(); i != (c).end(); ++i)
 
 using ll = long long;
 #ifndef EPS

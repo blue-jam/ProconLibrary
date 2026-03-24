@@ -14,8 +14,8 @@ struct Edge {
     Edge(int from, int to, Weight weight, int rev) : from(from), to(to), weight(weight), rev(rev) {}
 };
 bool operator<(const Edge& a, const Edge& b) {
-    if(a.weight != b.weight) return a.weight > b.weight;
-    if(a.from != b.from) return a.from > b.from;
+    if (a.weight != b.weight) return a.weight > b.weight;
+    if (a.from != b.from) return a.from > b.from;
     return a.to > b.to;
 }
 typedef vector<Edge> Edges;
@@ -40,14 +40,14 @@ void dijkstra(const Graph& g, int s, vector<Weight>& dist, vector<int>& prev) {
     prev.assign(n, -1);
     priority_queue<Edge> Q; // a < b <-> a.weight > b.weight
     Q.push(Edge(-2, s, 0));
-    while(!Q.empty()) {
+    while (!Q.empty()) {
         Edge e = Q.top();
         Q.pop();
-        if(prev[e.to] != -1) continue;
+        if (prev[e.to] != -1) continue;
         prev[e.to] = e.from;
         EACH(i, g[e.to]) {
             // for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
-            if(dist[i->to] > dist[i->from] + i->weight) {
+            if (dist[i->to] > dist[i->from] + i->weight) {
                 dist[i->to] = dist[i->from] + i->weight;
                 Q.push(Edge(i->from, i->to, dist[i->to]));
             }
@@ -58,7 +58,7 @@ void dijkstra(const Graph& g, int s, vector<Weight>& dist, vector<int>& prev) {
 vector<Segment> star(int x, int y, int a, int r) {
     P p(x, y);
     vector<P> vp;
-    for(int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i) {
         vp.push_back(p + polar((double)r, (90.0 + a + 360 / 5 * i) * PI / 180.0));
     }
     return vector<Segment>{
@@ -70,22 +70,22 @@ vector<Segment> star(int x, int y, int a, int r) {
 }
 
 int main() {
-    for(;;) {
+    for (;;) {
         int N, M, L;
         cin >> N >> M >> L;
-        if(!N) return 0;
+        if (!N) return 0;
         vector<vector<Segment>> v;
-        for(int i = 0; i < N; ++i) {
+        for (int i = 0; i < N; ++i) {
             int x, y, a, r;
             cin >> x >> y >> a >> r;
             v.push_back(star(x, y, a, r));
         }
         Graph g(N);
-        for(int i = 0; i < N; ++i)
-            for(int j = i + 1; j < N; ++j) {
+        for (int i = 0; i < N; ++i)
+            for (int j = i + 1; j < N; ++j) {
                 double d = 1e+10;
-                for(int k = 0; k < 5; ++k)
-                    for(int l = 0; l < 5; ++l)
+                for (int k = 0; k < 5; ++k)
+                    for (int l = 0; l < 5; ++l)
                         d = min(d, distanceSS(v[i][k], v[j][l]));
                 addUndirectedEdge(g, i, j, d);
             }

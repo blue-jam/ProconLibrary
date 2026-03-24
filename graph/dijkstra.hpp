@@ -44,14 +44,14 @@ void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     prev.assign(n, -1);
     priority_queue<Edge<W>> Q; // a < b <-> a.weight > b.weight
     Q.push(Edge<W>(-2, s, 0));
-    while(!Q.empty()) {
+    while (!Q.empty()) {
         Edge<W> e = Q.top();
         Q.pop();
-        if(prev[e.to] != -1) continue;
+        if (prev[e.to] != -1) continue;
         prev[e.to] = e.from;
         EACH(i, g[e.to]) {
             // for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
-            if(dist[i->to] > dist[i->from] + i->weight) {
+            if (dist[i->to] > dist[i->from] + i->weight) {
                 dist[i->to] = dist[i->from] + i->weight;
                 Q.push(Edge<W>(i->from, i->to, dist[i->to]));
             }
@@ -67,7 +67,7 @@ void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
  */
 vector<int> buildPath(const vector<int>& prev, int t) {
     vector<int> path;
-    for(int v = t; v >= 0; v = prev[v])
+    for (int v = t; v >= 0; v = prev[v])
         path.push_back(v);
     reverse(path.begin(), path.end());
     return path;

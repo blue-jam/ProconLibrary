@@ -54,18 +54,18 @@ bool bellmanFord(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     dist.assign(n, INF);
     dist[s] = 0;
     prev.assign(n, -1);
-    for(int k = 0; k < 2 * n; ++k) {
-        for(int v = 0; v < n; ++v) {
+    for (int k = 0; k < 2 * n; ++k) {
+        for (int v = 0; v < n; ++v) {
             EACH(i, g[v]) {
                 // for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if(dist[i->from] != INF && dist[i->to] > dist[i->from] + i->weight) {
-                    if(dist[i->from] == -INF) {
+                if (dist[i->from] != INF && dist[i->to] > dist[i->from] + i->weight) {
+                    if (dist[i->from] == -INF) {
                         dist[i->to] = -INF;
                     } else {
                         dist[i->to] = dist[i->from] + i->weight;
                     }
                     prev[i->to] = i->from;
-                    if(k == n - 1) {
+                    if (k == n - 1) {
                         dist[i->to] = -INF;
                         negativeLoop = true;
                     }
@@ -85,13 +85,13 @@ template<typename W>
 bool findNegativeLoop(const Graph<W>& g) {
     int n = g.size();
     vector<W> dist(n, 0);
-    for(int k = 0; k < n; ++k) {
-        for(int v = 0; v < n; ++v) {
+    for (int k = 0; k < n; ++k) {
+        for (int v = 0; v < n; ++v) {
             EACH(i, g[v]) {
                 // for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if(dist[i->to] > dist[i->from] + i->weight) {
+                if (dist[i->to] > dist[i->from] + i->weight) {
                     dist[i->to] = dist[i->from] + i->weight;
-                    if(k == n - 1) return true;
+                    if (k == n - 1) return true;
                 }
             }
         }
@@ -106,7 +106,7 @@ bool findNegativeLoop(const Graph<W>& g) {
  */
 vector<int> buildPath(const vector<int>& prev, int t) {
     vector<int> path;
-    for(int v = t; v >= 0; v = prev[v])
+    for (int v = t; v >= 0; v = prev[v])
         path.push_back(v);
     reverse(path.begin(), path.end());
     return path;
@@ -128,14 +128,14 @@ struct bellman_ford {
         int n = g.n;
         dist[s] = zero();
 
-        for(int k = 0; k < 2 * n; ++k) {
-            for(int v = 0; v < n; ++v) {
-                for(auto& e : g.edges[v]) {
+        for (int k = 0; k < 2 * n; ++k) {
+            for (int v = 0; v < n; ++v) {
+                for (auto& e : g.edges[v]) {
                     auto new_distance = add(dist[e.from], e.weight);
-                    if(!eq(dist[e.from], INF) && lt(new_distance, dist[e.to])) {
+                    if (!eq(dist[e.from], INF) && lt(new_distance, dist[e.to])) {
                         dist[e.to] = new_distance;
                         prev[e.to] = e.from;
-                        if(k >= n - 1) {
+                        if (k >= n - 1) {
                             dist[e.to] = -INF;
                             has_negative_loop = true;
                         }

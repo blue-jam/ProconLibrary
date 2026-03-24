@@ -109,13 +109,13 @@ bool near(const P& a, const P& b) {
 }
 // sort用．ClosestPair用にX,Yに分けている
 bool lessX(const P& a, const P& b) {
-    if(sgn(real(a), real(b))) return real(a) < real(b);
-    if(sgn(imag(a), imag(b))) return imag(a) < imag(b);
+    if (sgn(real(a), real(b))) return real(a) < real(b);
+    if (sgn(imag(a), imag(b))) return imag(a) < imag(b);
     return false;
 }
 bool lessY(const P& a, const P& b) {
-    if(sgn(imag(a), imag(b))) return imag(a) < imag(b);
-    if(sgn(real(a), real(b))) return real(a) < real(b);
+    if (sgn(imag(a), imag(b))) return imag(a) < imag(b);
+    if (sgn(real(a), real(b))) return real(a) < real(b);
     return false;
 }
 double dot(const P& a, const P& b) {
@@ -128,11 +128,11 @@ int ccw(const P& a, P b, P c) {
     assert(!near(a, b));
     b -= a;
     c -= a;
-    if(sgn(cross(b, c)) > 0) return +1;      // ccw
-    if(sgn(cross(b, c)) < 0) return -1;      // cw
-    if(sgn(dot(b, c)) < 0) return +2;        // c-a-b
-    if(sgn(norm(b), norm(c)) > 0) return -2; // a-b-c
-    return 0;                                // a-c-b
+    if (sgn(cross(b, c)) > 0) return +1;      // ccw
+    if (sgn(cross(b, c)) < 0) return -1;      // cw
+    if (sgn(dot(b, c)) < 0) return +2;        // c-a-b
+    if (sgn(norm(b), norm(c)) > 0) return -2; // a-b-c
+    return 0;                                 // a-c-b
 }
 bool parallel(const Line& s, const Line& t) {
     return !sgn(abs(cross(s[1] - s[0], t[1] - t[0])));

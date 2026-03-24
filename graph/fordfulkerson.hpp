@@ -30,12 +30,12 @@
  */
 template<typename W>
 W ford_dfs(Graph<W>& g, int v, int t, W f, vector<int>& used) {
-    if(v == t) return f;
+    if (v == t) return f;
     used[v] = true;
     EACH(i, g[v]) {
-        if(!used[i->to] && i->weight > 0) {
+        if (!used[i->to] && i->weight > 0) {
             W d = ford_dfs(g, i->to, t, min(f, i->weight), used);
-            if(d > 0) {
+            if (d > 0) {
                 i->weight -= d;
                 g[i->to][i->rev].weight += d;
                 return d;
@@ -52,10 +52,10 @@ template<typename W>
 W ford_fulkerson(Graph<W>& g, int s, int t) {
     vector<int> used(g.size());
     W flow = 0;
-    for(;;) {
+    for (;;) {
         fill(ALL(used), 0);
         int f = ford_dfs(g, s, t, INF, used);
-        if(f == 0) return flow;
+        if (f == 0) return flow;
         flow += f;
     }
     return flow;

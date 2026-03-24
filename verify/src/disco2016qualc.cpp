@@ -7,17 +7,17 @@ int main() {
     int K;
     cin >> S >> K;
     int acnt = 0;
-    for(int i = 0; i < S.size(); ++i)
-        if(S[i] == 'a') ++acnt;
-    if(S.size() - acnt <= K) {
+    for (int i = 0; i < S.size(); ++i)
+        if (S[i] == 'a') ++acnt;
+    if (S.size() - acnt <= K) {
         cout << string(acnt - (K - (S.size() - acnt)), 'a') << endl;
         return 0;
     }
 
     int cnt = 0, life = K;
-    for(int i = 0; life >= 0; ++i) {
-        if(S[i] != 'a') {
-            if(life == 0)
+    for (int i = 0; life >= 0; ++i) {
+        if (S[i] != 'a') {
+            if (life == 0)
                 break;
             else
                 --life;
@@ -29,9 +29,9 @@ int main() {
     sa.init(S);
     int idx = cnt;
     // string res = string(cnt, 'a') + S.substr(cnt);
-    for(int i = cnt; i >= 0; --i) {
-        if(S[i] == 'a') break;
-        if(sa.rank[idx] > sa.rank[i]) {
+    for (int i = cnt; i >= 0; --i) {
+        if (S[i] == 'a') break;
+        if (sa.rank[idx] > sa.rank[i]) {
             idx = i;
         }
     }
