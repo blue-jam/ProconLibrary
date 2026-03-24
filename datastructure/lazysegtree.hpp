@@ -1,10 +1,6 @@
 #pragma once
 #include "misc/template.hpp"
 
-// 遅延評価SegmentTree
-// get(a,b)		: [a,b)の最小値
-// get(a,b,p)	: 上記+最小値の場所（leftmost）[verifyしてない]
-// sum(a,b)		: [a,b)の合計[verifyしてない]
 template<typename T>
 struct LasySegmentTree {
     struct node_t {

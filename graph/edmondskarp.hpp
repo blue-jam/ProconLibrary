@@ -2,22 +2,6 @@
 #include "graph/graph.hpp"
 #include "misc/template.hpp"
 
-/**
- * @file
- *
- * ## 最大流(Edmond-Karp)
- *
- * Ford-Fulkersonにおける増加パスの探索を幅優先探索によって行うアルゴリズム．
- *
- * ### 計算量
- *
- *   * O(V E^2)
- *
- *
- * ### 確認済み問題
- *
- *   * AOJ 2304
- */
 template<typename W>
 W edmonds_karp(Graph<W>& g, int s, int t) {
     W flow = 0;

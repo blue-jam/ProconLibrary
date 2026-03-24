@@ -2,26 +2,6 @@
 #include "graph/graph.hpp"
 #include "misc/template.hpp"
 
-/**
- * @file
- *
- * ## 橋，二辺連結成分分解
- *
- * グラフ \f$G=(V,E)\f$ において，辺 \f$e \in E\f$ を除いたグラフ \f$G^\prime=(V,E-{e})\f$ が連結でないとき，
- * \f$e\f$ を \f$G\f$ の橋と呼ぶ．また，任意の辺を1つ削除しても連結性が保たれる \f$G\f$ の極大な部分グラフを二辺連結成分と呼ぶ．
- *
- * 二辺連結成分であるかどうかを調べるには，連結成分1つにつき深さ優先探索を1回行えばよい．
- * 強連結成分分解のコードを少し変えると二辺連結成分分解のコードになる．詳しい説明は文献を参照．
- *
- *
- * ### 確認済み問題
- *
- * - AOJ Courses Library Graph Connected Components Problem B
- *
- * ### 参考
- * - アルゴリズムとデータ構造-基礎のツールボックス-
- */
-
 template<typename W>
 void bridgeRecur(const Graph<W>& g, int v, int u,
                  Edges<W>& bridge, vector<vector<int>>& comp,
@@ -53,11 +33,6 @@ void bridgeRecur(const Graph<W>& g, int v, int u,
     }
 }
 
-/**
- * グラフ @a g の橋と二辺連結成分を @f$O(|V|+|E|)@f$ 時間で計算する．
- * @param bridge 橋が格納されるベクタ(空推奨)
- * @param comp 二辺連結成分が格納されるベクタ(空推奨)
- */
 template<typename W>
 void getBridge(const Graph<W>& g, Edges<W>& bridge, vector<vector<int>>& comp) {
     int n = g.size();

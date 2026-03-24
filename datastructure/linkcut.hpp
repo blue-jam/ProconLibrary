@@ -1,22 +1,6 @@
 #pragma once
 #include "misc/template.hpp"
 
-/**
- * Link-Cut Tree.
- *
- * Link-Cut Treeは木を管理する木構造である．管理対象の木をパスに分解し，パスはSplay木で表す．
- * いろいろな操作が \f$O(\log N)\f$ で行える
- *
- *
- * ### 確認済み問題
- *
- * - JOI2013年春合宿4日目 SpaceShips(link,cut,findrootのみ)
- *
- * ### 参考
- *
- * - iwiwi先生のスライド
- * - Data Structures and Network Algorithms
- */
 struct LinkCutTree {
     static const int L = 0, R = 1;
     struct node {

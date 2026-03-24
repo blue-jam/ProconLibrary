@@ -2,27 +2,6 @@
 #include "graph/graph.hpp"
 #include "misc/template.hpp"
 
-/**
- * @file
- * ## 最大流(Dinitz)
- *
- * 多くの文献で"Dinic"として紹介されているが，原論文を英訳するときに著者名がそう訳されたためそちらが広まっただけで，その後の自著では"Dinitz"と表記されている．
- *
- * ネットワークをBFSで層別ネットワークに分け，その中での極大フローを探し，増加させることを繰り返し最大流量を求める．
- *
- * ### 計算量
- *
- *   * O(V^2 E)
- *
- *
- * ### 確認済み問題
- *
- *   * AOJ 2304
- *
- * ### 参考
- *
- *   * グラフ・ネットワーク・組合せ論
- */
 template<typename W>
 W blockingFlow(Graph<W>& g, vector<int>& l, int v, int t, W f) {
     if (v == t) return f;
@@ -38,9 +17,6 @@ W blockingFlow(Graph<W>& g, vector<int>& l, int v, int t, W f) {
     }
     return 0;
 }
-/**
- *Ford-Fulkersonと同様にネットワークとソース，シンクの頂点を渡す．グラフを構築するときに逆辺を付け忘れないように．
- */
 template<typename W>
 W dinitz(Graph<W>& g, int s, int t) {
     int n = g.size();

@@ -2,22 +2,6 @@
 #include "graph/graph.hpp"
 #include "misc/template.hpp"
 
-/**
- * @file
- *
- * ### トポロジカルソート
- *
- * 有向グラフgについて，頂点集合Vに対して順序を付け，v[i](0<=i<|V|)と並べたとする．
- * v[i]からv[j]に向かう枝が存在するならば，i<jが成り立つ時，この順序付けをトポロジカル順序と呼ぶ．
- *
- * トポロジカル順序を求めることをトポロジカルソートと呼び，DFSの帰りがけの順に頂点に番号を振っていくことでその逆順が求められる．
- *
- *
- * ### 確認済み問題
- *
- * - AOJ 2222(Alien's Counting)
- */
-
 template<typename W>
 bool topologicalRecur(const Graph<W>& g, int v, vector<int>& order, vector<int>& color) {
     color[v] = 1;
@@ -31,11 +15,6 @@ bool topologicalRecur(const Graph<W>& g, int v, vector<int>& order, vector<int>&
     return true;
 }
 
-/**
- * グラフ \a g のトポロジカル順序を\f$O(\|V\|+\|E\|)\f$ 時間で計算する．
- * @param order トポロジカル順序が格納されるベクタ．空のベクタを渡す．
- * @return DAGであれば @a true を返す．
- */
 template<typename W>
 bool topologicalSort(const Graph<W>& g, vector<int>& order) {
     int n = g.size();

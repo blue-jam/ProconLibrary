@@ -1,13 +1,6 @@
 #pragma once
 #include "misc/template.hpp"
 
-/**
- * Auxiliary Tree
- *
- * 参考:
- * - https://smijake3.hatenablog.com/entry/2019/09/15/200200
- * - https://atcoder.jp/contests/abc340/editorial/9249
- */
 struct auxiliary_tree {
     /**
      * Auxiliary Treeの構造体
