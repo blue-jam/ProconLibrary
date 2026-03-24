@@ -47,3 +47,18 @@ if(CPPCHECK)
 endif()
 
 add_custom_target(lint DEPENDS format-check cppcheck)
+
+# --- Verify targets ---
+find_program(OJ_VERIFY oj-verify)
+if(OJ_VERIFY)
+    add_custom_target(verify
+        COMMAND ${OJ_VERIFY} run
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Running oj-verify run"
+    )
+    add_custom_target(verify-all
+        COMMAND ${OJ_VERIFY} all
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        COMMENT "Running oj-verify all"
+    )
+endif()
