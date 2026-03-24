@@ -36,5 +36,7 @@ jobs:
           key: verify-helper-${{ github.sha }}
           restore-keys: |
             verify-helper-
+      - name: Configure CMake
+        run: cmake -S . -B build
       - name: Run verification
-        run: oj-verify run
+        run: cmake --build build --target verify
