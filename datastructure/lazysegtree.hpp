@@ -31,7 +31,7 @@ struct LasySegmentTree {
         dat[k].sum = dat[lch].sum + dat[rch].sum;
     }
     void init(vector<T>& v) {
-        for (int i = 0; i < v.size(); ++i) {
+        for (int i = 0; i < (int)v.size(); ++i) {
             dat[i + n - 1].min = dat[i + n - 1].sum = v[i];
             dat[i + n - 1].pos = i;
         }

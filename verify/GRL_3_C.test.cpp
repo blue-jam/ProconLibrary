@@ -15,7 +15,7 @@ int main() {
     vector<vector<int>> comp;
     getSCC(g, comp);
     vector<int> dict(V);
-    for (int i = 0; i < comp.size(); ++i)
+    for (int i = 0; i < (int)comp.size(); ++i)
         for (auto j : comp[i]) dict[j] = i;
     int Q;
     cin >> Q;

@@ -7,10 +7,10 @@ int main() {
     int K;
     cin >> S >> K;
     int acnt = 0;
-    for (int i = 0; i < S.size(); ++i)
+    for (int i = 0; i < (int)S.size(); ++i)
         if (S[i] == 'a') ++acnt;
-    if (S.size() - acnt <= K) {
-        cout << string(acnt - (K - (S.size() - acnt)), 'a') << endl;
+    if ((int)S.size() - acnt <= K) {
+        cout << string(acnt - (K - ((int)S.size() - acnt)), 'a') << endl;
         return 0;
     }
 
