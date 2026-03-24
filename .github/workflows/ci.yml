@@ -43,10 +43,12 @@ jobs:
           python-version: 3.11
       - name: Install dependencies
         run: pip3 install online-judge-tools online-judge-verify-helper
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
       - name: Generate docs
         run: oj-verify docs
-      - name: Upload Pages artifact
-        uses: actions/upload-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .verify-helper/markdown
       - name: Deploy to GitHub Pages
