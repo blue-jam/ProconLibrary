@@ -50,7 +50,7 @@ void artcRecur(const Graph<W>& g, int v, int u, vector<int>& artc,
         d = min(d, low[i->to]);
     }
     low[v] = d;
-    if(u >= 0 && isArtc || u < 0 && c > 1) artc.push_back(v);
+    if((u >= 0 && isArtc) || (u < 0 && c > 1)) artc.push_back(v);
     if(u < 0) S.pop();
 }
 

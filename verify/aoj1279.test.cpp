@@ -52,7 +52,6 @@ int main() {
             EACH(j, graph)
             EACH(k, *j) {
                 int a = k->from, b = k->to;
-                bool f = true;
                 double d = 1;
                 if(ccw(ps[a], ps[b], ss[0]) == 0) {
                     d = dot(ss[0] - ss[1], ps[b] - ps[a]);
