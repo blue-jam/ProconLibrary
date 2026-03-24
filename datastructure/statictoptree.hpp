@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 
 template <
         typename Path,

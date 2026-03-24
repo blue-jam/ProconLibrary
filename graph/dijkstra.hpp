@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -35,22 +36,23 @@
  * @param dist 最短距離を格納．頂点数と同じ要素数．
  * @param prev 直前の頂点を格納．頂点数と同じ要素数．
  */
-void dijkstra(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev){
+template<typename W>
+void dijkstra(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
     int n = g.size();
     dist.assign(n, INF);
     dist[s] = 0;
     prev.assign(n, -1);
-    priority_queue<Edge> Q;     // a < b <-> a.weight > b.weight
-    Q.push(Edge(-2, s, 0));
+    priority_queue<Edge<W>> Q;     // a < b <-> a.weight > b.weight
+    Q.push(Edge<W>(-2, s, 0));
     while(!Q.empty()){
-        Edge e = Q.top(); Q.pop();
+        Edge<W> e = Q.top(); Q.pop();
         if(prev[e.to] != -1) continue;
         prev[e.to] = e.from;
         EACH(i, g[e.to]){
         //for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
             if(dist[i -> to] > dist[i -> from] + i -> weight){
                 dist[i -> to] = dist[i -> from] + i -> weight;
-                Q.push(Edge(i -> from, i -> to, dist[i -> to]));
+                Q.push(Edge<W>(i -> from, i -> to, dist[i -> to]));
             }
         }
     }

@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -24,8 +25,9 @@
  * - アルゴリズムとデータ構造-基礎のツールボックス-
  */
 
-void bridgeRecur(const Graph &g, int v, int u,
-                 Edges &bridge, vector<vector<int> > &comp,
+template<typename W>
+void bridgeRecur(const Graph<W> &g, int v, int u,
+                 Edges<W> &bridge, vector<vector<int> > &comp,
                  vector<int> &num, vector<bool> &open,
                  stack<int> &oNodes, stack<int> &oReps, int &cnt){
     if(num[v] != 0){
@@ -45,7 +47,7 @@ void bridgeRecur(const Graph &g, int v, int u,
             open[w] = false;
             comp.back().push_back(w);
         }while(v != w);
-        bridge.push_back(Edge(min(u, v), max(u,v), 0));
+        bridge.push_back(Edge<W>(min(u, v), max(u,v), W(0)));
     }
 }
 
@@ -54,7 +56,8 @@ void bridgeRecur(const Graph &g, int v, int u,
  * @param bridge 橋が格納されるベクタ(空推奨)
  * @param comp 二辺連結成分が格納されるベクタ(空推奨)
  */
-void getBridge(const Graph &g, Edges &bridge, vector<vector<int> > &comp){
+template<typename W>
+void getBridge(const Graph<W> &g, Edges<W> &bridge, vector<vector<int> > &comp){
     int n = g.size();
     vector<int> num(n);
     vector<bool> open(n);

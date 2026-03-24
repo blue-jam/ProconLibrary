@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 
 // 遅延評価SegmentTree
 // get(a,b)		: [a,b)の最小値

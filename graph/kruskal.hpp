@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 #include "datastructure/unionfind.hpp"
 
@@ -35,13 +36,14 @@
  * @param n グラフの頂点の個数
  * @return 最小全域森の重みとそれに含まれる辺の集合
  */
-pair<Weight, Edges> kruskal_e(Edges &edges, int n){
+template<typename W>
+pair<W, Edges<W>> kruskal_e(Edges<W> &edges, int n){
     sort(ALL(edges)); reverse(ALL(edges));  //a < b <-> a.weight > b.weight
     int sz = edges.size();
 
     UnionFind uf(n);
-    Weight total = 0;
-    Edges F;
+    W total = 0;
+    Edges<W> F;
     for(int i = 0; i < sz; ++i){
         if(uf.unite(edges[i].from, edges[i].to)){
             total = total + edges[i].weight;
@@ -56,9 +58,10 @@ pair<Weight, Edges> kruskal_e(Edges &edges, int n){
  * @param g 最小全域森を求めたいグラフ
  * @return 最小全域森の重みとそれに含まれる辺の集合
  */
-pair<Weight, Edges> kruskal_g(const Graph &g){
+template<typename W>
+pair<W, Edges<W>> kruskal_g(const Graph<W> &g){
 	int n = g.size();
-    vector<Edge> edges;
+    vector<Edge<W>> edges;
     for(int i = 0; i < n; ++i) edges.insert(edges.end(), ALL(g[i]));
     return kruskal_e(edges, n);
 }

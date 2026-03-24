@@ -7,11 +7,11 @@
 int main(){
 	int V,E;
 	cin >> V >> E;
-	Edges es;
+	Edges<ll> es;
 	for(int i = 0; i < E; ++i){
 		int s, t, w;
 		cin >> s >> t >> w;
-		es.push_back(Edge(s,t,w));
+		es.push_back(Edge<ll>(s,t,w));
 	}
 	cout << kruskal_e(es, V).first << endl;
 	return 0;

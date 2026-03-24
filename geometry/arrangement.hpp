@@ -1,8 +1,9 @@
 #pragma once
+#include "misc/template.hpp"
 #include "geometry/geometry.hpp"
 #include "geometry/crosspoint.hpp"
-
-// graph.hppが必要（呼び出し元でincludeすること）
+#include "geometry/polygon.hpp"
+#include "graph/graph.hpp"
 bool merge_if_able(Segment &s, Segment t){
     if(!parallel(s,t)) return false;
 	bool f = true;
@@ -23,7 +24,7 @@ void merge_segments(vector<Segment> &ss){
             if(merge_if_able(ss[i], ss[j]))
                 ss[j--] = ss.back(), ss.pop_back();
 }
-Graph segmentArrangement(const vector<Segment> &ss, vector<P> &ps){
+Graph<double> segmentArrangement(const vector<Segment> &ss, vector<P> &ps){
     for(int i = 0; i < ss.size(); ++i){
         ps.push_back(ss[i][0]);
         ps.push_back(ss[i][1]);
@@ -33,7 +34,7 @@ Graph segmentArrangement(const vector<Segment> &ss, vector<P> &ps){
         }
     }
     sort(ALL(ps), lessX); ps.erase(unique(ALL(ps), near), ps.end());
-    Graph g(ps.size());
+    Graph<double> g(ps.size());
     for(int i=0;i<ss.size();++i){
         vector<pair<double, int> > lst;
         for(int j=0;j<ps.size();++j){
@@ -48,7 +49,7 @@ Graph segmentArrangement(const vector<Segment> &ss, vector<P> &ps){
     }
     return g;
 }
-bool walkCW(const Graph &g, int v, int u, vector<int> &lst, const vector<P> &ps, vector<vector<int>> &used, vector<vector<int>> &res){
+bool walkCW(const Graph<double> &g, int v, int u, vector<int> &lst, const vector<P> &ps, vector<vector<int>> &used, vector<vector<int>> &res){
     for(int j=0;j+1<lst.size();++j) if(lst[j]==u && lst[j+1]==v){
         Polygon pol;
         for(int i=j;i<lst.size()-1;++i) pol.push_back(ps[lst[i]]);
@@ -85,7 +86,7 @@ bool walkCW(const Graph &g, int v, int u, vector<int> &lst, const vector<P> &ps,
     return false;
 }
 // 線分アレンジメントによってできる閉領域を求める
-vector<vector<int>> getPolygon(const Graph &g, const vector<P> &ps){
+vector<vector<int>> getPolygon(const Graph<double> &g, const vector<P> &ps){
 	vector<vector<int>> res;
     int n = g.size();
     vector<vector<int>> used(n, vector<int>(n));

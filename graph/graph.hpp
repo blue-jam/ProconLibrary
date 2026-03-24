@@ -23,34 +23,41 @@
  */
 
 #pragma once
+#include "misc/template.hpp"
 
-typedef ll Weight;
+template<typename W>
 struct Edge{
     int from, to;
-    Weight weight;
+    W weight;
     int rev;     // 無向グラフの対の辺
-    Edge(int from, int to, Weight weight) :
+    Edge(int from, int to, W weight) :
         from(from), to(to), weight(weight) { }
-    Edge(int from, int to, Weight weight, int rev) :
+    Edge(int from, int to, W weight, int rev) :
         from(from), to(to), weight(weight), rev(rev){ }
+    bool operator < (const Edge &b) const {
+        if(weight != b.weight) return weight > b.weight;
+        if(from != b.from) return from > b.from;
+        return  to > b.to;
+    }
 };
-bool operator < (const Edge &a, const Edge &b){
-    if(a.weight != b.weight) return a.weight > b.weight;
-    if(a.from != b.from) return a.from > b.from;
-    return  a.to > b.to;
-}
-typedef vector<Edge> Edges;
-typedef vector<Edges> Graph;
-typedef vector<Weight> Array;
-typedef vector<Array> Matrix;
+template<typename W = ll>
+using Edges = vector<Edge<W>>;
+template<typename W = ll>
+using Graph = vector<Edges<W>>;
+template<typename W = ll>
+using Array = vector<W>;
+template<typename W = ll>
+using Matrix = vector<Array<W>>;
 
-void addFlowEdge(Graph &g, int a, int b, Weight c){
-    g[a].push_back(Edge(a, b, c, g[b].size()));
-    g[b].push_back(Edge(b, a, 0, g[a].size() - 1));
+template<typename W>
+void addFlowEdge(Graph<W> &g, int a, int b, type_identity_t<W> c){
+    g[a].push_back(Edge<W>(a, b, c, g[b].size()));
+    g[b].push_back(Edge<W>(b, a, W(0), g[a].size() - 1));
 }
-void addUndirectedEdge(Graph &g, int a, int b, Weight c){
-    g[a].push_back(Edge(a, b, c, g[b].size()));
-    g[b].push_back(Edge(b, a, c, g[a].size() - 1));
+template<typename W>
+void addUndirectedEdge(Graph<W> &g, int a, int b, type_identity_t<W> c){
+    g[a].push_back(Edge<W>(a, b, c, g[b].size()));
+    g[b].push_back(Edge<W>(b, a, c, g[a].size() - 1));
 }
 
 template<typename T>

@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 
 // O(n)での逆元配列計算
 vector<ll> calcinvs(ll n, ll mod){

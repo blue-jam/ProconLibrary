@@ -7,11 +7,11 @@ const int INF = 1000000010;
 int main(){
 	int V, E, r;
 	cin >> V >> E >> r;
-	Graph g(V);
+	Graph<ll> g(V);
 	for(int i = 0; i < E; ++i){
 		int s,t,d;
 		cin >> s >> t >> d;
-		g[s].push_back(Edge(s,t,d));
+		g[s].push_back(Edge<ll>(s,t,d));
 	}
 	vector<ll> dist(V);
 	vector<int> prev(V);

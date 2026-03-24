@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -46,7 +47,8 @@
  * @param prev 経路復元用の1つ前の位置を示す配列
  * @return 負の閉路が含まれているか
  */
-bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev){
+template<typename W>
+bool bellmanFord(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
     int n = g.size();
     bool negativeLoop = false;
     dist.assign(n, INF); dist[s] = 0;
@@ -78,9 +80,10 @@ bool bellmanFord(const Graph &g, int s, vector<Weight> &dist, vector<int> &prev)
  * @param g 最短路を求めたいグラフ
  * @return 負の閉路が含まれているか
  */
-bool findNegativeLoop(const Graph &g){
+template<typename W>
+bool findNegativeLoop(const Graph<W> &g){
     int n = g.size();
-    vector<Weight> dist(n, 0);
+    vector<W> dist(n, 0);
     for(int k = 0; k < n; ++k){
         for(int v = 0; v < n; ++v){
             EACH(i, g[v]){

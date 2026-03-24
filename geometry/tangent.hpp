@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "geometry/geometry.hpp"
 
 // 内接線．aからbへ向かうとき，aの左からbの右に抜けるのが先．

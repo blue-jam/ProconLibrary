@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 
 typedef complex<double> P;
 const double PI = atan(1) * 4;

@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -23,7 +24,8 @@
  *
  * - AOJ Courses Library Graph Connected Components Problem A
  */
-void artcRecur(const Graph &g, int v, int u, vector<int> &artc,
+template<typename W>
+void artcRecur(const Graph<W> &g, int v, int u, vector<int> &artc,
                vector<vector<int> > &comp, vector<int> &low,
                vector<bool> &open, stack<int> &S, int &cnt){
     bool isArtc = false;
@@ -55,7 +57,8 @@ void artcRecur(const Graph &g, int v, int u, vector<int> &artc,
  * @param artc 関節点が格納されるベクタ．空であることが求められる．
  * @param comp 二連結成分が格納されるベクタ．空であることが求められる．
  */
-void getArticulation(const Graph &g, vector<int> &artc, vector<vector<int> > &comp){
+template<typename W>
+void getArticulation(const Graph<W> &g, vector<int> &artc, vector<vector<int> > &comp){
     int n = g.size();
     vector<int> low(n);
     vector<bool> open(n);

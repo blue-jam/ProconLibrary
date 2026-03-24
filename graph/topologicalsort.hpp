@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -20,7 +21,8 @@
  * - AOJ 2222(Alien's Counting)
  */
 
-bool topologicalRecur(const Graph &g, int v, vector<int> &order, vector<int> &color){
+template<typename W>
+bool topologicalRecur(const Graph<W> &g, int v, vector<int> &order, vector<int> &color){
     color[v] = 1;
     EACH(i, g[v]){
         if(color[i->to] == 1) return false;
@@ -36,7 +38,8 @@ bool topologicalRecur(const Graph &g, int v, vector<int> &order, vector<int> &co
  * @param order トポロジカル順序が格納されるベクタ．空のベクタを渡す．
  * @return DAGであれば @a true を返す．
  */
-bool topologicalSort(const Graph &g, vector<int> &order){
+template<typename W>
+bool topologicalSort(const Graph<W> &g, vector<int> &order){
     int n = g.size();
     vector<int> color(n);
     bool res = true;

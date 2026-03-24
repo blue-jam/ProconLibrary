@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 #include "datastructure/unionfind.hpp"
 
@@ -31,22 +32,23 @@
  * @param g1 無向グラフ
  * @param v 最小カット集合
  */
-Weight maordering(const Graph &g1, vector<int> &w){
+template<typename W>
+W maordering(const Graph<W> &g1, vector<int> &w){
     int n = g1.size();
-    int cut = INF;
+    W cut = INF;
     UnionFind uf(n);
-    priority_queue<Edge> Q;
+    priority_queue<Edge<W>> Q;
     vector<int> used;
-    vector<Weight> d;
-    Graph g = g1;
+    vector<W> d;
+    Graph<W> g = g1;
     w.clear();
     for(int k = 0; k < n - 1; ++k){
         int s = uf.find(0), t = -1;
-        Q.push(Edge(s, s, 0));
+        Q.push(Edge<W>(s, s, W(0)));
         d.assign(n, 0);
         used.assign(n, 0);
         while(!Q.empty()){
-            Edge e = Q.top(); Q.pop();
+            Edge<W> e = Q.top(); Q.pop();
             int v = uf.find(e.to);
             if(used[v]) continue;
             used[v] = true;
@@ -56,7 +58,7 @@ Weight maordering(const Graph &g1, vector<int> &w){
                 int u = uf.find(i -> to);
                 if(!used[u]){
                     d[u] -= i -> weight;
-                    Q.push(Edge(v, u, d[u]));
+                    Q.push(Edge<W>(v, u, d[u]));
                 }
             }
         }

@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -22,7 +23,8 @@
  * - アルゴリズムとデータ構造-基礎のツールボックス-
  */
 
-void sccRecur(const Graph &g, int v, vector<vector<int> > &comp,
+template<typename W>
+void sccRecur(const Graph<W> &g, int v, vector<vector<int> > &comp,
                    vector<int> &num, vector<bool> &open,
                    stack<int> &oNodes, stack<int> &oReps, int &cnt){
     if(num[v] != 0){
@@ -50,7 +52,8 @@ void sccRecur(const Graph &g, int v, vector<vector<int> > &comp,
  *
  * @param comp 強連結成分を格納するベクタ（空推奨）
  */
-void getSCC(const Graph &g, vector<vector<int> > &comp){
+template<typename W>
+void getSCC(const Graph<W> &g, vector<vector<int> > &comp){
     int n = g.size();
     vector<int> num(n);
     vector<bool> open(n);

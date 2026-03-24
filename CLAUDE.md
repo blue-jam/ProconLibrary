@@ -19,10 +19,6 @@ pip3 install online-judge-tools online-judge-verify-helper
 
 **CI:** GitHub Actionsがpushごとに `oj-verify run` を実行する。mainブランチでは `oj-verify docs` でドキュメントを生成し GitHub Pages にデプロイする (`.github/workflows/ci.yml` 参照)。
 
-**CMake (IDE/コンパイルチェック用):**
-```bash
-cmake -B build && cmake --build build
-```
 C++標準はC++23。
 
 ## アーキテクチャ

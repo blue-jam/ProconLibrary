@@ -1,4 +1,5 @@
 #pragma once
+#include "misc/template.hpp"
 #include "graph/graph.hpp"
 
 /**
@@ -20,8 +21,9 @@
  *
  *   * AOJ 2304
  */
-Weight edmonds_karp(Graph &g, int s, int t){
-    Weight flow = 0;
+template<typename W>
+W edmonds_karp(Graph<W> &g, int s, int t){
+    W flow = 0;
     int n = g.size();
     vector<int> prev(n);
     vector<int> edge(n);
@@ -39,7 +41,7 @@ Weight edmonds_karp(Graph &g, int s, int t){
             }
         }
         if(prev[t] < 0) return flow;
-        Weight f = INF;
+        W f = INF;
         for(int u = t; u != prev[u]; u = prev[u])
             f = min(f, g[prev[u]][edge[u]].weight);
         for(int u = t; u != prev[u]; u = prev[u]){
