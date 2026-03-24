@@ -7,7 +7,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install cppcheck
         run: sudo apt-get -qq install -y cppcheck
       - name: Configure CMake
@@ -18,8 +18,8 @@ jobs:
   verify-libs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: 3.11
       - name: Install dependencies
@@ -29,7 +29,7 @@ jobs:
           wget -q https://github.com/atcoder/ac-library/archive/refs/tags/v1.6.zip -O /tmp/acl.zip
           unzip -q /tmp/acl.zip -d /tmp/
           sudo cp -r /tmp/ac-library-1.6/atcoder /usr/local/include/
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: .verify-helper/cache
           key: verify-helper-${{ github.sha }}
@@ -39,11 +39,10 @@ jobs:
         run: cmake -S . -B build
       - name: Run verification
         run: cmake --build build --target verify-all
-      - name: Upload docs artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: docs
-          path: .verify-helper/markdown/
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
 
   deploy:
     if: github.ref == 'refs/heads/main'
@@ -56,20 +55,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Download docs artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: docs
-          path: docs
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: docs
-          destination: ./_site
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
