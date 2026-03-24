@@ -5,6 +5,24 @@ on:
     branches-ignore:
       - main
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check clang-format
+        run: |
+          find . \( -name '*.hpp' -o -name '*.cpp' \) \
+            -not -path './build/*' -not -path './.verify-helper/*' \
+            | xargs clang-format --dry-run --Werror
+      - name: Run cppcheck
+        run: |
+          sudo apt-get -qq install -y cppcheck
+          find . \( -name '*.hpp' -o -name '*.cpp' \) \
+            -not -path './build/*' -not -path './.verify-helper/*' \
+            | xargs cppcheck --enable=warning,style,performance \
+              --suppressions-list=.cppcheck-suppressions.txt \
+              --error-exitcode=1 --quiet
+
   verify-libs:
     runs-on: ubuntu-latest
     steps:

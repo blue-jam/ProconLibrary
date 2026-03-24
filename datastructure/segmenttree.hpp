@@ -24,7 +24,7 @@
  * - プログラミングコンテストチャレンジブック(p153-p158)
  */
 template<typename T>
-struct SegmentTree{
+struct SegmentTree {
     int n;
     vector<T> dat;
     T ign;
@@ -35,7 +35,7 @@ struct SegmentTree{
      * @param n_ Segment Treeの要素数
      * @param ignore 無視されるデータ．例えば，Range Minimum Queryでは，正の無限大を用いる．
      */
-    SegmentTree(int n_, T ignore){
+    SegmentTree(int n_, T ignore) {
         for(n = 1; n < n_; n *= 2);
         ign = ignore;
         dat = vector<T>(n * 2 - 1, ignore);
@@ -46,11 +46,11 @@ struct SegmentTree{
      * 計算量は @f$O(n)@f$ .
      * @param v 初期化するデータを与えるベクタ
      */
-    void init(vector<T> &v){
-        for(int i = 0; i < v.size(); ++i){
+    void init(vector<T>& v) {
+        for(int i = 0; i < v.size(); ++i) {
             dat[i + n - 1] = v[i];
         }
-        for(int k = n - 2; k >= 0; --k){
+        for(int k = n - 2; k >= 0; --k) {
             dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);
         }
     }
@@ -61,22 +61,21 @@ struct SegmentTree{
      * @param k 更新する要素を表すindex. (0-indexed)
      * @param d 新しい値
      */
-    void update(int k, T d){
+    void update(int k, T d) {
         k += n - 1;
         dat[k] = d;
-        while(k > 0){
+        while(k > 0) {
             k = (k - 1) / 2;
             dat[k] = min(dat[k * 2 + 1], dat[k * 2 + 2]);
         }
     }
 
-    T get(int a, int b, int k, int l, int r){
+    T get(int a, int b, int k, int l, int r) {
         if(b <= l || r <= a)
             return ign;
-        if(a <= l && r <= b){
+        if(a <= l && r <= b) {
             return dat[k];
-        }
-        else{
+        } else {
             T vl = get(a, b, k * 2 + 1, l, (l + r) / 2);
             T vr = get(a, b, k * 2 + 2, (l + r) / 2, r);
             return min(vl, vr);
@@ -89,7 +88,7 @@ struct SegmentTree{
      * @param b 区間の終了位置．(0-indexed)
      * @return クエリの結果
      */
-    T query(int a, int b){
+    T query(int a, int b) {
         return get(a, b, 0, 0, n);
     }
 };

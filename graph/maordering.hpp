@@ -33,7 +33,7 @@
  * @param v 最小カット集合
  */
 template<typename W>
-W maordering(const Graph<W> &g1, vector<int> &w){
+W maordering(const Graph<W>& g1, vector<int>& w) {
     int n = g1.size();
     W cut = INF;
     UnionFind uf(n);
@@ -42,27 +42,28 @@ W maordering(const Graph<W> &g1, vector<int> &w){
     vector<W> d;
     Graph<W> g = g1;
     w.clear();
-    for(int k = 0; k < n - 1; ++k){
+    for(int k = 0; k < n - 1; ++k) {
         int s = uf.find(0), t = -1;
         Q.push(Edge<W>(s, s, W(0)));
         d.assign(n, 0);
         used.assign(n, 0);
-        while(!Q.empty()){
-            Edge<W> e = Q.top(); Q.pop();
+        while(!Q.empty()) {
+            Edge<W> e = Q.top();
+            Q.pop();
             int v = uf.find(e.to);
             if(used[v]) continue;
             used[v] = true;
             s = uf.find(e.from);
             t = v;
-            EACH(i, g[e.to]){
-                int u = uf.find(i -> to);
-                if(!used[u]){
-                    d[u] -= i -> weight;
+            EACH(i, g[e.to]) {
+                int u = uf.find(i->to);
+                if(!used[u]) {
+                    d[u] -= i->weight;
                     Q.push(Edge<W>(v, u, d[u]));
                 }
             }
         }
-        if(cut > -d[t]){
+        if(cut > -d[t]) {
             cut = -d[t];
             w.clear();
             for(int i = 0; i < n; ++i)

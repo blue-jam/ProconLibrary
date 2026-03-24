@@ -37,22 +37,23 @@
  * @param prev 直前の頂点を格納．頂点数と同じ要素数．
  */
 template<typename W>
-void dijkstra(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
+void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     int n = g.size();
     dist.assign(n, INF);
     dist[s] = 0;
     prev.assign(n, -1);
-    priority_queue<Edge<W>> Q;     // a < b <-> a.weight > b.weight
+    priority_queue<Edge<W>> Q; // a < b <-> a.weight > b.weight
     Q.push(Edge<W>(-2, s, 0));
-    while(!Q.empty()){
-        Edge<W> e = Q.top(); Q.pop();
+    while(!Q.empty()) {
+        Edge<W> e = Q.top();
+        Q.pop();
         if(prev[e.to] != -1) continue;
         prev[e.to] = e.from;
-        EACH(i, g[e.to]){
-        //for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
-            if(dist[i -> to] > dist[i -> from] + i -> weight){
-                dist[i -> to] = dist[i -> from] + i -> weight;
-                Q.push(Edge<W>(i -> from, i -> to, dist[i -> to]));
+        EACH(i, g[e.to]) {
+            // for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
+            if(dist[i->to] > dist[i->from] + i->weight) {
+                dist[i->to] = dist[i->from] + i->weight;
+                Q.push(Edge<W>(i->from, i->to, dist[i->to]));
             }
         }
     }
@@ -64,7 +65,7 @@ void dijkstra(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
  * @param prev 直前の頂点を格納した配列
  * @param t 経路を復元したいときの目的地
  */
-vector<int> buildPath(const vector<int> &prev, int t){
+vector<int> buildPath(const vector<int>& prev, int t) {
     vector<int> path;
     for(int v = t; v >= 0; v = prev[v])
         path.push_back(v);

@@ -3,13 +3,15 @@
 #include "geometry/geometry.hpp"
 #include "geometry/polygon.hpp"
 
-int main(){
-    int n; cin >> n;
+int main() {
+    int n;
+    cin >> n;
     Polygon p(n);
-    for(int i = 0; i < n; ++i){
-        int x, y; cin >> x >> y;
-        p[i] = P(x,y);
+    for(int i = 0; i < n; ++i) {
+        int x, y;
+        cin >> x >> y;
+        p[i] = P(x, y);
     }
-    cout << (convex(p) ? 1:0) << endl;
-	return 0;
+    cout << (convex(p) ? 1 : 0) << endl;
+    return 0;
 }

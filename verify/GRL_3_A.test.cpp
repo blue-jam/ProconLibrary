@@ -3,20 +3,20 @@
 #include "graph/graph.hpp"
 #include "graph/articulation.hpp"
 
-int main(){
-	int V,E;
-	cin >> V >> E;
-	Graph<ll> g(V);
-	for(int i = 0; i < E; ++i){
-		int s,t;
-		cin >> s >> t;
-		addUndirectedEdge(g, s, t, 0);
-	}
-	vector<int> art;
-	vector<vector<int>> comp;
-	getArticulation(g, art, comp);
-	sort(ALL(art));
-	for(auto a: art)
-		cout << a << endl;
-	return 0;
+int main() {
+    int V, E;
+    cin >> V >> E;
+    Graph<ll> g(V);
+    for(int i = 0; i < E; ++i) {
+        int s, t;
+        cin >> s >> t;
+        addUndirectedEdge(g, s, t, 0);
+    }
+    vector<int> art;
+    vector<vector<int>> comp;
+    getArticulation(g, art, comp);
+    sort(ALL(art));
+    for(auto a : art)
+        cout << a << endl;
+    return 0;
 }

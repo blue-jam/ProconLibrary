@@ -20,26 +20,26 @@
  * - iwiwi先生のスライド
  * - Data Structures and Network Algorithms
  */
-struct LinkCutTree{
+struct LinkCutTree {
     static const int L = 0, R = 1;
-    struct node{
-        node *pp, *cp[2];//*lp, *rp;
+    struct node {
+        node *pp, *cp[2]; //*lp, *rp;
         bool rev;
         int dcost, dmin;
         int id;
-        node(){
+        node() {
             id = -1;
             pp = cp[L] = cp[R] = NULL;
             rev = false;
             dcost = dmin = 0;
         }
         // Splay木の根であるか
-        bool isRoot(){
+        bool isRoot() {
             return !pp || (pp->cp[L] != this && pp->cp[R] != this);
         }
         // ノードの状態（反転など）を子に伝搬させる
-        void push(){
-            if(rev){
+        void push() {
+            if(rev) {
                 swap(cp[L], cp[R]);
                 if(cp[L]) cp[L]->rev ^= true;
                 if(cp[R]) cp[R]->rev ^= true;
@@ -47,11 +47,12 @@ struct LinkCutTree{
             }
         }
         // dがRなら右回転，dがLなら左回転を行う
-        void rot(int d){
+        void rot(int d) {
             node *q = pp, *r = q->pp;
             int e = 1 - d;
             if((q->cp[e] = cp[d])) cp[d]->pp = q;
-            cp[d] = q; q->pp = this;
+            cp[d] = q;
+            q->pp = this;
 
             int qd = q->dmin;
             q->dmin = q->dcost;
@@ -64,29 +65,37 @@ struct LinkCutTree{
             dcost += dmin;
             dmin = qd;
 
-            if((pp=r)){
+            if((pp = r)) {
                 if(r->cp[L] == q) r->cp[L] = this;
                 if(r->cp[R] == q) r->cp[R] = this;
             }
         }
         // Splay操作
-        void splay(){
+        void splay() {
             push();
-            while(!isRoot()){
+            while(!isRoot()) {
                 node *q = pp;
-                if(q->isRoot()){
-                    q->push(); push();
+                if(q->isRoot()) {
+                    q->push();
+                    push();
                     if(q->cp[L] == this) rot(R);
                     else rot(L);
-                }
-                else{
+                } else {
                     node *r = q->pp;
-                    r->push(); q->push(); push();
-                    for(int i = 0; i < 2; ++i) if(r->cp[i] == q){
-                        if(q->cp[i] == this){ q->rot(1-i); rot(1-i); }
-                        else{ rot(i); rot(1-i); }
-                        break;
-                    }
+                    r->push();
+                    q->push();
+                    push();
+                    for(int i = 0; i < 2; ++i)
+                        if(r->cp[i] == q) {
+                            if(q->cp[i] == this) {
+                                q->rot(1 - i);
+                                rot(1 - i);
+                            } else {
+                                rot(i);
+                                rot(1 - i);
+                            }
+                            break;
+                        }
                 }
             }
         }
@@ -95,9 +104,9 @@ struct LinkCutTree{
     LinkCutTree(int n) : nodes(n) {
         for(int i = 0; i < n; ++i) nodes[i].id = i;
     }
-    node *expose(node *x){
+    node *expose(node *x) {
         node *rp = NULL;
-        for(node *p = x; p != NULL; p = p->pp){
+        for(node *p = x; p != NULL; p = p->pp) {
             int ndmin;
             p->splay();
 
@@ -120,7 +129,7 @@ struct LinkCutTree{
     /**
      * 頂点 @a v を根とする木を頂点 @a w に接続する
      */
-    void link(int v, int w){
+    void link(int v, int w) {
         node *c = &nodes[v], *p = &nodes[w];
         expose(c);
         expose(p);
@@ -136,10 +145,10 @@ struct LinkCutTree{
     /**
      * 木を頂点 @a v から親に向かう辺を削除することで2つの木に分ける
      */
-    void cut(int v){
+    void cut(int v) {
         node *c = &nodes[v];
         expose(c);
-        node *p = c -> cp[L];
+        node *p = c->cp[L];
         c->cp[L] = NULL;
         p->pp = NULL;
 
@@ -152,7 +161,7 @@ struct LinkCutTree{
      * 頂点 @a n が属する木の根を見つける
      * @return 木の根の番号
      */
-    int findroot(int n){
+    int findroot(int n) {
         node *v = expose(&nodes[n]);
         while(v->cp[L]) v->push(), v = v->cp[L];
         v->splay();
@@ -163,9 +172,9 @@ struct LinkCutTree{
      * 頂点 @a n から根に向かうパスの中で最小の重みと，その重みをもつ頂点のうち最も根に近い頂点の組を返す
      * @return (重み最小の頂点，重み最大の頂点）
      */
-    pair<int, int> findcost(int n){
+    pair<int, int> findcost(int n) {
         node *v = expose(&nodes[n]);
-        for(;;){
+        for(;;) {
             v->push();
             if(v->cp[L] && v->cp[L]->dmin == 0) v = v->cp[L];
             else if((!v->cp[L] || v->cp[L]->dmin > 0) && v->dcost > 0) v = v->cp[R];
@@ -178,7 +187,7 @@ struct LinkCutTree{
     /**
      * 頂点 @a n から根に向かうパスの中にある頂点の重みに値 @a x を加える
      */
-    void addcost(int n, int x){
+    void addcost(int n, int x) {
         node *v = expose(&nodes[n]);
         v->dmin += x;
     }
@@ -186,7 +195,7 @@ struct LinkCutTree{
     /**
      * 頂点 @a v を根にする
      */
-    void evert(int v){
+    void evert(int v) {
         node *r = expose(&nodes[v]);
         r->rev ^= true;
     }
