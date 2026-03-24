@@ -7,13 +7,12 @@
 
 ## 目標
 
-* 作り始める→放置 を繰り返してできたライブラリもどきやソースコードの整理
-* C++の新しい機能を活用する
-* 使いやすいように書く
-* ドキュメントを作る(Doxygenとか)
-* 印刷用ドキュメントを作る
-* 自動整合性チェック(makeとか)＆自動ローカルverify(rimeとかtestlibとか)
-* テスト用データは自動ダウンロードができるようにしたい
+- 作り始める→放置 を繰り返してできたライブラリもどきやソースコードの整理
+- C++の新しい機能を活用する
+- 使いやすいように書く
+- ドキュメントを作る
+- 自動整合性チェック＆自動ローカルverify
+- テスト用データは自動ダウンロードができるようにする
   (オンラインジャッジに迷惑をかけない範囲で)
 
 ## フォーマット・静的解析
@@ -21,6 +20,7 @@
 [clang-format](https://clang.llvm.org/docs/ClangFormat.html) と [cppcheck](https://cppcheck.sourceforge.io/) を使用。
 
 ```bash
+cmake -S . -B build
 # CMake ターゲットとして実行
 cmake --build build --target format        # フォーマット適用
 cmake --build build --target format-check  # フォーマットチェック
@@ -32,8 +32,8 @@ CIでも push ごとに自動実行される。
 
 ## 参考にした参考書・ライブラリ・Webページ
 
-* [Spaghetti Source](http://www.prefield.com/)
-* プログラミングコンテストチャレンジブック
-* logicmachineさんのライブラリ
-* lyozさんのライブラリ
-* deq notes
+- [Spaghetti Source](http://www.prefield.com/)
+- プログラミングコンテストチャレンジブック
+- logicmachineさんのライブラリ
+- lyozさんのライブラリ
+- deq notes
