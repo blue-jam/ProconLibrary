@@ -26,12 +26,12 @@
 template<typename W>
 W blockingFlow(Graph<W>& g, vector<int>& l, int v, int t, W f) {
     if (v == t) return f;
-    EACH(i, g[v]) {
-        if (i->weight > 0 && l[v] < l[i->to]) {
-            W d = blockingFlow(g, l, i->to, t, min(f, i->weight));
+    for (auto& edge : g[v]) {
+        if (edge.weight > 0 && l[v] < l[edge.to]) {
+            W d = blockingFlow(g, l, edge.to, t, min(f, edge.weight));
             if (d > 0) {
-                i->weight -= d;
-                g[i->to][i->rev].weight += d;
+                edge.weight -= d;
+                g[edge.to][edge.rev].weight += d;
                 return d;
             }
         }
@@ -54,10 +54,10 @@ W dinitz(Graph<W>& g, int s, int t) {
         while (!Q.empty()) {
             int v = Q.front();
             Q.pop();
-            EACH(i, g[v])
-            if (i->weight > 0 && l[i->to] < 0) {
-                l[i->to] = l[v] + 1;
-                Q.push(i->to);
+            for (const auto& edge : g[v])
+            if (edge.weight > 0 && l[edge.to] < 0) {
+                l[edge.to] = l[v] + 1;
+                Q.push(edge.to);
             }
         }
         if (l[t] < 0) return flow;

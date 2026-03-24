@@ -32,11 +32,11 @@ W edmonds_karp(Graph<W>& g, int s, int t) {
         while (!Q.empty() && prev[t] < 0) {
             int v = Q.front();
             Q.pop();
-            EACH(i, g[v])
-            if (i->weight > 0 && prev[i->to] < 0) {
-                prev[i->to] = v;
-                edge[i->to] = i - g[v].begin();
-                Q.push(i->to);
+            for (int idx = 0; idx < (int)g[v].size(); ++idx)
+            if (g[v][idx].weight > 0 && prev[g[v][idx].to] < 0) {
+                prev[g[v][idx].to] = v;
+                edge[g[v][idx].to] = idx;
+                Q.push(g[v][idx].to);
             }
         }
         if (prev[t] < 0) return flow;

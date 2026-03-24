@@ -20,9 +20,9 @@ int main() {
     Edges<ll> brg;
     vector<vector<int>> comp;
     getBridge(g, brg, comp);
-    EACH(i, brg)
-    if (i->from > i->to)
-        swap(i->from, i->to);
+    for (auto& br : brg)
+    if (br.from > br.to)
+        swap(br.from, br.to);
     sort(ALL(brg), func);
     for (auto b : brg)
         cout << b.from << " " << b.to << endl;

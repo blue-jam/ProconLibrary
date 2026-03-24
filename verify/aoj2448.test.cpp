@@ -25,16 +25,16 @@ int main() {
     vector<vector<int>> pols;
     pols = getPolygon(g, ps);
     vector<double> res;
-    EACH(i, pols) {
+    for (const auto& pol : pols) {
         Polygon p;
-        EACH(j, *i)
-        p.push_back(ps[*j]);
+        for (const auto& idx : pol)
+        p.push_back(ps[idx]);
         res.push_back(area(p));
     }
     double sum = 0;
     sort(ALL(res));
-    EACH(i, res)
-    sum += *i;
+    for (const auto& r : res)
+    sum += r;
     cout << fixed << setprecision(5) << sum << endl;
     return 0;
 }

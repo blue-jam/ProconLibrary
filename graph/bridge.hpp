@@ -36,9 +36,9 @@ void bridgeRecur(const Graph<W>& g, int v, int u,
     oReps.push(v);
     oNodes.push(v);
     open[v] = true;
-    EACH(i, g[v])
-    if (i->to != u)
-        bridgeRecur(g, i->to, i->from, bridge, comp, num, open, oNodes, oReps, cnt);
+    for (const auto& edge : g[v])
+    if (edge.to != u)
+        bridgeRecur(g, edge.to, edge.from, bridge, comp, num, open, oNodes, oReps, cnt);
     if (v == oReps.top()) {
         int w;
         oReps.pop();

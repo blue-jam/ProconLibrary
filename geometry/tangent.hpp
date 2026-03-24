@@ -22,8 +22,8 @@ vector<Line> outertangent(const Circle& a, const Circle& b) {
     if (sgn(a.r, b.r) > 0) {
         auto l = outertangent(b, a);
         reverse(ALL(l));
-        if (l.size() != 1) EACH(i, l)
-        reverse(ALL(*i));
+        if (l.size() != 1) for (auto& li : l)
+        reverse(ALL(li));
         return l;
     }
     double d = abs(b.o - a.o), t = -b.r * d / (b.r - a.r);

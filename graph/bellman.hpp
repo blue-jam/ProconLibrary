@@ -53,17 +53,16 @@ bool bellmanFord(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     prev.assign(n, -1);
     for (int k = 0; k < 2 * n; ++k) {
         for (int v = 0; v < n; ++v) {
-            EACH(i, g[v]) {
-                // for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if (dist[i->from] != INF && dist[i->to] > dist[i->from] + i->weight) {
-                    if (dist[i->from] == -INF) {
-                        dist[i->to] = -INF;
+            for (const auto& edge : g[v]) {
+                if (dist[edge.from] != INF && dist[edge.to] > dist[edge.from] + edge.weight) {
+                    if (dist[edge.from] == -INF) {
+                        dist[edge.to] = -INF;
                     } else {
-                        dist[i->to] = dist[i->from] + i->weight;
+                        dist[edge.to] = dist[edge.from] + edge.weight;
                     }
-                    prev[i->to] = i->from;
+                    prev[edge.to] = edge.from;
                     if (k == n - 1) {
-                        dist[i->to] = -INF;
+                        dist[edge.to] = -INF;
                         negativeLoop = true;
                     }
                 }
@@ -84,10 +83,9 @@ bool findNegativeLoop(const Graph<W>& g) {
     vector<W> dist(n, 0);
     for (int k = 0; k < n; ++k) {
         for (int v = 0; v < n; ++v) {
-            EACH(i, g[v]) {
-                // for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if (dist[i->to] > dist[i->from] + i->weight) {
-                    dist[i->to] = dist[i->from] + i->weight;
+            for (const auto& edge : g[v]) {
+                if (dist[edge.to] > dist[edge.from] + edge.weight) {
+                    dist[edge.to] = dist[edge.from] + edge.weight;
                     if (k == n - 1) return true;
                 }
             }

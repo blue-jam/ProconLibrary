@@ -21,10 +21,10 @@
 template<typename W>
 bool topologicalRecur(const Graph<W>& g, int v, vector<int>& order, vector<int>& color) {
     color[v] = 1;
-    EACH(i, g[v]) {
-        if (color[i->to] == 1) return false;
-        if (color[i->to] == 2) continue;
-        topologicalRecur(g, i->to, order, color);
+    for (const auto& edge : g[v]) {
+        if (color[edge.to] == 1) return false;
+        if (color[edge.to] == 2) continue;
+        topologicalRecur(g, edge.to, order, color);
     }
     order.push_back(v);
     color[v] = 2;

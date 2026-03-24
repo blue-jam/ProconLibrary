@@ -52,10 +52,10 @@ W maordering(const Graph<W>& g1, vector<int>& w) {
             used[v] = true;
             s = uf.find(e.from);
             t = v;
-            EACH(i, g[e.to]) {
-                int u = uf.find(i->to);
+            for (const auto& adj : g[e.to]) {
+                int u = uf.find(adj.to);
                 if (!used[u]) {
-                    d[u] -= i->weight;
+                    d[u] -= adj.weight;
                     Q.push(Edge<W>(v, u, d[u]));
                 }
             }

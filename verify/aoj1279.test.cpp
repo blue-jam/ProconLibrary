@@ -47,11 +47,11 @@ int main() {
         for (int i = 0; i < (int)ps.size(); ++i)
             if (abs(ps[i] - g) < eps) gi = i;
 
-        EACH(i, signs) {
-            Segment ss = *i;
-            EACH(j, graph)
-            EACH(k, *j) {
-                int a = k->from, b = k->to;
+        for (const auto& sign : signs) {
+            Segment ss = sign;
+            for (auto& edges : graph)
+            for (auto& edge : edges) {
+                int a = edge.from, b = edge.to;
                 double d = 1;
                 if (ccw(ps[a], ps[b], ss[0]) == 0) {
                     d = dot(ss[0] - ss[1], ps[b] - ps[a]);
@@ -59,7 +59,7 @@ int main() {
                     d = dot(ss[1] - ss[0], ps[b] - ps[a]);
                 }
                 if (d < eps) {
-                    k->weight = INF;
+                    edge.weight = INF;
                 }
             }
         }
@@ -71,8 +71,8 @@ int main() {
             cout << -1 << endl;
         } else {
             vector<int> path = buildPath(prev, gi);
-            EACH(i, path) {
-                cout << (int)ps[*i].real() << " " << (int)ps[*i].imag() << endl;
+            for (const auto& v : path) {
+                cout << (int)ps[v].real() << " " << (int)ps[v].imag() << endl;
             }
             cout << 0 << endl;
         }

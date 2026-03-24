@@ -36,8 +36,8 @@ void sccRecur(const Graph<W>& g, int v, vector<vector<int>>& comp,
     oReps.push(v);
     oNodes.push(v);
     open[v] = true;
-    EACH(i, g[v])
-    sccRecur(g, i->to, comp, num, open, oNodes, oReps, cnt);
+    for (const auto& edge : g[v])
+    sccRecur(g, edge.to, comp, num, open, oNodes, oReps, cnt);
     if (v == oReps.top()) {
         int w;
         oReps.pop();

@@ -29,12 +29,12 @@ template<typename W>
 W ford_dfs(Graph<W>& g, int v, int t, W f, vector<int>& used) {
     if (v == t) return f;
     used[v] = true;
-    EACH(i, g[v]) {
-        if (!used[i->to] && i->weight > 0) {
-            W d = ford_dfs(g, i->to, t, min(f, i->weight), used);
+    for (auto& edge : g[v]) {
+        if (!used[edge.to] && edge.weight > 0) {
+            W d = ford_dfs(g, edge.to, t, min(f, edge.weight), used);
             if (d > 0) {
-                i->weight -= d;
-                g[i->to][i->rev].weight += d;
+                edge.weight -= d;
+                g[edge.to][edge.rev].weight += d;
                 return d;
             }
         }

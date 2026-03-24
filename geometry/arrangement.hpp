@@ -7,9 +7,9 @@
 bool merge_if_able(Segment& s, Segment t) {
     if (!parallel(s, t)) return false;
     bool f = true;
-    EACH(i, s)
-    EACH(j, t)
-    f = f && !near(*i, *j);
+    for (const auto& si : s)
+    for (const auto& tj : t)
+    f = f && !near(si, tj);
     if (f) {
         if (abs(ccw(s[0], t[0], s[1])) == 1) return false;
         if (ccw(s[0], s[1], t[0]) == -2 || ccw(t[0], t[1], s[0]) == -2) return false;
@@ -73,15 +73,15 @@ bool walkCW(const Graph<double>& g, int v, int u, vector<int>& lst, const vector
     vector<pair<double, int>> es;
     P e = (ps[v] - ps[u]) / abs(ps[v] - ps[u]);
     P n = e * P(0, 1);
-    EACH(i, g[v])
-    if (i->to != u && !used[v][i->to]) {
-        es.push_back(make_pair(atan2(dot(n, ps[i->to] - ps[v]), dot(e, ps[i->to] - ps[v])), i->to));
+    for (const auto& adj : g[v])
+    if (adj.to != u && !used[v][adj.to]) {
+        es.push_back(make_pair(atan2(dot(n, ps[adj.to] - ps[v]), dot(e, ps[adj.to] - ps[v])), adj.to));
     }
     sort(ALL(es));
     reverse(ALL(es));
     lst.push_back(v);
-    EACH(i, es) {
-        bool r = walkCW(g, i->second, v, lst, ps, used, res);
+    for (const auto& ei : es) {
+        bool r = walkCW(g, ei.second, v, lst, ps, used, res);
         if (r) {
             lst.pop_back();
             return r;
@@ -97,11 +97,11 @@ vector<vector<int>> getPolygon(const Graph<double>& g, const vector<P>& ps) {
     vector<vector<int>> used(n, vector<int>(n));
 
     res.clear();
-    for (int i = 0; i < n; ++i) EACH(j, g[i])
-    if (!used[i][j->to]) {
+    for (int i = 0; i < n; ++i) for (const auto& edge : g[i])
+    if (!used[i][edge.to]) {
         vector<int> v;
-        walkCW(g, j->to, i, v, ps, used, res);
-        used[i][j->to] = true;
+        walkCW(g, edge.to, i, v, ps, used, res);
+        used[i][edge.to] = true;
     }
     return res;
 }

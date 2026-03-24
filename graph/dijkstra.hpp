@@ -46,11 +46,10 @@ void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
         Q.pop();
         if (prev[e.to] != -1) continue;
         prev[e.to] = e.from;
-        EACH(i, g[e.to]) {
-            // for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
-            if (dist[i->to] > dist[i->from] + i->weight) {
-                dist[i->to] = dist[i->from] + i->weight;
-                Q.push(Edge<W>(i->from, i->to, dist[i->to]));
+        for (const auto& edge : g[e.to]) {
+            if (dist[edge.to] > dist[edge.from] + edge.weight) {
+                dist[edge.to] = dist[edge.from] + edge.weight;
+                Q.push(Edge<W>(edge.from, edge.to, dist[edge.to]));
             }
         }
     }
