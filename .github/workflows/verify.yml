@@ -1,5 +1,5 @@
-name: ci
-run-name: CI
+name: verify
+run-name: Verify
 on:
   push:
 
