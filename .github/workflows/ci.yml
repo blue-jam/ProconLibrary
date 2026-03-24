@@ -4,7 +4,7 @@ on:
   push:
 
 jobs:
-  verify-libs:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,6 +14,13 @@ jobs:
         run: cmake -S . -B build
       - name: Run lint
         run: cmake --build build --target lint
+
+  verify-libs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure CMake
+        run: cmake -S . -B build
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11
