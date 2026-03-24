@@ -11,7 +11,7 @@ jobs:
         with:
           python-version: 3.11
       - name: Install dependencies
-        run: pip3 install online-judge-tools
+        run: pip3 install online-judge-tools online-judge-verify-helper
       - name: Run verification
         run: oj-verify run
 
@@ -27,14 +27,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install Doxygen
-        run: sudo apt-get install -y doxygen doxygen-latex graphviz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: pip3 install online-judge-tools online-judge-verify-helper
       - name: Generate docs
-        run: doxygen
+        run: oj-verify docs
       - name: Upload Pages artifact
         uses: actions/upload-pages@v3
         with:
-          path: html
+          path: .verify-helper/markdown
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

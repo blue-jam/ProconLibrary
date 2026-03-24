@@ -17,7 +17,7 @@ oj-verify run
 pip3 install online-judge-tools online-judge-verify-helper
 ```
 
-**CI:** GitHub Actionsがpushごとに `oj-verify run` を実行する (`.github/workflows/ci.yml` 参照)。
+**CI:** GitHub Actionsがpushごとに `oj-verify run` を実行する。mainブランチでは `oj-verify docs` でドキュメントを生成し GitHub Pages にデプロイする (`.github/workflows/ci.yml` 参照)。
 
 **CMake (IDE/コンパイルチェック用):**
 ```bash
@@ -46,4 +46,4 @@ C++標準はC++23。
 - ライブラリファイルはテンプレートの `typedef ll Weight` および `using ll = long long` を使用する
 - `graph.hpp` の `Edge` の比較演算子は意図的に逆順 (大きい方がtrueを返す) にしており、`priority_queue` の最小ヒープとして使うため
 - グラフ表現は2種類が共存: レガシーの `Edge`/`Graph` (typedef ベース) と新しいテンプレート版の `edge<T>`/`graph<T>`
-- ドキュメントは日本語、Doxygen形式
+- ドキュメントは日本語。`oj-verify docs` により自動生成され GitHub Pages にデプロイされる
