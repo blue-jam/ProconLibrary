@@ -27,7 +27,7 @@ PointerAlignment: Right
 ReferenceAlignment: Left
 
 # Include sorting
-SortIncludes: true
+SortIncludes: false
 
 # Access modifiers
 AccessModifierOffset: -4
