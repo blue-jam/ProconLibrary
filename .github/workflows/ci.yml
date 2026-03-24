@@ -20,7 +20,7 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: .verify-helper/cache
-          key: verify-helper-${{ hashFiles('.verify-helper/timestamps.remote.json') }}
+          key: verify-helper-${{ github.sha }}
           restore-keys: |
             verify-helper-
       - name: Run verification
