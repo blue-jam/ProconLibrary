@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -15,9 +15,6 @@
  *
  * ただし，Cは最大流量
  *
- * ### ソースコード
- *
- * @include fordfulkerson.hpp
  *
  * ### 確認済み問題
  *
@@ -29,15 +26,15 @@
  *   * 蟻本
  */
 template<typename W>
-W ford_dfs(Graph<W> &g, int v, int t, W f, vector<int> &used){
-    if(v == t) return f;
+W ford_dfs(Graph<W>& g, int v, int t, W f, vector<int>& used) {
+    if (v == t) return f;
     used[v] = true;
-    EACH(i, g[v]){
-        if(!used[i -> to] && i -> weight > 0){
-            W d = ford_dfs(g, i -> to, t, min(f, i -> weight), used);
-            if(d > 0){
-                i -> weight -= d;
-                g[i -> to][i -> rev].weight += d;
+    for (auto& edge : g[v]) {
+        if (!used[edge.to] && edge.weight > 0) {
+            W d = ford_dfs(g, edge.to, t, min(f, edge.weight), used);
+            if (d > 0) {
+                edge.weight -= d;
+                g[edge.to][edge.rev].weight += d;
                 return d;
             }
         }
@@ -49,13 +46,13 @@ W ford_dfs(Graph<W> &g, int v, int t, W f, vector<int> &used){
  * 事前に逆辺をweight=0で追加しておく．また，グラフは書き換えを行うので必要な場合はコピーを取っておくこと．
  */
 template<typename W>
-W ford_fulkerson(Graph<W> &g, int s, int t){
+W ford_fulkerson(Graph<W>& g, int s, int t) {
     vector<int> used(g.size());
     W flow = 0;
-    for(;;){
+    for (;;) {
         fill(ALL(used), 0);
         int f = ford_dfs(g, s, t, INF, used);
-        if(f == 0) return flow;
+        if (f == 0) return flow;
         flow += f;
     }
     return flow;

@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -13,9 +13,6 @@
  * 二辺連結成分であるかどうかを調べるには，連結成分1つにつき深さ優先探索を1回行えばよい．
  * 強連結成分分解のコードを少し変えると二辺連結成分分解のコードになる．詳しい説明は文献を参照．
  *
- * ### ソースコード
- *
- * @include bridge.hpp
  *
  * ### 確認済み問題
  *
@@ -26,28 +23,33 @@
  */
 
 template<typename W>
-void bridgeRecur(const Graph<W> &g, int v, int u,
-                 Edges<W> &bridge, vector<vector<int> > &comp,
-                 vector<int> &num, vector<bool> &open,
-                 stack<int> &oNodes, stack<int> &oReps, int &cnt){
-    if(num[v] != 0){
-        if(open[v]) while(num[oReps.top()] > num[v]) oReps.pop();
+void bridgeRecur(const Graph<W>& g, int v, int u,
+                 Edges<W>& bridge, vector<vector<int>>& comp,
+                 vector<int>& num, vector<bool>& open,
+                 stack<int>& oNodes, stack<int>& oReps, int& cnt) {
+    if (num[v] != 0) {
+        if (open[v])
+            while (num[oReps.top()] > num[v]) oReps.pop();
         return;
     }
     num[v] = ++cnt;
-    oReps.push(v); oNodes.push(v); open[v] = true;
-    EACH(i, g[v]) if(i->to != u)
-        bridgeRecur(g, i->to, i->from, bridge, comp, num, open, oNodes, oReps, cnt);
-    if(v == oReps.top()){
+    oReps.push(v);
+    oNodes.push(v);
+    open[v] = true;
+    for (const auto& edge : g[v])
+        if (edge.to != u)
+            bridgeRecur(g, edge.to, edge.from, bridge, comp, num, open, oNodes, oReps, cnt);
+    if (v == oReps.top()) {
         int w;
         oReps.pop();
         comp.push_back(vector<int>());
-        do{
-            w = oNodes.top(); oNodes.pop();
+        do {
+            w = oNodes.top();
+            oNodes.pop();
             open[w] = false;
             comp.back().push_back(w);
-        }while(v != w);
-        bridge.push_back(Edge<W>(min(u, v), max(u,v), W(0)));
+        } while (v != w);
+        bridge.push_back(Edge<W>(min(u, v), max(u, v), W(0)));
     }
 }
 
@@ -57,14 +59,15 @@ void bridgeRecur(const Graph<W> &g, int v, int u,
  * @param comp 二辺連結成分が格納されるベクタ(空推奨)
  */
 template<typename W>
-void getBridge(const Graph<W> &g, Edges<W> &bridge, vector<vector<int> > &comp){
+void getBridge(const Graph<W>& g, Edges<W>& bridge, vector<vector<int>>& comp) {
     int n = g.size();
     vector<int> num(n);
     vector<bool> open(n);
     stack<int> oReps, oNodes;
     int cnt = 0;
-    for(int i = 0; i < n; ++i) if(num[i] == 0){
-        bridgeRecur(g, i, n, bridge, comp, num, open, oNodes, oReps, cnt);
-        bridge.pop_back();
-    }
+    for (int i = 0; i < n; ++i)
+        if (num[i] == 0) {
+            bridgeRecur(g, i, n, bridge, comp, num, open, oNodes, oReps, cnt);
+            bridge.pop_back();
+        }
 }

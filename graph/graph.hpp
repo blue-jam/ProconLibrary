@@ -10,9 +10,6 @@
  *   <dt>隣接行列</dt><dd>@f$O(E)@f$ が @f$O(V^2)@f$ になる．密グラフや，頂点数が少ないグラフについて効率よく扱える．重複辺を扱いにくい．</dd>
  * </dl>
  *
- * ### ソースコード
- *
- * @include graph.hpp
  *
  * Edgeのless演算子のオーバーロードで，大きいほうが左辺のときにtrueを返すようにしている．
  * これはpriority_queueで，weightの小さいほうを先に取り出すときの工夫である．
@@ -25,18 +22,16 @@
 #include "misc/template.hpp"
 
 template<typename W>
-struct Edge{
+struct Edge {
     int from, to;
     W weight;
-    int rev;     // 無向グラフの対の辺
-    Edge(int from, int to, W weight) :
-        from(from), to(to), weight(weight) { }
-    Edge(int from, int to, W weight, int rev) :
-        from(from), to(to), weight(weight), rev(rev){ }
-    bool operator < (const Edge &b) const {
-        if(weight != b.weight) return weight > b.weight;
-        if(from != b.from) return from > b.from;
-        return  to > b.to;
+    int rev; // 無向グラフの対の辺
+    Edge(int from, int to, W weight) : from(from), to(to), weight(weight) {}
+    Edge(int from, int to, W weight, int rev) : from(from), to(to), weight(weight), rev(rev) {}
+    bool operator<(const Edge& b) const {
+        if (weight != b.weight) return weight > b.weight;
+        if (from != b.from) return from > b.from;
+        return to > b.to;
     }
 };
 template<typename W = ll>
@@ -49,12 +44,12 @@ template<typename W = ll>
 using Matrix = vector<Array<W>>;
 
 template<typename W>
-void addFlowEdge(Graph<W> &g, int a, int b, type_identity_t<W> c){
+void addFlowEdge(Graph<W>& g, int a, int b, type_identity_t<W> c) {
     g[a].push_back(Edge<W>(a, b, c, g[b].size()));
     g[b].push_back(Edge<W>(b, a, W(0), g[a].size() - 1));
 }
 template<typename W>
-void addUndirectedEdge(Graph<W> &g, int a, int b, type_identity_t<W> c){
+void addUndirectedEdge(Graph<W>& g, int a, int b, type_identity_t<W> c) {
     g[a].push_back(Edge<W>(a, b, c, g[b].size()));
     g[b].push_back(Edge<W>(b, a, c, g[a].size() - 1));
 }
@@ -66,8 +61,7 @@ struct edge {
 
     edge() : from(-1), to(-1) {}
 
-    edge(ll from, ll to, T weight) :
-            from(from), to(to), weight(weight) {}
+    edge(ll from, ll to, T weight) : from(from), to(to), weight(weight) {}
 };
 
 template<typename T>
@@ -81,4 +75,3 @@ struct graph {
         edges[from].emplace_back(from, to, weight);
     }
 };
-

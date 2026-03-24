@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -12,9 +12,6 @@
  *
  * 経路復元では，目的地から直前の頂点をたどることで，経路の逆順を復元している．
  *
- * ### ソースコード
- *
- * @include dijkstra.hpp
  *
  * ### 確認済み問題
  *
@@ -37,22 +34,22 @@
  * @param prev 直前の頂点を格納．頂点数と同じ要素数．
  */
 template<typename W>
-void dijkstra(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
+void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     int n = g.size();
     dist.assign(n, INF);
     dist[s] = 0;
     prev.assign(n, -1);
-    priority_queue<Edge<W>> Q;     // a < b <-> a.weight > b.weight
+    priority_queue<Edge<W>> Q; // a < b <-> a.weight > b.weight
     Q.push(Edge<W>(-2, s, 0));
-    while(!Q.empty()){
-        Edge<W> e = Q.top(); Q.pop();
-        if(prev[e.to] != -1) continue;
+    while (!Q.empty()) {
+        Edge<W> e = Q.top();
+        Q.pop();
+        if (prev[e.to] != -1) continue;
         prev[e.to] = e.from;
-        EACH(i, g[e.to]){
-        //for(Edges::const_iterator i=g[e.to].begin(); i!=g[e.to].end(); ++i){    //マクロが使えないとき
-            if(dist[i -> to] > dist[i -> from] + i -> weight){
-                dist[i -> to] = dist[i -> from] + i -> weight;
-                Q.push(Edge<W>(i -> from, i -> to, dist[i -> to]));
+        for (const auto& edge : g[e.to]) {
+            if (dist[edge.to] > dist[edge.from] + edge.weight) {
+                dist[edge.to] = dist[edge.from] + edge.weight;
+                Q.push(Edge<W>(edge.from, edge.to, dist[edge.to]));
             }
         }
     }
@@ -64,9 +61,9 @@ void dijkstra(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
  * @param prev 直前の頂点を格納した配列
  * @param t 経路を復元したいときの目的地
  */
-vector<int> buildPath(const vector<int> &prev, int t){
+vector<int> buildPath(const vector<int>& prev, int t) {
     vector<int> path;
-    for(int v = t; v >= 0; v = prev[v])
+    for (int v = t; v >= 0; v = prev[v])
         path.push_back(v);
     reverse(path.begin(), path.end());
     return path;

@@ -13,19 +13,19 @@ struct auxiliary_tree {
      * Auxiliary Treeの構造体
      */
     struct AT {
-        int n, n_, root;    // n: 頂点数, n_: 元の木の頂点数, root: 根
-        vector<int> parent, vertices;   // parent: （現在のインデックスにおける）親, vertices: 頂点集合
-        vector<vector<int>> children;   // children: （現在のインデックスにおける）子
+        int n, n_, root;              // n: 頂点数, n_: 元の木の頂点数, root: 根
+        vector<int> parent, vertices; // parent: （現在のインデックスにおける）親, vertices: 頂点集合
+        vector<vector<int>> children; // children: （現在のインデックスにおける）子
 
-        explicit AT(int n, int n_, int root): n(n), n_(n_), root(root) {
+        explicit AT(int n, int n_, int root) : n(n), n_(n_), root(root) {
         }
     };
 
-    int n, root, maxLog;    // n: 頂点数, root: 根, maxLog: ダブリングの最大の深さ
-    vector<vector<int>> g, ancestor;    // g: 隣接リスト, ancestor: LCA用のダブリングした祖先
-    vector<int> depth, ord; // depth: 頂点の深さ, ord: DFSでの訪問順
+    int n, root, maxLog;             // n: 頂点数, root: 根, maxLog: ダブリングの最大の深さ
+    vector<vector<int>> g, ancestor; // g: 隣接リスト, ancestor: LCA用のダブリングした祖先
+    vector<int> depth, ord;          // depth: 頂点の深さ, ord: DFSでの訪問順
 
-    explicit auxiliary_tree(int n): n(n), g(n) {
+    explicit auxiliary_tree(int n) : n(n), g(n) {
         assert(n >= 2);
         root = -1;
         maxLog = -1;
@@ -67,7 +67,7 @@ struct auxiliary_tree {
     /**
      * 頂点集合vに対するAuxiliary Treeを構築する
      */
-    AT buildFor(vector<int> &v) {
+    AT buildFor(vector<int>& v) {
         vector<int> u(v);
         sort(u.begin(), u.end(), [&](int a, int b) { return ord[a] < ord[b]; });
 
@@ -79,7 +79,8 @@ struct auxiliary_tree {
         for (int i = 1; i < u.size(); i++) {
             int w = lca(S.top(), u[i]);
             while (S.size() > 1 && depth[w] <= depth[S.top()]) {
-                int a = S.top(); S.pop();
+                int a = S.top();
+                S.pop();
                 int p;
                 if (depth[S.top()] < depth[w]) {
                     p = w;
@@ -99,7 +100,8 @@ struct auxiliary_tree {
         }
 
         while (S.size() > 1) {
-            int a = S.top(); S.pop();
+            int a = S.top();
+            S.pop();
             int p = S.top();
             pairs.emplace_back(p, a);
         }
@@ -146,7 +148,7 @@ struct auxiliary_tree {
 
 private:
     int initDfs(int v, int p, int num) {
-        ord[v] = num++;     // 行きがけ順の番号をつける
+        ord[v] = num++; // 行きがけ順の番号をつける
         for (int i = 0; i < g[v].size(); i++) {
             int u = g[v][i];
             if (u == p) continue;

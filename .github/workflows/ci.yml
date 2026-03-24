@@ -5,6 +5,17 @@ on:
     branches-ignore:
       - main
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cppcheck
+        run: sudo apt-get -qq install -y cppcheck
+      - name: Configure CMake
+        run: cmake -S . -B build
+      - name: Run lint
+        run: cmake --build build --target lint
+
   verify-libs:
     runs-on: ubuntu-latest
     steps:

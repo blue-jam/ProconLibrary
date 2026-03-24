@@ -1,13 +1,12 @@
 #pragma once
 
-#include <bits/stdc++.h>
 #include <atcoder/all>
+#include <bits/stdc++.h>
 
 using namespace std;
 using namespace atcoder;
 
-#define ALL(x) (x).begin(),(x).end() 
-#define EACH(i,c) for(auto i=(c).begin();i!=(c).end();++i)
+#define ALL(x) (x).begin(), (x).end()
 
 using ll = long long;
 #ifndef EPS

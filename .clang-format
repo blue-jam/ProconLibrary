@@ -1,0 +1,40 @@
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Brace style: opening brace on same line
+BreakBeforeBraces: Attach
+
+# No space before parentheses in control statements: if(...), for(...)
+SpaceBeforeParens: ControlStatements
+
+# No space inside parentheses
+SpacesInParentheses: false
+
+# Column limit (0 = no limit, to avoid reformatting long competitive programming lines)
+ColumnLimit: 0
+
+# Keep short functions on a single line
+AllowShortFunctionsOnASingleLine: All
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
+AllowShortLoopsOnASingleLine: true
+AllowShortBlocksOnASingleLine: Always
+
+# Pointer/reference alignment
+PointerAlignment: Right
+ReferenceAlignment: Left
+
+# Include sorting
+SortIncludes: true
+
+# Access modifiers
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+
+# Template
+SpaceAfterTemplateKeyword: false
+
+# C++ standard
+Standard: c++20

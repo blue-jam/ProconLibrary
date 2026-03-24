@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -14,9 +14,6 @@
  *
  *   * O(V^2 E)
  *
- * ### ソースコード
- *
- * @include dinitz.hpp
  *
  * ### 確認済み問題
  *
@@ -27,14 +24,14 @@
  *   * グラフ・ネットワーク・組合せ論
  */
 template<typename W>
-W blockingFlow(Graph<W> &g, vector<int> &l, int v, int t, W f){
-    if(v == t) return f;
-    EACH(i, g[v]){
-        if(i -> weight > 0 && l[v] < l[i -> to]){
-            W d = blockingFlow(g, l, i -> to, t, min(f, i -> weight));
-            if(d > 0){
-                i -> weight -= d;
-                g[i -> to][i -> rev].weight += d;
+W blockingFlow(Graph<W>& g, vector<int>& l, int v, int t, W f) {
+    if (v == t) return f;
+    for (auto& edge : g[v]) {
+        if (edge.weight > 0 && l[v] < l[edge.to]) {
+            W d = blockingFlow(g, l, edge.to, t, min(f, edge.weight));
+            if (d > 0) {
+                edge.weight -= d;
+                g[edge.to][edge.rev].weight += d;
                 return d;
             }
         }
@@ -45,24 +42,26 @@ W blockingFlow(Graph<W> &g, vector<int> &l, int v, int t, W f){
  *Ford-Fulkersonと同様にネットワークとソース，シンクの頂点を渡す．グラフを構築するときに逆辺を付け忘れないように．
  */
 template<typename W>
-W dinitz(Graph<W> &g, int s, int t){
+W dinitz(Graph<W>& g, int s, int t) {
     int n = g.size();
     W flow = 0;
     vector<int> l(n, -1);
-    for(;;){
+    for (;;) {
         queue<int> Q;
         fill(ALL(l), -1);
         l[s] = 0;
         Q.push(s);
-        while(!Q.empty()){
-            int v = Q.front(); Q.pop();
-            EACH(i, g[v])if(i -> weight > 0 && l[i -> to] < 0){
-                l[i -> to] = l[v] + 1;
-                Q.push(i -> to);
-            }
+        while (!Q.empty()) {
+            int v = Q.front();
+            Q.pop();
+            for (const auto& edge : g[v])
+                if (edge.weight > 0 && l[edge.to] < 0) {
+                    l[edge.to] = l[v] + 1;
+                    Q.push(edge.to);
+                }
         }
-        if(l[t] < 0) return flow;
+        if (l[t] < 0) return flow;
         W f;
-        while((f = blockingFlow(g, l, s, t, INF)) > 0) flow += f;
+        while ((f = blockingFlow(g, l, s, t, INF)) > 0) flow += f;
     }
 }

@@ -1,6 +1,6 @@
 #pragma once
-#include "misc/template.hpp"
 #include "graph/graph.hpp"
+#include "misc/template.hpp"
 
 /**
  * @file
@@ -21,9 +21,6 @@
  *
  *   * O(VE)
  *
- * ### ソースコード
- *
- * @include bellman.hpp
  *
  * ### 確認済み問題
  *
@@ -48,24 +45,24 @@
  * @return 負の閉路が含まれているか
  */
 template<typename W>
-bool bellmanFord(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
+bool bellmanFord(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     int n = g.size();
     bool negativeLoop = false;
-    dist.assign(n, INF); dist[s] = 0;
+    dist.assign(n, INF);
+    dist[s] = 0;
     prev.assign(n, -1);
-    for(int k = 0; k < 2 * n; ++k){
-        for(int v = 0; v < n; ++v){
-            EACH(i, g[v]){
-            //for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if(dist[i -> from] != INF && dist[i -> to] > dist[i -> from] + i -> weight){
-                    if (dist[i -> from] == -INF) {
-                        dist[i -> to] = -INF;
+    for (int k = 0; k < 2 * n; ++k) {
+        for (int v = 0; v < n; ++v) {
+            for (const auto& edge : g[v]) {
+                if (dist[edge.from] != INF && dist[edge.to] > dist[edge.from] + edge.weight) {
+                    if (dist[edge.from] == -INF) {
+                        dist[edge.to] = -INF;
                     } else {
-                        dist[i -> to] = dist[i -> from] + i-> weight;
+                        dist[edge.to] = dist[edge.from] + edge.weight;
                     }
-                    prev[i -> to] = i -> from;
-                    if(k == n - 1){
-                        dist[i -> to] = -INF;
+                    prev[edge.to] = edge.from;
+                    if (k == n - 1) {
+                        dist[edge.to] = -INF;
                         negativeLoop = true;
                     }
                 }
@@ -81,16 +78,15 @@ bool bellmanFord(const Graph<W> &g, int s, vector<W> &dist, vector<int> &prev){
  * @return 負の閉路が含まれているか
  */
 template<typename W>
-bool findNegativeLoop(const Graph<W> &g){
+bool findNegativeLoop(const Graph<W>& g) {
     int n = g.size();
     vector<W> dist(n, 0);
-    for(int k = 0; k < n; ++k){
-        for(int v = 0; v < n; ++v){
-            EACH(i, g[v]){
-            //for(Edges::const_iterator i=g[v].begin(); i != g[v].end(); ++i){
-                if(dist[i -> to] > dist[i -> from] + i -> weight){
-                    dist[i -> to] = dist[i -> from] + i -> weight;
-                    if(k == n - 1) return true;
+    for (int k = 0; k < n; ++k) {
+        for (int v = 0; v < n; ++v) {
+            for (const auto& edge : g[v]) {
+                if (dist[edge.to] > dist[edge.from] + edge.weight) {
+                    dist[edge.to] = dist[edge.from] + edge.weight;
+                    if (k == n - 1) return true;
                 }
             }
         }
@@ -103,9 +99,9 @@ bool findNegativeLoop(const Graph<W> &g){
  * @param prev 経路復元用の1つ前の位置を示す配列
  * @param t 経路を復元したい時の目的地
  */
-vector<int> buildPath(const vector<int> &prev, int t){
+vector<int> buildPath(const vector<int>& prev, int t) {
     vector<int> path;
-    for(int v = t; v >= 0; v = prev[v])
+    for (int v = t; v >= 0; v = prev[v])
         path.push_back(v);
     reverse(path.begin(), path.end());
     return path;
@@ -129,7 +125,7 @@ struct bellman_ford {
 
         for (int k = 0; k < 2 * n; ++k) {
             for (int v = 0; v < n; ++v) {
-                for (auto &e: g.edges[v]) {
+                for (auto& e : g.edges[v]) {
                     auto new_distance = add(dist[e.from], e.weight);
                     if (!eq(dist[e.from], INF) && lt(new_distance, dist[e.to])) {
                         dist[e.to] = new_distance;

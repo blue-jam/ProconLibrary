@@ -1,24 +1,27 @@
 #pragma once
 #include "misc/template.hpp"
 
-template <
-        typename Path,
-        typename Point,
-        Path (*vertex)(int i),
-        Path (*compress)(Path&, Path&),
-        Point (*rake)(Point&, Point&),
-        Point (*add_edge)(Path&),
-        Path (*add_vertex)(Point&, int)
->
+template<
+    typename Path,
+    typename Point,
+    Path (*vertex)(int i),
+    Path (*compress)(Path&, Path&),
+    Point (*rake)(Point&, Point&),
+    Point (*add_edge)(Path&),
+    Path (*add_vertex)(Point&, int)>
 struct static_top_tree {
-    enum Type { NONE, VERTEX, COMPRESS, RAKE, ADD_EDGE, ADD_VERTEX };
+    enum Type { NONE,
+                VERTEX,
+                COMPRESS,
+                RAKE,
+                ADD_EDGE,
+                ADD_VERTEX };
 
     struct node {
         Type type;
         // ノードの番号、左の子、右の子、親のノード、木における頂点の番号
         int id, left, right, parent, v_index;
-        explicit node(Type type=NONE, int id=-1, int left=-1, int right=-1, int parent=-1, int v_index=-1) :
-                type(type), id(id), left(left), right(right), parent(parent), v_index(v_index) {}
+        explicit node(Type type = NONE, int id = -1, int left = -1, int right = -1, int parent = -1, int v_index = -1) : type(type), id(id), left(left), right(right), parent(parent), v_index(v_index) {}
     };
 
     // 木のグラフ表現（連結リスト）。
@@ -27,11 +30,11 @@ struct static_top_tree {
     vector<node> nodes;
     vector<Point> points;
     vector<Path> paths;
-    vector<int> v_to_node;  // 頂点番号からノード番号への変換表
+    vector<int> v_to_node; // 頂点番号からノード番号への変換表
 
     int root_g = 0, root_nodes = 0; // 木の根の頂点番号、ノードの根の番号
 
-    explicit static_top_tree(int n): g(n), v_to_node(n, -1) {
+    explicit static_top_tree(int n) : g(n), v_to_node(n, -1) {
     }
 
     /**
@@ -82,7 +85,7 @@ private:
      * @return 部分木のサイズ
      */
     int hl_dfs(int v, int previous) {
-        int size = 1, max_c_size = 0;   // 部分木のサイズ、最大の部分木のサイズ
+        int size = 1, max_c_size = 0; // 部分木のサイズ、最大の部分木のサイズ
         for (size_t i = 0; i < g[v].size(); i++) {
             int u = g[v][i];
             if (g[v][i] == previous) {
@@ -122,12 +125,12 @@ private:
     /**
      * aをtypeの操作で平衡二分木になるように分割する
      */
-    Result merge(vector<Result> &a, Type type) {
+    Result merge(vector<Result>& a, Type type) {
         if (a.size() == 1) {
             return a[0];
         }
         int size = 0;
-        for (const auto &r : a) {
+        for (const auto& r : a) {
             size += r.size;
         }
         vector<Result> b, c;
@@ -148,7 +151,7 @@ private:
      * Compress操作を行う
      */
     Result comp(int v) {
-        vector<Result> children{ do_add_v(v) };
+        vector<Result> children{do_add_v(v)};
         while (!g[v].empty()) {
             v = g[v][0];
             children.push_back(do_add_v(v));
@@ -161,7 +164,7 @@ private:
      */
     Result do_rake(int v) {
         vector<Result> children;
-        for (size_t i = 1; i < g[v].size(); i++) {  // compressで処理するため、heavy-edge(indexが0)は除外
+        for (size_t i = 1; i < g[v].size(); i++) { // compressで処理するため、heavy-edge(indexが0)は除外
             children.push_back(do_add_e(g[v][i]));
         }
         return merge(children, RAKE);
@@ -185,9 +188,9 @@ private:
         }
         Result r = do_rake(v);
         int ni = add_node(ADD_VERTEX, r.node_index, -1);
-        nodes[ni].v_index = v;  // 木の頂点番号を設定
+        nodes[ni].v_index = v; // 木の頂点番号を設定
         v_to_node[v] = ni;
-        return {ni, r.size + 1};// 頂点数が増える
+        return {ni, r.size + 1}; // 頂点数が増える
     }
 
     /**
@@ -195,9 +198,9 @@ private:
      */
     Result do_vertex(int v) {
         int ni = add_node(VERTEX, -1, -1);
-        nodes[ni].v_index = v;  // 木の頂点番号を設定
+        nodes[ni].v_index = v; // 木の頂点番号を設定
         v_to_node[v] = ni;
-        return {ni, 1};         // 頂点数は1
+        return {ni, 1}; // 頂点数は1
     }
 
     /**

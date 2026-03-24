@@ -1,0 +1,11 @@
+missingIncludeSystem
+noExplicitConstructor
+unknownMacro
+useInitializationList
+useStlAlgorithm
+functionStatic
+shadowVariable
+shadowArgument
+variableScope
+uninitMemberVar
+constParameterReference

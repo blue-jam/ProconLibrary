@@ -21,6 +21,22 @@ pip3 install online-judge-tools online-judge-verify-helper
 
 C++標準はC++23。
 
+**フォーマット・静的解析:**
+```bash
+# clang-format で全ファイルをフォーマット
+cmake --build build --target format
+
+# フォーマットチェック（CIと同じ）
+cmake --build build --target format-check
+
+# cppcheck で静的解析
+cmake --build build --target cppcheck
+
+# format-check + cppcheck をまとめて実行
+cmake --build build --target lint
+```
+設定ファイル: `.clang-format`, `.cppcheck-suppressions.txt`
+
 ## アーキテクチャ
 
 - **ライブラリモジュール** — 各トップレベルディレクトリにアルゴリズムの実装が `.cpp` または `.hpp` ファイルとして格納されており、コンテストの解法に `#include` して使う:
