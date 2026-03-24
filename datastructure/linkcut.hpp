@@ -35,7 +35,7 @@ struct LinkCutTree{
         }
         // Splay木の根であるか
         bool isRoot(){
-            return !pp || pp->cp[L] != this && pp->cp[R] != this;
+            return !pp || (pp->cp[L] != this && pp->cp[R] != this);
         }
         // ノードの状態（反転など）を子に伝搬させる
         void push(){
@@ -50,7 +50,7 @@ struct LinkCutTree{
         void rot(int d){
             node *q = pp, *r = q->pp;
             int e = 1 - d;
-            if(q->cp[e] = cp[d]) cp[d]->pp = q;
+            if((q->cp[e] = cp[d])) cp[d]->pp = q;
             cp[d] = q; q->pp = this;
 
             int qd = q->dmin;
@@ -64,7 +64,7 @@ struct LinkCutTree{
             dcost += dmin;
             dmin = qd;
 
-            if(pp=r){
+            if((pp=r)){
                 if(r->cp[L] == q) r->cp[L] = this;
                 if(r->cp[R] == q) r->cp[R] = this;
             }
