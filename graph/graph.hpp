@@ -33,25 +33,3 @@ void addUndirectedEdge(Graph<W>& g, int a, int b, type_identity_t<W> c) {
     g[a].push_back(Edge<W>(a, b, c, g[b].size()));
     g[b].push_back(Edge<W>(b, a, c, g[a].size() - 1));
 }
-
-template<typename T>
-struct edge {
-    ll from, to;
-    T weight;
-
-    edge() : from(-1), to(-1) {}
-
-    edge(ll from, ll to, T weight) : from(from), to(to), weight(weight) {}
-};
-
-template<typename T>
-struct graph {
-    ll n;
-    vector<vector<edge<T>>> edges;
-
-    explicit graph(ll n) : n(n), edges(n) {}
-
-    void add(ll from, ll to, T weight) {
-        edges[from].emplace_back(from, to, weight);
-    }
-};

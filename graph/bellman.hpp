@@ -55,12 +55,12 @@ vector<int> buildPath(const vector<int>& prev, int t) {
 
 template<typename T, T (*add)(T, T), bool (*lt)(T, T), T (*zero)(), T (*inf)()>
 struct bellman_ford {
-    graph<T> g;
+    Graph<T> g;
     vector<T> dist;
     vector<ll> prev;
     bool has_negative_loop;
 
-    explicit bellman_ford(graph<T> g) : g(g), dist(g.n, inf()), prev(g.n, -1), has_negative_loop(false) {}
+    explicit bellman_ford(Graph<T> g) : g(g), dist(g.n, inf()), prev(g.n, -1), has_negative_loop(false) {}
 
     bool run(int s) {
         const T INF = inf();
