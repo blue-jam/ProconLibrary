@@ -88,5 +88,5 @@ struct LasySegmentTree{
 		add(a, b, d, k*2+2, m, r);
 		merge(k);
 	}
-	T add(int a, int b, T d){ add(a, b, d, 0, 0, n); }
+	void add(int a, int b, T d){ add(a, b, d, 0, 0, n); }
 };

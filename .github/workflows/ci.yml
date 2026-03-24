@@ -10,8 +10,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: 3.11
-      - run: pip3 install setuptools online-judge-tools rime
-      - run: ./verify.sh
+      - name: Install dependencies
+        run: pip3 install online-judge-tools online-judge-verify-helper
+      - name: Install AtCoder Library
+        run: |
+          wget -q https://github.com/atcoder/ac-library/archive/refs/tags/v1.6.zip -O /tmp/acl.zip
+          unzip -q /tmp/acl.zip -d /tmp/
+          sudo cp -r /tmp/ac-library-1.6/atcoder /usr/local/include/
+      - uses: actions/cache@v4
+        with:
+          path: .verify-helper/cache
+          key: verify-helper-${{ hashFiles('.verify-helper/timestamps.remote.json') }}
+          restore-keys: |
+            verify-helper-
+      - name: Run verification
+        run: oj-verify run
 
   deploy-docs:
     runs-on: ubuntu-latest
@@ -25,14 +38,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Install Doxygen
-        run: sudo apt-get install -y doxygen doxygen-latex graphviz
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+      - name: Install dependencies
+        run: pip3 install online-judge-tools online-judge-verify-helper
       - name: Generate docs
-        run: doxygen
+        run: oj-verify docs
       - name: Upload Pages artifact
         uses: actions/upload-pages@v3
         with:
-          path: html
+          path: .verify-helper/markdown
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
