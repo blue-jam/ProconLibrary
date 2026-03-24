@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=CGL_3_C"
-#include "geometry/geometry.hpp"
 #include "geometry/polygon.hpp"
+#include "geometry/geometry.hpp"
 #include "misc/template.hpp"
 
 int main() {

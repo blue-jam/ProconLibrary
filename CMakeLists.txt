@@ -5,20 +5,32 @@ set(CMAKE_CXX_STANDARD 23)
 
 include_directories(.)
 
-file(GLOB VERIFY_SOURCES verify/*.test.cpp)
+file(GLOB VERIFY_SOURCES
+    datastructure/*.test.cpp
+    geometry/*.test.cpp
+    graph/*.test.cpp
+    math/*.test.cpp
+    string/*.test.cpp
+    misc/*.test.cpp
+)
 file(GLOB VERIFY_SRC_SOURCES verify/src/*.cpp)
 
 add_compile_options(-Wall -Wno-deprecated -Wno-cpp)
 
 foreach(src ${VERIFY_SOURCES} ${VERIFY_SRC_SOURCES})
-    get_filename_component(name ${src} NAME_WE)
+    get_filename_component(name ${src} NAME_WLE)
     add_executable(${name} ${src})
 endforeach()
 
 # --- Lint targets ---
 file(GLOB_RECURSE ALL_SOURCES
-    datastructure/*.hpp graph/*.hpp math/*.hpp geometry/*.hpp string/*.hpp misc/*.hpp
-    verify/*.cpp verify/src/*.cpp
+    datastructure/*.hpp datastructure/*.test.cpp
+    graph/*.hpp graph/*.test.cpp
+    math/*.hpp math/*.test.cpp
+    geometry/*.hpp geometry/*.test.cpp
+    string/*.hpp string/*.test.cpp
+    misc/*.hpp misc/*.test.cpp
+    verify/src/*.cpp
 )
 
 find_program(CLANG_FORMAT clang-format)
