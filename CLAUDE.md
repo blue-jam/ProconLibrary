@@ -2,22 +2,22 @@
 
 ## 概要
 
-C++23で書かれた競技プログラミング(プロコン)ライブラリ。アルゴリズムのカテゴリごとにヘッダ/ソースファイルが整理されており、AOJ (Aizu Online Judge) の問題を使って [Rime](https://github.com/icpc-jag/rime) テストフレームワークで検証を行っている。
+C++23で書かれた競技プログラミング(プロコン)ライブラリ。アルゴリズムのカテゴリごとにヘッダ/ソースファイルが整理されており、AOJ (Aizu Online Judge) の問題を使って [online-judge-tools/verification-helper](https://github.com/online-judge-tools/verification-helper) (`oj-verify`) で検証を行っている。
 
 ## ビルドとテスト
 
 **全検証テストの実行:**
 ```bash
-./verify.sh
+oj-verify run
 ```
-`online-judge-tools` (`oj`) 経由でAOJからテストデータをダウンロードし、`verify/` 以下の各問題ディレクトリで `rime test` を実行する。
+`oj-verify` が `verify/*.test.cpp` 内の `#define PROBLEM "url"` を読み取り、テストデータのダウンロード・コンパイル・実行・結果比較を自動で行う。
 
-**前提条件:** Python 3, `rime`, `online-judge-tools`
+**前提条件:** Python 3, `online-judge-tools`
 ```bash
-pip3 install setuptools online-judge-tools rime
+pip3 install online-judge-tools
 ```
 
-**CI:** GitHub Actionsがpushごとに `./verify.sh` を実行する (`.github/workflows/ci.yml` 参照)。
+**CI:** GitHub Actionsがpushごとに `oj-verify run` を実行する (`.github/workflows/ci.yml` 参照)。
 
 **CMake (IDE/コンパイルチェック用):**
 ```bash
@@ -35,11 +35,11 @@ C++標準はC++23。
   - `string/` — Aho-Corasick、Suffix Array
   - `misc/template.cpp` — コンテスト用テンプレート (`bits/stdc++.h`、ACL、`ll`・`eps` などの共通マクロ/型定義を含む)
 
-- **検証 (`verify/`)** — Rimeベースのテストプロジェクトで、AOJの問題に対してライブラリの正当性を検証する:
-  - ジャッジのカテゴリ別 (`aojcgl/`, `aojdsl/`, `aojgrl/`) およびトピック別 (`geometry/`, `datastructure/`) のサブディレクトリ
-  - 各問題は `code/main.cc` (ライブラリを使った解法) と、任意で `test/judge.cc`/`validator.cc` を持つ
-  - `verify/download.py` が `oj download` を使ってAOJからテストデータを取得する
-  - `verify/common/testlib.h` はテストプロジェクト間で共有される
+- **検証 (`verify/`)** — `oj-verify` ベースのテストで、AOJの問題に対してライブラリの正当性を検証する:
+  - 各問題は `verify/{problem_id}.test.cpp` として配置
+  - ファイル先頭の `#define PROBLEM "url"` でジャッジのURLを指定
+  - 浮動小数点比較が必要な問題は `#define ERROR 1e-8` 等で許容誤差を指定
+  - 設定は `.verify-helper/config.toml` に記載
 
 ## コード規約
 

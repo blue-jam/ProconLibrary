@@ -1,0 +1,22 @@
+#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A"
+#include "misc/template.cpp"
+#include "graph/graph.hpp"
+#include "graph/articulation.cpp"
+
+int main(){
+	int V,E;
+	cin >> V >> E;
+	Graph g(V);
+	for(int i = 0; i < E; ++i){
+		int s,t;
+		cin >> s >> t;
+		addUndirectedEdge(g, s, t, 0);
+	}
+	vector<int> art;
+	vector<vector<int>> comp;
+	getArticulation(g, art, comp);
+	sort(ALL(art));
+	for(auto a: art)
+		cout << a << endl;
+	return 0;
+}
