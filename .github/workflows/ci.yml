@@ -11,6 +11,11 @@ jobs:
         with:
           python-version: 3.11
       - run: pip3 install setuptools online-judge-tools rime
+      - name: Install AtCoder Library
+        run: |
+          wget -q https://github.com/atcoder/ac-library/archive/refs/tags/v1.6.zip -O /tmp/acl.zip
+          unzip -q /tmp/acl.zip -d /tmp/
+          sudo cp -r /tmp/ac-library-1.6/atcoder /usr/local/include/
       - run: ./verify.sh
 
   deploy-docs:
