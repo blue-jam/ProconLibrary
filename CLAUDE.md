@@ -14,7 +14,7 @@ oj-verify run
 
 **前提条件:** Python 3, `online-judge-tools`
 ```bash
-pip3 install online-judge-tools
+pip3 install online-judge-tools online-judge-verify-helper
 ```
 
 **CI:** GitHub Actionsがpushごとに `oj-verify run` を実行する (`.github/workflows/ci.yml` 参照)。
