@@ -1,3 +1,4 @@
+#pragma once
 /**
  * @file
  * ### グラフの要素
@@ -21,8 +22,6 @@
  * priority_queue<Edge>, vector<Edge>, greater<Edge>> Q;
  * @endcode
  */
-
-#pragma once
 #include "misc/template.hpp"
 
 template<typename W>
