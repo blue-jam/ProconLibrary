@@ -39,6 +39,26 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "build for debug",
+            "type": "shell",
+            "command": "clang++",
+            "args": [
+                "-g",
+                "-fsanitize=undefined,address",
+                "-I",
+                "${userHome}/cpp",
+                "--std=c++23",
+                "-o",
+                "${fileDirname}/main",
+                "${fileDirname}/main.cpp"
+            ],
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            }
         }
     ]
 }
