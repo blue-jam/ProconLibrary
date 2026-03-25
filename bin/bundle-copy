@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-CXX=g++-15 oj-bundle -I /Users/blue_jam/ProconLibrary main.cpp | pbcopy
+DIR="${1:-.}"
+CXX=g++-15 oj-bundle -I /Users/blue_jam/ProconLibrary "${DIR}/main.cpp" | pbcopy
 echo "Bundled code copied to clipboard."

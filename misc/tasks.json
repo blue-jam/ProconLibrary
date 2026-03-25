@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "atcoder-tools test",
+            "type": "shell",
+            "command": "atcoder-tools",
+            "args": [
+                "test",
+                "--dir",
+                "${fileDirname}",
+                "--config",
+                "${userHome}/ProconLibrary/.atcodertools.toml"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared",
+                "clear": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "copy generated code",
+            "type": "shell",
+            "command": "bundle-copy",
+            "args": [
+                "${fileDirname}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
