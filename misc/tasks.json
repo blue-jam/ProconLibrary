@@ -43,12 +43,10 @@
         {
             "label": "build for debug",
             "type": "shell",
-            "command": "clang++",
+            "command": "g++",
             "args": [
                 "-g",
-                "-fsanitize=undefined,address",
-                "-I",
-                "${userHome}/cpp",
+                "-D_GLIBCXX_DEBUG",
                 "--std=c++23",
                 "-o",
                 "${fileDirname}/main",
