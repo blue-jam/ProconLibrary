@@ -8,7 +8,7 @@ lang='cpp' # Check README.md for the supported languages.
 [postprocess]
 
 [compiler]
-compile_command='clang++ -fsanitize=undefined,address -I ~/cpp --std=c++23 -o main main.cpp'
+compile_command='g++ -o main main.cpp'
 compile_only_when_diff_detected=true
 
 [tester]
