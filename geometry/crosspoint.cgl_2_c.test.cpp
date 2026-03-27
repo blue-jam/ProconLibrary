@@ -4,6 +4,8 @@
 #include "geometry/geometry.hpp"
 #include "misc/template.hpp"
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int q;
     cin >> q;
     for (int i = 0; i < q; ++i) {
@@ -15,6 +17,6 @@ int main() {
         }
         P p = crosspointSS(L[0], L[1]);
         cout << fixed << setprecision(10);
-        cout << real(p) << " " << imag(p) << endl;
+        cout << real(p) << " " << imag(p) << "\n";
     }
 }

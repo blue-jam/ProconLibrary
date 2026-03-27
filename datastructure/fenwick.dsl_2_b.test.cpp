@@ -3,6 +3,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n, q;
     cin >> n >> q;
     Fenwick<int> bit(n + 1);
@@ -12,7 +14,7 @@ int main() {
         if (c == 0) {
             bit.add(x, y);
         } else {
-            cout << bit.get(y) - bit.get(x - 1) << endl;
+            cout << bit.get(y) - bit.get(x - 1) << "\n";
         }
     }
     return 0;

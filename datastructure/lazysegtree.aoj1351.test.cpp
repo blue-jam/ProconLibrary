@@ -5,6 +5,8 @@
 int N, Q;
 string s;
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     cin >> N >> Q >> s;
     vector<int> v(N), q(Q);
     set<int> cl;
@@ -46,7 +48,7 @@ int main() {
             s[l] = ')';
             st.add(l, N, -2);
         }
-        cout << l + 1 << endl;
+        cout << l + 1 << "\n";
     }
     return 0;
 }

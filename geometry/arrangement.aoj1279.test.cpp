@@ -11,6 +11,8 @@ const double INF = 1e+10;
 #include "graph/graph.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     for (;;) {
         int n;
         cin >> n;
@@ -68,13 +70,13 @@ int main() {
         vector<double> dist(ps.size());
         dijkstra(graph, si, dist, prev);
         if (dist[gi] == INF) {
-            cout << -1 << endl;
+            cout << -1 << "\n";
         } else {
             vector<int> path = buildPath(prev, gi);
             for (const auto& v : path) {
-                cout << (int)ps[v].real() << " " << (int)ps[v].imag() << endl;
+                cout << (int)ps[v].real() << " " << (int)ps[v].imag() << "\n";
             }
-            cout << 0 << endl;
+            cout << 0 << "\n";
         }
     }
 }

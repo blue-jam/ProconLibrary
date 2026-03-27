@@ -5,6 +5,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int x, y, r, q;
     cin >> x >> y >> r >> q;
     Circle C(x, y, r);
@@ -19,7 +21,7 @@ int main() {
             cout << fixed << setprecision(10) << real(vp[j]) << " " << imag(vp[j]);
             if (j == 0) cout << " ";
         }
-        cout << endl;
+        cout << "\n";
     }
     return 0;
 }

@@ -9,6 +9,8 @@ bool func(const Edge<ll>& a, const Edge<ll>& b) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E;
     cin >> V >> E;
     Graph<ll> g(V);
@@ -25,6 +27,6 @@ int main() {
             swap(br.from, br.to);
     sort(ALL(brg), func);
     for (auto b : brg)
-        cout << b.from << " " << b.to << endl;
+        cout << b.from << " " << b.to << "\n";
     return 0;
 }

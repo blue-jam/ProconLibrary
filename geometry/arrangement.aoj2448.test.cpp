@@ -10,6 +10,8 @@
 #include "graph/graph.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int N;
     cin >> N;
     vector<P> ps(N);
@@ -35,6 +37,6 @@ int main() {
     sort(ALL(res));
     for (const auto& r : res)
         sum += r;
-    cout << fixed << setprecision(5) << sum << endl;
+    cout << fixed << setprecision(5) << sum << "\n";
     return 0;
 }

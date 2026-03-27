@@ -3,6 +3,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n, q;
     cin >> n >> q;
     SegmentTree<int> st(n, INT_MAX);
@@ -13,7 +15,7 @@ int main() {
         if (c == 0)
             st.update(x, y);
         else
-            cout << st.query(x, y + 1) << endl;
+            cout << st.query(x, y + 1) << "\n";
     }
     return 0;
 }

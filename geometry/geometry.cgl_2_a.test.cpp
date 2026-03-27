@@ -3,6 +3,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int q;
     cin >> q;
     for (int i = 0; i < q; ++i) {
@@ -15,7 +17,7 @@ int main() {
         int r = 0;
         if (parallel(L[0], L[1])) r = 2;
         else if (orthogonal(L[0], L[1])) r = 1;
-        cout << r << endl;
+        cout << r << "\n";
     }
     return 0;
 }

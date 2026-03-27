@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E;
     cin >> V >> E;
     Graph<ll> g(V);
@@ -22,7 +24,7 @@ int main() {
     for (int i = 0; i < Q; ++i) {
         int u, v;
         cin >> u >> v;
-        cout << (dict[u] == dict[v] ? 1 : 0) << endl;
+        cout << (dict[u] == dict[v] ? 1 : 0) << "\n";
     }
     return 0;
 }

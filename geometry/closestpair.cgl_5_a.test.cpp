@@ -5,6 +5,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     vector<P> v(n);
@@ -13,6 +15,6 @@ int main() {
         cin >> x >> y;
         v[i] = P(x, y);
     }
-    cout << fixed << setprecision(10) << closestPair(v) << endl;
+    cout << fixed << setprecision(10) << closestPair(v) << "\n";
     return 0;
 }
