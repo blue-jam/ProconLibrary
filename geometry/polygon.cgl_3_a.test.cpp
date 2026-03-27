@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     Polygon p(n);
@@ -13,6 +15,6 @@ int main() {
         p[i] = P(x, y);
     }
     cout << fixed << setprecision(1);
-    cout << area(p) << endl;
+    cout << area(p) << "\n";
     return 0;
 }

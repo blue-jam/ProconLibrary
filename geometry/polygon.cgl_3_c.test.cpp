@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     Polygon p(n);
@@ -18,9 +20,9 @@ int main() {
         int x, y;
         cin >> x >> y;
         int c = contains(p, P(x, y));
-        if (c == OUT) cout << 0 << endl;
-        else if (c == ON) cout << 1 << endl;
-        else cout << 2 << endl;
+        if (c == OUT) cout << 0 << "\n";
+        else if (c == ON) cout << 1 << "\n";
+        else cout << 2 << "\n";
     }
     return 0;
 }

@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E;
     cin >> V >> E;
     Graph<ll> g(V);
@@ -15,7 +17,7 @@ int main() {
     vector<int> v;
     topologicalSort(g, v);
     for (auto a : v) {
-        cout << a << endl;
+        cout << a << "\n";
     }
     return 0;
 }

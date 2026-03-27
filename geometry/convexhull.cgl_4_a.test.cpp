@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     vector<P> v(n);
@@ -19,9 +21,9 @@ int main() {
         if (lessY(p[i], p[idx]))
             idx = i;
     }
-    cout << m << endl;
+    cout << m << "\n";
     for (int i = 0; i < m; ++i) {
-        cout << (int)p[(idx + i) % m].real() << " " << (int)p[(idx + i) % m].imag() << endl;
+        cout << (int)p[(idx + i) % m].real() << " " << (int)p[(idx + i) % m].imag() << "\n";
     }
     return 0;
 }

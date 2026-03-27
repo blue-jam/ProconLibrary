@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E;
     cin >> V >> E;
     Graph<ll> g(V);
@@ -17,6 +19,6 @@ int main() {
     getArticulation(g, art, comp);
     sort(ALL(art));
     for (auto a : art)
-        cout << a << endl;
+        cout << a << "\n";
     return 0;
 }

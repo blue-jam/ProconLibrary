@@ -3,6 +3,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     vector<int> parent(n, -1);
@@ -29,7 +31,7 @@ int main() {
         int u, v;
         cin >> u >> v;
         int w = lca(u, v, depth, ancestor);
-        cout << w << endl;
+        cout << w << "\n";
     }
     return 0;
 }

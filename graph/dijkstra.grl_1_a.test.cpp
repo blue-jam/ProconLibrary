@@ -5,6 +5,8 @@ const int INF = 1000000010;
 #include "graph/dijkstra.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E, r;
     cin >> V >> E >> r;
     Graph<ll> g(V);
@@ -19,9 +21,9 @@ int main() {
     dijkstra(g, r, dist, prev);
     for (int a : dist) {
         if (a == INF)
-            cout << "INF" << endl;
+            cout << "INF" << "\n";
         else
-            cout << a << endl;
+            cout << a << "\n";
     }
     return 0;
 }

@@ -5,6 +5,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int V, E;
     cin >> V >> E;
     Edges<ll> es;
@@ -13,6 +15,6 @@ int main() {
         cin >> s >> t >> w;
         es.push_back(Edge<ll>(s, t, w));
     }
-    cout << kruskal_e(es, V).first << endl;
+    cout << kruskal_e(es, V).first << "\n";
     return 0;
 }

@@ -69,6 +69,8 @@ vector<Segment> star(int x, int y, int a, int r) {
 }
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     for (;;) {
         int N, M, L;
         cin >> N >> M >> L;
@@ -91,6 +93,6 @@ int main() {
         vector<Weight> dist(N);
         vector<int> prev(N);
         dijkstra(g, M - 1, dist, prev);
-        cout << fixed << setprecision(10) << dist[L - 1] << endl;
+        cout << fixed << setprecision(10) << dist[L - 1] << "\n";
     }
 }

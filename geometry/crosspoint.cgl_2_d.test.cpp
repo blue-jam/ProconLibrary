@@ -5,6 +5,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int q;
     cin >> q;
     for (int i = 0; i < q; ++i) {
@@ -15,7 +17,7 @@ int main() {
             L.push_back(Segment(P(a, b), P(c, d)));
         }
         cout << fixed << setprecision(11);
-        cout << distanceSS(L[0], L[1]) << endl;
+        cout << distanceSS(L[0], L[1]) << "\n";
     }
     return 0;
 }

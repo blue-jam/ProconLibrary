@@ -7,6 +7,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int n;
     cin >> n;
     Polygon p;
@@ -22,7 +24,7 @@ int main() {
         int x1, x2, y1, y2;
         cin >> x1 >> y1 >> x2 >> y2;
         Polygon Q = convex_cut(p, Line(P(x1, y1), P(x2, y2)));
-        cout << area(Q) << endl;
+        cout << area(Q) << "\n";
     }
     return 0;
 }

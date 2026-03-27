@@ -4,6 +4,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     int q;
     cin >> q;
     for (int i = 0; i < q; ++i) {
@@ -13,7 +15,7 @@ int main() {
             cin >> a >> b >> c >> d;
             L.push_back(Segment(P(a, b), P(c, d)));
         }
-        cout << (intersectSS(L[0], L[1]) ? 1 : 0) << endl;
+        cout << (intersectSS(L[0], L[1]) ? 1 : 0) << "\n";
     }
     return 0;
 }

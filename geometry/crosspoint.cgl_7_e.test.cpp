@@ -5,6 +5,8 @@
 #include "misc/template.hpp"
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
     vector<Circle> v;
     for (int i = 0; i < 2; ++i) {
         int x, y, r;
@@ -15,6 +17,6 @@ int main() {
     if (!lessX(ps.first, ps.second)) swap(ps.first, ps.second);
     cout << fixed << setprecision(10);
     cout << real(ps.first) << " " << imag(ps.first) << " ";
-    cout << real(ps.second) << " " << imag(ps.second) << endl;
+    cout << real(ps.second) << " " << imag(ps.second) << "\n";
     return 0;
 }
