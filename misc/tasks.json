@@ -43,11 +43,11 @@
         {
             "label": "build for debug",
             "type": "shell",
-            "command": "g++",
+            "command": "g++-15",
             "args": [
                 "-g",
                 "-D_GLIBCXX_DEBUG",
-                "--std=c++23",
+                "-std=c++23",
                 "-o",
                 "${fileDirname}/main",
                 "${fileDirname}/main.cpp"
