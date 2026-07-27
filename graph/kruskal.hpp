@@ -6,7 +6,6 @@
 template<typename W>
 pair<W, Edges<W>> kruskal_e(Edges<W>& edges, int n) {
     sort(ALL(edges));
-    reverse(ALL(edges)); // a < b <-> a.weight > b.weight
     int sz = edges.size();
 
     UnionFind uf(n);
@@ -23,7 +22,7 @@ pair<W, Edges<W>> kruskal_e(Edges<W>& edges, int n) {
 template<typename W>
 pair<W, Edges<W>> kruskal_g(const Graph<W>& g) {
     int n = g.size();
-    vector<Edge<W>> edges;
+    Edges<W> edges;
     for (int i = 0; i < n; ++i) edges.insert(edges.end(), ALL(g[i]));
     return kruskal_e(edges, n);
 }

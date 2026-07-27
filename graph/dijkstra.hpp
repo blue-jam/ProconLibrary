@@ -8,7 +8,7 @@ void dijkstra(const Graph<W>& g, int s, vector<W>& dist, vector<int>& prev) {
     dist.assign(n, INF);
     dist[s] = 0;
     prev.assign(n, -1);
-    priority_queue<Edge<W>> Q; // a < b <-> a.weight > b.weight
+    priority_queue<Edge<W>, vector<Edge<W>>, greater<Edge<W>>> Q;
     Q.push(Edge<W>(-2, s, 0));
     while (!Q.empty()) {
         Edge<W> e = Q.top();

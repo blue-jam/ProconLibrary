@@ -8,7 +8,7 @@ W maordering(const Graph<W>& g1, vector<int>& w) {
     int n = g1.size();
     W cut = INF;
     UnionFind uf(n);
-    priority_queue<Edge<W>> Q;
+    priority_queue<Edge<W>, vector<Edge<W>>, greater<Edge<W>>> Q;
     vector<int> used;
     vector<W> d;
     Graph<W> g = g1;
